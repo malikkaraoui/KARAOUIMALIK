@@ -1,7 +1,25 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import './Hero.css'
 
+const FULL_NAME = 'Malik Karaoui'
+
 export default function Hero() {
+  const [text, setText] = useState('')
+
+  useEffect(() => {
+    let i = 0
+    const delay = setTimeout(() => {
+      const timer = setInterval(() => {
+        i++
+        setText(FULL_NAME.slice(0, i))
+        if (i >= FULL_NAME.length) clearInterval(timer)
+      }, 140)
+      return () => clearInterval(timer)
+    }, 400)
+    return () => clearTimeout(delay)
+  }, [])
+
   return (
     <section className="hero">
       {/* Subtle gradient orb */}
@@ -17,14 +35,9 @@ export default function Hero() {
           Bonjour, je suis
         </motion.p>
 
-        <motion.h1
-          className="hero__name"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        >
-          Malik Karaoui
-        </motion.h1>
+        <h1 className="hero__name">
+          <span className="hero__typewriter">{text}</span>
+        </h1>
 
         <motion.div
           className="hero__line"

@@ -49,6 +49,20 @@
   letter-spacing: -0.02em;
   line-height: 1;
   color: var(--text);
+  display: flex;
+  justify-content: center;
+}
+
+.hero__typewriter {
+  border-right: 3px solid var(--accent);
+  padding-right: 0.06em;
+  animation: blink 0.6s step-end infinite;
+  min-height: 1.1em;
+}
+
+@keyframes blink {
+  0%, 100% { border-color: var(--accent); }
+  50% { border-color: transparent; }
 }
 
 .hero__line {

@@ -21,7 +21,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="contact" ref={ref}>
-      <div className="container container--narrow">
+      <div className="container">
         <motion.div
           className="section-label"
           variants={fadeUp}
