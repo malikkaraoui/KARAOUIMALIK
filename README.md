@@ -1,4 +1,4 @@
-# Malik Karaoui
+# Malik Karaoui :fr: :switzerland:
 
 **Développeur . Explorateur . Bâtisseur**
 
@@ -8,7 +8,7 @@ Python · IA · LLM · Blockchain · P2P
 
 ## Qui suis-je
 
-Basé entre la France et la Suisse :fr: :switzerland:, je construis des outils à l'intersection de l'intelligence artificielle, du web et des protocoles décentralisés.
+Basé entre la France et la Suisse, je construis des outils à l'intersection de l'intelligence artificielle, du web et des protocoles décentralisés.
 
 Curieux par nature, je m'intéresse autant aux architectures techniques qu'aux questions de société que la technologie soulève. Chaque projet est une exploration.
 
