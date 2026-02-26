@@ -41,7 +41,7 @@ Blockchain       Blockchain · P2P · Protocoles
 
 | | |
 | --- | --- |
-| :globe_with_meridians: | [karaouimalik.com](https://malikkaraoui.com) |
+| :globe_with_meridians: | [malikkaraoui.com](https://malikkaraoui.com) |
 | :octocat: | [github.com/malikkaraoui](https://github.com/malikkaraoui) |
 | :briefcase: | [linkedin.com/in/malik-karaoui](https://www.linkedin.com/in/malik-karaoui/) |
 | :pencil: | [medium.com/@karaoui.malik](https://medium.com/@karaoui.malik) |
