@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import './Hero.css'
 
@@ -9,78 +9,70 @@ export default function Hero() {
 
   useEffect(() => {
     let i = 0
+    let timer
     const delay = setTimeout(() => {
-      const timer = setInterval(() => {
-        i++
+      timer = setInterval(() => {
+        i += 1
         setText(FULL_NAME.slice(0, i))
         if (i >= FULL_NAME.length) clearInterval(timer)
-      }, 140)
-      return () => clearInterval(timer)
-    }, 400)
-    return () => clearTimeout(delay)
+      }, 120)
+    }, 250)
+
+    return () => {
+      clearTimeout(delay)
+      if (timer) clearInterval(timer)
+    }
   }, [])
 
   return (
     <section className="hero">
-      {/* Subtle gradient orb */}
-      <div className="hero__orb" />
-
       <div className="hero__content container">
         <motion.p
           className="hero__greeting"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
         >
           Bonjour, je suis
         </motion.p>
 
-        <h1 className="hero__name">
+        <h1 className="hero__title">
           <span className="hero__typewriter">{text}</span>
         </h1>
 
-        <motion.div
-          className="hero__line"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        />
-
         <motion.p
           className="hero__tagline"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.65, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="hero__tag">Développeur</span>
-          <span className="hero__tag-sep" aria-hidden="true" />
-          <span className="hero__tag">Explorateur</span>
-          <span className="hero__tag-sep" aria-hidden="true" />
-          <span className="hero__tag">Bâtisseur</span>
+          Développeur · Explorateur · Bâtisseur
         </motion.p>
 
         <motion.p
-          className="hero__sub"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          className="hero__lead"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
         >
-          Python &middot; IA &middot; LLM &middot; Blockchain &middot; P2P
+          Je construis des produits web, des outils d&apos;IA locale et des protocoles
+          expérimentaux — utiles, lisibles et agréables à utiliser.
         </motion.p>
-      </div>
 
-      <motion.div
-        className="hero__scroll"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.6 }}
-      >
-        <a href="#about" className="hero__scroll-link" aria-label="Scroll vers le contenu">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-          </svg>
-        </a>
-      </motion.div>
+        <motion.div
+          className="hero__actions"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <a href="#projects" className="hero__action">
+            Voir les projets
+          </a>
+          <a href="#contact" className="hero__action hero__action--secondary">
+            Me contacter
+          </a>
+        </motion.div>
+      </div>
     </section>
   )
 }

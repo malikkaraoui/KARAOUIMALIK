@@ -4,15 +4,15 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1.25rem 0;
+  padding: 1rem 0;
   transition: all 0.5s var(--ease-out-expo);
 }
 
 .nav--scrolled {
-  padding: 0.85rem 0;
-  background: rgba(243, 245, 249, 0.8);
-  backdrop-filter: blur(16px) saturate(1.8);
-  -webkit-backdrop-filter: blur(16px) saturate(1.8);
+  padding: 0.75rem 0;
+  background: rgba(243, 245, 249, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -24,11 +24,12 @@
 
 .nav__logo {
   font-family: var(--font-body);
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: var(--text);
   transition: color 0.3s ease;
+  text-transform: uppercase;
 }
 
 .nav__logo-dot {
@@ -37,14 +38,15 @@
 
 .nav__links {
   display: flex;
-  gap: 2.5rem;
+  gap: 1.75rem;
 }
 
 .nav__link {
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 500;
   color: var(--text-secondary);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   position: relative;
   transition: color 0.3s ease;
 }
@@ -55,14 +57,14 @@
   bottom: -4px;
   left: 0;
   width: 0;
-  height: 1.5px;
+  height: 1px;
   background: var(--accent);
   border-radius: 1px;
   transition: width 0.4s var(--ease-out-expo);
 }
 
 .nav__link:hover {
-  color: var(--text);
+  color: var(--accent);
 }
 
 .nav__link:hover::after {
@@ -71,10 +73,10 @@
 
 @media (max-width: 640px) {
   .nav__links {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .nav__link {
-    font-size: 0.78rem;
+    font-size: 0.68rem;
   }
 }

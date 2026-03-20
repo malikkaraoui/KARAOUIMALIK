@@ -1,25 +1,28 @@
 .contact {
   padding-bottom: 0;
+  border-top: 1px solid var(--border-light);
 }
 
 .contact__title {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 400;
+  font-weight: 600;
+  letter-spacing: -0.05em;
   color: var(--text);
   margin-bottom: 1rem;
 }
 
 .contact__text {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
-  max-width: 26rem;
+  max-width: 34rem;
 }
 
 .contact__actions {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 2rem;
 }
 
@@ -27,14 +30,16 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.75rem;
+  padding: 0.95rem 1.35rem;
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.78rem;
   font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: white;
   background: var(--accent);
-  border: none;
-  border-radius: 8px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
   cursor: pointer;
   transition: all 0.35s var(--ease-out-expo);
 }
@@ -42,7 +47,7 @@
 .contact__btn:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.18);
 }
 
 .contact__socials {
@@ -53,7 +58,7 @@
 .contact__social {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,12 +70,11 @@
 
 .contact__social:hover {
   color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-light);
+  border-color: rgba(37, 99, 235, 0.28);
+  background: var(--surface-strong);
   transform: translateY(-2px);
 }
 
-/* Footer */
 .footer {
   margin-top: var(--section-padding);
   padding: 2rem 0;

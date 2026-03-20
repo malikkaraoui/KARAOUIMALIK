@@ -49,7 +49,8 @@ export default function Contact() {
           animate={inView ? 'visible' : 'hidden'}
           custom={2}
         >
-          Un projet, une idée, ou juste envie d'échanger &mdash; n'hésitez pas.
+          Un projet, une idée, ou simplement l&apos;envie de parler produit, IA locale,
+          protocoles ou extensions Chrome &mdash; je suis toujours partant.
         </motion.p>
 
         <motion.div
@@ -92,6 +93,33 @@ export default function Contact() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
                 <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a
+              href="https://medium.com/@karaoui.malik"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact__social"
+              aria-label="Medium"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 7h4l4 10 4-10h4" />
+                <path d="M8 17V9" />
+                <path d="M16 17V9" />
+              </svg>
+            </a>
+            <a
+              href="https://okazcar.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact__social"
+              aria-label="OKazCar"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18" />
+                <path d="M12 3a14.5 14.5 0 0 1 0 18" />
+                <path d="M12 3a14.5 14.5 0 0 0 0 18" />
               </svg>
             </a>
           </div>
