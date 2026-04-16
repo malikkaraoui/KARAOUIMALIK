@@ -53,10 +53,10 @@ const projects = [
     ],
   },
   {
-    title: 'AIeteck',
+    title: 'AïeTeck',
     eyebrow: 'Podcast',
     description:
-      "AIeteck est mon podcast sur l'intelligence artificielle — entre actualité, réflexions et usages concrets. Des épisodes courts pour comprendre où l'IA nous emmène.",
+      "AïeTeck est mon podcast sur l'intelligence artificielle — entre actualité, réflexions et usages concrets. Des épisodes courts pour comprendre où l'IA nous emmène.",
     tags: ['Podcast', 'Intelligence Artificielle', 'Tech'],
     links: [
       { label: 'Spotify', href: 'https://open.spotify.com/show/2uDQQaXYtkgeEtCYDoXcLs', kind: 'spotify' },
