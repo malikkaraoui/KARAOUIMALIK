@@ -16,7 +16,7 @@ export default function Hero() {
         setText(FULL_NAME.slice(0, i))
         if (i >= FULL_NAME.length) clearInterval(timer)
       }, 120)
-    }, 250)
+    }, 350)
 
     return () => {
       clearTimeout(delay)
@@ -29,9 +29,9 @@ export default function Hero() {
       <div className="hero__content container">
         <motion.p
           className="hero__greeting"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
           Bonjour, je suis
         </motion.p>
@@ -42,18 +42,18 @@ export default function Hero() {
 
         <motion.p
           className="hero__tagline"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.65, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
         >
           Développeur · Explorateur · Bâtisseur
         </motion.p>
 
         <motion.p
           className="hero__lead"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.65, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
         >
           Je construis des produits web, des outils d&apos;IA locale et des protocoles
           expérimentaux — utiles, lisibles et agréables à utiliser.
@@ -61,9 +61,9 @@ export default function Hero() {
 
         <motion.div
           className="hero__actions"
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, delay: 0.52, ease: [0.16, 1, 0.3, 1] }}
         >
           <a href="#projects" className="hero__action">
             Voir les projets

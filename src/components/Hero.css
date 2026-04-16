@@ -5,8 +5,8 @@
   align-items: center;
   border-bottom: 1px solid var(--border-light);
   background:
-    radial-gradient(circle at 85% 18%, rgba(37, 99, 235, 0.08), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.25), transparent 40%);
+    radial-gradient(ellipse at 80% 10%, rgba(184, 84, 51, 0.06), transparent 35%),
+    linear-gradient(180deg, rgba(255, 253, 248, 0.6), transparent 50%);
 }
 
 .hero__content {
@@ -15,12 +15,13 @@
 }
 
 .hero__greeting {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-tertiary);
+  margin-bottom: 0.75rem;
 }
 
 .hero__title {
@@ -34,10 +35,10 @@
 }
 
 .hero__typewriter {
-  border-right: 3px solid var(--accent);
-  padding-right: 0.08em;
+  border-right: 2px solid var(--accent);
+  padding-right: 0.06em;
   min-height: 1.1em;
-  animation: hero-blink 0.7s step-end infinite;
+  animation: hero-blink 0.75s step-end infinite;
 }
 
 @keyframes hero-blink {
@@ -72,39 +73,38 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 9.75rem;
-  padding: 0.95rem 1.2rem;
-  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  border-radius: 3px;
   background: var(--accent);
   color: white;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   border: 1px solid var(--accent);
   transition:
-    transform 0.35s var(--ease-out-expo),
-    background 0.35s ease,
-    color 0.35s ease,
-    border-color 0.35s ease;
+    transform 0.3s var(--ease-out-expo),
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .hero__action:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   background: var(--accent-hover);
-  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.16);
+  box-shadow: 0 6px 18px rgba(184, 84, 51, 0.18);
 }
 
 .hero__action--secondary {
   background: transparent;
-  color: var(--text);
+  color: var(--text-secondary);
   border-color: var(--border);
 }
 
 .hero__action--secondary:hover {
   background: var(--surface-strong);
   color: var(--accent);
-  border-color: rgba(37, 99, 235, 0.28);
+  border-color: var(--accent);
 }
 
 @media (max-width: 640px) {

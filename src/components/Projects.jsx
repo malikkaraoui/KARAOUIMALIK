@@ -41,6 +41,18 @@ const projects = [
     ],
   },
   {
+    title: 'Claude Atelier',
+    eyebrow: 'Outil open-source',
+    description:
+      "Claude Atelier est un environnement de plugins pour Claude Code. Il étend l'assistant avec des skills, hooks et agents spécialisés — packagés sur NPM, composables à la carte, et prêts à l'emploi en équipe.",
+    tags: ['Claude Code', 'NPM', 'TypeScript', 'Plugins', 'LLM'],
+    links: [
+      { label: 'Doc', href: 'https://claude-atelier.vercel.app', kind: 'live' },
+      { label: 'NPM', href: 'https://www.npmjs.com/package/claude-atelier', kind: 'store' },
+      { label: 'Code', href: 'https://github.com/malikkaraoui/claude-atelier', kind: 'code' },
+    ],
+  },
+  {
     title: 'Pizzaella.fr',
     eyebrow: 'SaaS',
     description:
@@ -67,6 +79,16 @@ const fadeUp = {
 }
 
 function renderLinkIcon(kind) {
+  if (kind === 'store') {
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+        <line x1="12" y1="22.08" x2="12" y2="12" />
+      </svg>
+    )
+  }
+
   if (kind === 'code') {
     return (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

@@ -1,18 +1,18 @@
 :root {
-  --bg: #f3f5f9;
-  --surface: #f8f9fc;
+  --bg: #f9f6f0;
+  --surface: #faf8f3;
   --surface-strong: #ffffff;
-  --text: #0f1729;
-  --text-secondary: #566074;
-  --text-tertiary: #8690a4;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --accent-light: rgba(37, 99, 235, 0.08);
-  --border: #dde3ee;
-  --border-light: #e9edf5;
+  --text: #1c1612;
+  --text-secondary: #5a4e42;
+  --text-tertiary: #9b8e82;
+  --accent: #b85433;
+  --accent-hover: #9e4429;
+  --accent-light: rgba(184, 84, 51, 0.08);
+  --border: #e2d9ce;
+  --border-light: #ede7df;
 
   --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Lora', Georgia, serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   --section-padding: clamp(4rem, 10vh, 7.5rem);
