@@ -4,16 +4,17 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1rem 0;
-  transition: all 0.5s var(--ease-out-expo);
+  padding: 1.5rem 0;
+  transition: padding 0.4s var(--ease-expo), background 0.4s ease, border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
 }
 
 .nav--scrolled {
-  padding: 0.75rem 0;
-  background: rgba(243, 245, 249, 0.86);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-light);
+  padding: 1rem 0;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--border);
 }
 
 .nav__inner {
@@ -23,60 +24,57 @@
 }
 
 .nav__logo {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
   color: var(--text);
-  transition: color 0.3s ease;
-  text-transform: uppercase;
 }
 
-.nav__logo-dot {
-  color: var(--accent);
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .nav__links {
   display: flex;
-  gap: 1.75rem;
+  gap: 2.5rem;
 }
 
 .nav__link {
-  font-size: 0.76rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
   font-weight: 500;
+  letter-spacing: 0.06em;
   color: var(--text-secondary);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav__link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  border-radius: 1px;
-  transition: width 0.4s var(--ease-out-expo);
+  transition: color 0.2s ease;
 }
 
 .nav__link:hover {
-  color: var(--accent);
+  color: var(--text);
 }
 
-.nav__link:hover::after {
-  width: 100%;
+.nav__theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border-mid);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.nav__theme:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--surface);
 }
 
 @media (max-width: 640px) {
-  .nav__links {
-    gap: 1rem;
-  }
-
-  .nav__link {
-    font-size: 0.68rem;
-  }
+  .nav__links { gap: 1.5rem; }
+  .nav__link { font-size: 0.72rem; }
 }
