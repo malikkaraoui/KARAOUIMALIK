@@ -11,9 +11,7 @@
 
 .nav--scrolled {
   padding: 1rem 0;
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--bg);
   border-color: var(--border);
 }
 
