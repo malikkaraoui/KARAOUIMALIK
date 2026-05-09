@@ -43,7 +43,7 @@
 
 .hero__typewriter {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(2.5rem, 10vw, 8rem);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -53,7 +53,7 @@
 .hero__cursor {
   display: inline-block;
   width: 3px;
-  height: clamp(3.5rem, 8.5vw, 7rem);
+  height: clamp(2.1rem, 8.5vw, 7rem);
   background: var(--accent-warm);
   margin-left: 0.08em;
   vertical-align: middle;
@@ -141,8 +141,9 @@
 }
 
 @media (max-width: 640px) {
-  .hero__content { padding-top: 8rem; }
-  .hero__actions { flex-direction: column; align-items: stretch; }
-  .hero__cta { justify-content: center; }
+  .hero__content { padding-top: 6rem; }
+  .hero__lead { margin-top: 1.75rem; font-size: 0.95rem; }
+  .hero__actions { margin-top: 2rem; flex-direction: column; align-items: stretch; }
+  .hero__cta { justify-content: center; padding: 0.8rem 1.25rem; }
   .hero__scroll-hint { display: none; }
 }

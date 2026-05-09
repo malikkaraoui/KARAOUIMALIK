@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import './Nav.css'
 
 const links = [
@@ -10,12 +10,15 @@ const links = [
 
 export default function Nav({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const closeMenu = () => setMenuOpen(false)
 
   return (
     <motion.nav
@@ -50,8 +53,41 @@ export default function Nav({ theme, onToggleTheme }) {
               </svg>
             )}
           </button>
+          <button
+            className={`nav__burger ${menuOpen ? 'nav__burger--open' : ''}`}
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={menuOpen}
+          >
+            <span />
+            <span />
+          </button>
         </div>
       </div>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="nav__mobile"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+          >
+            <div className="container">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="nav__mobile-link"
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }

@@ -53,7 +53,7 @@ body {
   --font-mono: 'DM Mono', monospace;
 
   --section-padding: clamp(5rem, 12vh, 9rem);
-  --container-width: min(82rem, 90vw);
+  --container-width: min(82rem, 92vw);
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
