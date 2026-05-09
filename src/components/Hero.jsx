@@ -38,15 +38,20 @@ export default function Hero() {
           <span className="hero__cursor" aria-hidden="true" />
         </h1>
 
-        <motion.p
-          className="hero__lead"
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.52, ease }}
         >
-          Je construis des produits web, des outils d&apos;IA locale
-          et des protocoles expérimentaux.
-        </motion.p>
+          <p className="hero__tagline">
+            Produits numériques &amp; solutions IA sur mesure
+          </p>
+          <p className="hero__lead">
+            De la feuille blanche à l&apos;architecture, je transforme vos idées
+            en applications, outils métier et sites web — avec l&apos;IA au cœur
+            pour décupler leur impact.
+          </p>
+        </motion.div>
 
         <motion.div
           className="hero__actions"
