@@ -4,6 +4,20 @@ import './Hero.css'
 
 const ease = [0.16, 1, 0.3, 1]
 
+const STACK = [
+  { name: 'Python',     slug: 'python' },
+  { name: 'React',      slug: 'react' },
+  { name: 'TypeScript', slug: 'typescript' },
+  { name: 'Node.js',    slug: 'nodedotjs' },
+  { name: 'FastAPI',    slug: 'fastapi' },
+  { name: 'Docker',     slug: 'docker' },
+  { name: 'Vite',       slug: 'vite' },
+  { name: 'Ollama',     slug: 'ollama' },
+  { name: 'Claude',     slug: 'anthropic' },
+  { name: 'Firebase',   slug: 'firebase' },
+  { name: 'Ethereum',   slug: 'ethereum' },
+]
+
 export default function Hero() {
   const [text, setText] = useState('')
   const fullName = 'Malik Karaoui'
@@ -72,13 +86,27 @@ export default function Hero() {
       </div>
 
       <motion.div
-        className="hero__scroll-hint"
+        className="hero__stack"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.3 }}
-        aria-hidden="true"
+        transition={{ duration: 0.8, delay: 1.1 }}
+        aria-label="Technologies maîtrisées"
       >
-        <div className="hero__scroll-line" />
+        <div className="hero__stack-scroll">
+          {STACK.map(tech => (
+            <div key={tech.slug} className="hero__stack-item">
+              <img
+                src={`https://cdn.simpleicons.org/${tech.slug}`}
+                alt={tech.name}
+                className="hero__stack-icon"
+                width="22"
+                height="22"
+                loading="lazy"
+              />
+              <span className="hero__stack-label">{tech.name}</span>
+            </div>
+          ))}
+        </div>
       </motion.div>
     </section>
   )
