@@ -1,16 +1,37 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './Nav.css'
 
 const links = [
-  { label: 'À propos', href: '#about' },
-  { label: 'Projets', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'À propos', anchor: 'about' },
+  { label: 'Projets', anchor: 'projects' },
+  { label: 'Contact', anchor: 'contact' },
 ]
+
+function useSectionNav() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  return (anchor) => {
+    if (location.pathname === '/') {
+      const el = document.getElementById(anchor)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/')
+      // Attendre le rendu de Home avant de scroller
+      setTimeout(() => {
+        const el = document.getElementById(anchor)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }, 80)
+    }
+  }
+}
 
 export default function Nav({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const scrollToSection = useSectionNav()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -20,6 +41,12 @@ export default function Nav({ theme, onToggleTheme }) {
 
   const closeMenu = () => setMenuOpen(false)
 
+  const handleSectionClick = (e, anchor) => {
+    e.preventDefault()
+    closeMenu()
+    scrollToSection(anchor)
+  }
+
   return (
     <motion.nav
       className={`nav ${scrolled ? 'nav--scrolled' : ''}`}
@@ -28,11 +55,22 @@ export default function Nav({ theme, onToggleTheme }) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="nav__inner container">
-        <a href="#" className="nav__logo">MK</a>
+        <Link
+          to="/"
+          className="nav__logo"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          MK
+        </Link>
         <div className="nav__right">
           <div className="nav__links">
             {links.map((link) => (
-              <a key={link.href} href={link.href} className="nav__link">
+              <a
+                key={link.anchor}
+                href={`#${link.anchor}`}
+                className="nav__link"
+                onClick={(e) => handleSectionClick(e, link.anchor)}
+              >
                 {link.label}
               </a>
             ))}
@@ -76,10 +114,10 @@ export default function Nav({ theme, onToggleTheme }) {
             <div className="container">
               {links.map((link) => (
                 <a
-                  key={link.href}
-                  href={link.href}
+                  key={link.anchor}
+                  href={`#${link.anchor}`}
                   className="nav__mobile-link"
-                  onClick={closeMenu}
+                  onClick={(e) => handleSectionClick(e, link.anchor)}
                 >
                   {link.label}
                 </a>

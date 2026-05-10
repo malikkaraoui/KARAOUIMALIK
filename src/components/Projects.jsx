@@ -1,80 +1,8 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { projects } from '../data/projects'
 import './Projects.css'
-
-const projects = [
-  {
-    title: 'OKazCar',
-    eyebrow: 'Produit en ligne',
-    description:
-      'OKazCar analyse les annonces auto en un clic sur Leboncoin, La Centrale et AutoScout24. Le produit combine score de fiabilité, prix marché, alertes utiles et lecture immédiate d’une annonce.',
-    tags: ['Chrome Extension', 'Manifest V3', 'JavaScript', 'Python', 'Flask', 'Web app', 'IA intégrée'],
-    links: [
-      { label: 'Site', href: 'https://okazcar.com', kind: 'live' },
-      {
-        label: 'Chrome Web Store',
-        href: 'https://chromewebstore.google.com/detail/okazcar-analyse-annonces/eakomgkenllkkmfccjjfoegealnchmmo',
-        kind: 'store',
-      },
-    ],
-  },
-  {
-    title: 'ToM Protocol',
-    eyebrow: 'Recherche',
-    description:
-      'ToM Protocol est mon terrain d’exploration autour d’une architecture peer-to-peer pour une communication plus libre, plus résiliente et moins dépendante des plateformes centralisées.',
-    tags: ['TypeScript', 'P2P', 'Protocole', 'Xcode', 'iOS'],
-    links: [
-      { label: 'Code', href: 'https://github.com/malikkaraoui/ToM-protocol', kind: 'code' },
-      { label: 'Medium', href: 'https://medium.com/@karaoui.malik', kind: 'article' },
-    ],
-  },
-  {
-    title: 'Bilan IA local',
-    eyebrow: 'IA locale',
-    description:
-      'Un script IA qui parcourt des dossiers utilisateur en local, applique un RAG via Ollama, puis génère automatiquement un bilan structuré en DOCX ou PDF, sans sortir les données de la machine.',
-    tags: ['Python', 'Ollama', 'RAG', 'DOCX/PDF'],
-    links: [
-      { label: 'Code', href: 'https://github.com/malikkaraoui/LOCAL.IA.GENERATED_COMPTE_RENDU', kind: 'code' },
-      { label: 'Medium', href: 'https://medium.com/@karaoui.malik', kind: 'article' },
-    ],
-  },
-  {
-    title: 'Claude Atelier',
-    eyebrow: 'Outil open-source',
-    description:
-      "Claude Atelier est un environnement de plugins pour Claude Code. Il étend l'assistant avec des skills, hooks et agents spécialisés — packagés sur NPM, composables à la carte, et prêts à l'emploi en équipe.",
-    tags: ['Claude Code', 'NPM', 'TypeScript', 'Plugins', 'LLM'],
-    links: [
-      { label: 'Doc', href: 'https://claude-atelier.vercel.app', kind: 'live' },
-      { label: 'NPM', href: 'https://www.npmjs.com/package/claude-atelier', kind: 'store' },
-      { label: 'Code', href: 'https://github.com/malikkaraoui/claude-atelier', kind: 'code' },
-    ],
-  },
-  {
-    title: 'AïeTeck',
-    eyebrow: 'Podcast',
-    description:
-      "AïeTeck est mon podcast sur l'intelligence artificielle — entre actualité, réflexions et usages concrets. Des épisodes courts pour comprendre où l'IA nous emmène.",
-    tags: ['Podcast', 'Intelligence Artificielle', 'Tech'],
-    links: [
-      { label: 'Spotify', href: 'https://open.spotify.com/show/2uDQQaXYtkgeEtCYDoXcLs', kind: 'spotify' },
-      { label: 'Apple Podcasts', href: 'https://podcasts.apple.com/fr/podcast/a%C3%AFeteck/id1893943595', kind: 'apple-podcast' },
-    ],
-  },
-  {
-    title: 'Pizzaella.fr',
-    eyebrow: 'SaaS',
-    description:
-      'Plateforme SaaS dédiée aux pizzaïolos et food-trucks. Gestion des commandes, paiements et livraisons depuis une interface unique pour simplifier la vente en ligne multi-points.',
-    tags: ['React', 'Firebase', 'Vite', 'Stripe'],
-    links: [
-      { label: 'Code', href: 'https://github.com/malikkaraoui/PLANIZZA-', kind: 'code' },
-      { label: 'Live', href: 'https://pizzaella.fr', kind: 'live' },
-    ],
-  },
-]
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -89,7 +17,7 @@ const fadeUp = {
   }),
 }
 
-function renderLinkIcon(kind) {
+export function renderLinkIcon(kind) {
   if (kind === 'store') {
     return (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -160,7 +88,7 @@ export default function Projects() {
         <div className="projects__list">
           {projects.map((project, i) => (
             <motion.article
-              key={project.title}
+              key={project.slug}
               className="project-row"
               variants={fadeUp}
               initial="hidden"
@@ -169,7 +97,10 @@ export default function Projects() {
             >
               <div className="project-row__meta">
                 <p className="project-row__eyebrow">{project.eyebrow}</p>
-                <h3 className="project-row__title">{project.title}</h3>
+                <Link to={`/projects/${project.slug}`} className="project-row__title-link">
+                  <h3 className="project-row__title">{project.title}</h3>
+                  <span className="project-row__arrow" aria-hidden="true">→</span>
+                </Link>
               </div>
 
               <div className="project-row__body">
@@ -198,6 +129,16 @@ export default function Projects() {
                       <span>{link.label}</span>
                     </a>
                   ))}
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className="project-row__link project-row__link--detail"
+                    aria-label={`Voir le détail de ${project.title}`}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                    <span>En savoir plus</span>
+                  </Link>
                 </div>
               </div>
             </motion.article>

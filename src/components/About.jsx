@@ -3,10 +3,11 @@ import { useRef } from 'react'
 import './About.css'
 
 const expertise = [
-  { label: 'Produits', value: 'Conception web, extensions Chrome, interfaces orientées usage.' },
-  { label: 'IA locale', value: 'Python, Ollama, RAG, génération de bilans DOCX et PDF.' },
+  { label: 'Produits', value: 'Conception web, extensions Chrome, applications iOS, interfaces orientées usage.' },
+  { label: 'IA locale', value: 'Python, Ollama, RAG, QMD, Obsidian — un cerveau local comme source de vérité.' },
+  { label: 'Automatisation LLM', value: 'Harnais Claude Code (hooks, skills, gate, handoffs) pour une gestion fine des tokens, du contexte et de la qualité.' },
   { label: 'Protocoles', value: 'Architectures décentralisées et communications souveraines.' },
-  { label: 'Stack', value: 'React, Vite, JavaScript, TypeScript, Firebase, API REST, SQL.' },
+  { label: 'Stack', value: 'React, Vite, TypeScript, Node.js, Swift, Firebase, API REST, SQL.' },
 ]
 
 const fadeUp = {

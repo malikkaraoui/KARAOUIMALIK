@@ -15,7 +15,7 @@ const STACK = [
   { name: 'Ollama',     slug: 'ollama' },
   { name: 'Claude',     slug: 'anthropic' },
   { name: 'Firebase',   slug: 'firebase' },
-  { name: 'Ethereum',   slug: 'ethereum' },
+  { name: 'Obsidian',   slug: 'obsidian' },
 ]
 
 export default function Hero() {
@@ -93,11 +93,12 @@ export default function Hero() {
         aria-label="Technologies maîtrisées"
       >
         <div className="hero__stack-scroll">
-          {STACK.map(tech => (
-            <div key={tech.slug} className="hero__stack-item">
+          {[...STACK, ...STACK].map((tech, i) => (
+            <div key={`${tech.slug}-${i}`} className="hero__stack-item">
               <img
                 src={`https://cdn.simpleicons.org/${tech.slug}`}
-                alt={tech.name}
+                alt={i < STACK.length ? tech.name : ''}
+                aria-hidden={i >= STACK.length ? 'true' : undefined}
                 className="hero__stack-icon"
                 width="22"
                 height="22"
