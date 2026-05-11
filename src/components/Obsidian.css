@@ -214,3 +214,21 @@
     border-bottom: 1px solid var(--border);
   }
 }
+
+@media (max-width: 640px) {
+  .obsidian__graph-wrap {
+    display: none;
+  }
+
+  .obsidian__stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .obsidian__stat {
+    padding: 1rem 1.1rem;
+  }
+
+  .obsidian__pipe-desc {
+    display: none;
+  }
+}

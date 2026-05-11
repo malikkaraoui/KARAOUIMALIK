@@ -142,3 +142,27 @@
     gap: 1rem;
   }
 }
+
+@media (max-width: 640px) {
+  .project-row {
+    padding: 1.75rem 0;
+    gap: 0.75rem;
+  }
+
+  .project-row__title {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+  }
+
+  .project-row__desc {
+    max-width: none;
+    font-size: 0.9rem;
+  }
+
+  .project-row__links {
+    gap: 0.75rem;
+  }
+
+  .project-row__arrow {
+    display: none;
+  }
+}

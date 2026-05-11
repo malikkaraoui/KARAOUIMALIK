@@ -79,6 +79,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
+  margin-top: 1rem;
 }
 
 .project-page__link {
@@ -135,8 +136,303 @@
   margin: 0;
 }
 
+/* ── LuniiSync hero banner ─────────────────────────────────────────────────── */
+
+.project-page--lunii {
+  padding-top: 0;
+}
+
+.lunii-hero {
+  width: 100%;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+.lunii-hero img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border-radius: 0;
+}
+
+/* ── Tickets achat ─────────────────────────────────────────────────────────── */
+
+.lunii-tickets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.lunii-ticket {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.1rem 1.6rem 1.1rem 1.8rem;
+  border-radius: 10px;
+  min-width: 160px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.18s var(--ease-expo), box-shadow 0.18s var(--ease-expo);
+  /* Ticket punch notch */
+  -webkit-mask: radial-gradient(circle 9px at 0% 50%, transparent 100%, black 100%) left/100% 100%;
+}
+
+.lunii-ticket::before,
+.lunii-ticket::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.lunii-ticket::before {
+  left: -8px;
+  background: var(--bg);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.lunii-ticket:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.lunii-ticket--mac {
+  background: var(--accent-warm);
+  box-shadow: 0 4px 20px rgba(196, 124, 58, 0.28);
+}
+
+.lunii-ticket--mac:hover {
+  box-shadow: 0 8px 32px rgba(196, 124, 58, 0.42);
+}
+
+.lunii-ticket--win {
+  background: var(--accent-warm);
+  box-shadow: 0 4px 20px rgba(196, 124, 58, 0.28);
+}
+
+.lunii-ticket--win:hover {
+  box-shadow: 0 8px 32px rgba(196, 124, 58, 0.42);
+}
+
+.lunii-ticket__os {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lunii-ticket--mac .lunii-ticket__os,
+.lunii-ticket--win .lunii-ticket__os { color: rgba(255,255,255,0.65); }
+
+.lunii-ticket__price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.85rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.lunii-ticket--mac .lunii-ticket__price,
+.lunii-ticket--win .lunii-ticket__price { color: #ffffff; }
+
+.lunii-ticket__sub {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lunii-ticket--mac .lunii-ticket__sub,
+.lunii-ticket--win .lunii-ticket__sub { color: rgba(255,255,255,0.55); }
+
+.lunii-ticket__arrow {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  opacity: 0;
+  transition: opacity 0.18s, transform 0.18s;
+}
+
+.lunii-ticket--mac .lunii-ticket__arrow,
+.lunii-ticket--win .lunii-ticket__arrow { color: rgba(255,255,255,0.8); }
+
+.lunii-ticket:hover .lunii-ticket__arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.lunii-tickets__note {
+  align-self: flex-end;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  padding-bottom: 0.3rem;
+}
+
+/* ── Sections avec illustration ────────────────────────────────────────────── */
+
+.lunii-section--illus {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.lunii-section--reverse {
+  flex-direction: row-reverse;
+}
+
+.lunii-section__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2.5rem 2rem 2.5rem 2.5rem;
+  min-width: 0;
+}
+
+.lunii-section--reverse .lunii-section__text {
+  padding: 2.5rem 2.5rem 2.5rem 2rem;
+}
+
+.lunii-section__img {
+  flex: 0 0 52%;
+  max-width: 52%;
+}
+
+.lunii-section__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 12px 12px 0;
+}
+
+.lunii-section--reverse .lunii-section__img img {
+  border-radius: 12px 0 0 12px;
+}
+
+/* ── Device study full-width ───────────────────────────────────────────────── */
+
+.lunii-section--devices {
+  grid-column: 1 / -1;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.lunii-section--devices img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ── Dark mode adjustments ─────────────────────────────────────────────────── */
+
+[data-theme="dark"] .lunii-ticket--mac,
+[data-theme="dark"] .lunii-ticket--win {
+  background: var(--accent-warm);
+  box-shadow: 0 4px 24px rgba(212, 168, 83, 0.22);
+}
+
+[data-theme="dark"] .lunii-ticket::before {
+  background: var(--bg);
+  border-color: rgba(255,255,255,0.06);
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .lunii-section--illus {
+    flex-direction: column !important;
+  }
+
+  .lunii-section__img {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .lunii-section__img img {
+    border-radius: 0 0 12px 12px !important;
+    max-height: 260px;
+    object-position: center;
+  }
+
+  .lunii-section__text {
+    padding: 2rem !important;
+  }
+}
+
 @media (max-width: 700px) {
   .project-page__body {
     grid-template-columns: 1fr;
+  }
+
+  .lunii-hero img {
+    max-height: 240px;
+    object-position: left center;
+  }
+
+  .lunii-ticket {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-page {
+    padding: 4rem 0;
+  }
+
+  .project-page__header {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-page__title {
+    font-size: clamp(2rem, 8vw, 4rem);
+  }
+
+  .project-page__section {
+    padding: 1.5rem;
+  }
+
+  .lunii-section__text {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .lunii-hero img {
+    max-height: 180px;
+  }
+
+  .lunii-tickets {
+    flex-direction: column;
+  }
+
+  .lunii-ticket {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .lunii-tickets__note {
+    align-self: flex-start;
   }
 }

@@ -91,3 +91,20 @@ section {
   outline: 1px solid var(--accent-warm);
   outline-offset: 4px;
 }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 640px) {
+  :root {
+    --section-padding: clamp(3rem, 8vh, 5rem);
+    --container-width: min(100%, calc(100vw - 2rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
