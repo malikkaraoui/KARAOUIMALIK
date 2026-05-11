@@ -12,6 +12,11 @@ export const projects = [
         href: "https://github.com/malikkaraoui/lunii-sync/releases/latest/download/LuniiSync-macOS.dmg",
         kind: "download",
       },
+      {
+        label: "Télécharger (Windows)",
+        href: "https://github.com/malikkaraoui/lunii-sync/releases/latest/download/LuniiSync-Windows.zip",
+        kind: "download",
+      },
       { label: "Code", href: "https://github.com/malikkaraoui/lunii-sync", kind: "code" },
     ],
     content: {
