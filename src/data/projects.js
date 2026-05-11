@@ -32,8 +32,12 @@ export const projects = [
           body: "Python + PySide6 pour l'interface native macOS. PyInstaller pour le bundle .app. Signature Developer ID + notarisation Apple pour une installation sans friction. CI/CD GitHub Actions pour les releases automatiques.",
         },
         {
-          title: "Distribution",
+          title: "Distribution macOS",
           body: "DMG signé et notarisé par Apple — installation en glisser-déposer, aucune alerte Gatekeeper. Compatible Apple Silicon et Intel.",
+        },
+        {
+          title: "Distribution Windows",
+          body: "Extraire le ZIP puis lancer LuniiSync.exe. Windows peut afficher une alerte SmartScreen au premier lancement (l'exe n'est pas signé) : cliquer \"Informations complémentaires\" → \"Exécuter quand même\".",
         },
       ],
     },
