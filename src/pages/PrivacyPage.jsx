@@ -96,7 +96,7 @@ export default function PrivacyPage() {
         </a>.
       </p>
 
-      <Link to="/projects/boites-a-livres" style={s.back}>
+      <Link to="/" style={s.back}>
         ← Retour au projet
       </Link>
     </div>
