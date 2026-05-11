@@ -7,6 +7,8 @@ import Obsidian from './components/Obsidian'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import ProjectPage from './pages/ProjectPage'
+import DownloadPage from './pages/DownloadPage'
+import PrivacyPage from './pages/PrivacyPage'
 import useLenis from './hooks/useLenis'
 import useScrollEffects from './hooks/useScrollEffects'
 
@@ -43,6 +45,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects/:slug" element={<ProjectPage />} />
+        <Route path="/download" element={<DownloadPage />} />
+        <Route path="/privacy/boites-a-livres" element={<PrivacyPage />} />
       </Routes>
     </>
   )
