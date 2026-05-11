@@ -14,6 +14,25 @@ const fadeUp = {
   }),
 }
 
+function StripeTicket({ link }) {
+  const isMac = link.platform === 'macos'
+  return (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`lunii-ticket lunii-ticket--${isMac ? 'mac' : 'win'}`}
+    >
+      <span className="lunii-ticket__os">{isMac ? 'macOS' : 'Windows'}</span>
+      <span className="lunii-ticket__price">9,99 €</span>
+      <span className="lunii-ticket__sub">One-time · Lifetime</span>
+      <svg className="lunii-ticket__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  )
+}
+
 export default function ProjectPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
@@ -29,9 +48,24 @@ export default function ProjectPage() {
   }
 
   const { title, eyebrow, description, tags, links, content } = project
+  const isLunii = slug === 'luniisync'
+
+  const stripeLinks = links.filter(l => l.kind === 'stripe')
+  const otherLinks = links.filter(l => l.kind !== 'stripe')
 
   return (
-    <div className="project-page">
+    <div className={`project-page${isLunii ? ' project-page--lunii' : ''}`}>
+      {isLunii && (
+        <motion.div
+          className="lunii-hero"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease }}
+        >
+          <img src="/luniisync/hero.png" alt="LuniiSync — Glissez. Synchronisez. Écoutez." />
+        </motion.div>
+      )}
+
       <div className="container">
         <motion.div
           className="project-page__nav"
@@ -64,7 +98,15 @@ export default function ProjectPage() {
             ))}
           </motion.div>
 
-          {links.length > 0 && (
+          {isLunii && stripeLinks.length > 0 && (
+            <motion.div className="lunii-tickets" variants={fadeUp} initial="hidden" animate="visible" custom={4}>
+              {stripeLinks.map(link => (
+                <StripeTicket key={link.label} link={link} />
+              ))}
+            </motion.div>
+          )}
+
+          {!isLunii && links.length > 0 && (
             <motion.div className="project-page__links" variants={fadeUp} initial="hidden" animate="visible" custom={4}>
               {links.map((link) => (
                 <a
@@ -73,6 +115,7 @@ export default function ProjectPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="project-page__link"
+
                 >
                   {renderLinkIcon(link.kind)}
                   {link.kind === 'live' && <span className="project-row__live-dot" />}
@@ -81,32 +124,90 @@ export default function ProjectPage() {
               ))}
             </motion.div>
           )}
+
+          {isLunii && otherLinks.length > 0 && (
+            <motion.div className="project-page__links" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
+              {otherLinks.map((link) => (
+                <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="project-page__link">
+                  {renderLinkIcon(link.kind)}
+                  <span>{link.label}</span>
+                </a>
+              ))}
+            </motion.div>
+          )}
         </div>
 
         <div className="project-page__body">
-          <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
-            <h2 className="project-page__section-title">Le problème</h2>
-            <p className="project-page__section-body">{content.problem}</p>
-          </motion.div>
+          {isLunii ? (
+            <>
+              <motion.div className="project-page__section lunii-section--illus" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
+                <div className="lunii-section__text">
+                  <h2 className="project-page__section-title">Le problème</h2>
+                  <p className="project-page__section-body">{content.problem}</p>
+                </div>
+                <div className="lunii-section__img">
+                  <img src="/luniisync/problem.png" alt="Le problème" loading="lazy" />
+                </div>
+              </motion.div>
 
-          <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={6}>
-            <h2 className="project-page__section-title">La solution</h2>
-            <p className="project-page__section-body">{content.solution}</p>
-          </motion.div>
+              <motion.div className="project-page__section lunii-section--illus lunii-section--reverse" variants={fadeUp} initial="hidden" animate="visible" custom={6}>
+                <div className="lunii-section__text">
+                  <h2 className="project-page__section-title">La solution</h2>
+                  <p className="project-page__section-body">{content.solution}</p>
+                </div>
+                <div className="lunii-section__img">
+                  <img src="/luniisync/solution.png" alt="La solution" loading="lazy" />
+                </div>
+              </motion.div>
 
-          {content.sections.map((s, i) => (
-            <motion.div
-              key={s.title}
-              className="project-page__section"
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={7 + i}
-            >
-              <h2 className="project-page__section-title">{s.title}</h2>
-              <p className="project-page__section-body">{s.body}</p>
-            </motion.div>
-          ))}
+              {content.sections.map((s, i) => (
+                <motion.div
+                  key={s.title}
+                  className="project-page__section"
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="visible"
+                  custom={7 + i}
+                >
+                  <h2 className="project-page__section-title">{s.title}</h2>
+                  <p className="project-page__section-body">{s.body}</p>
+                </motion.div>
+              ))}
+
+              <motion.div
+                className="project-page__section lunii-section--devices"
+                variants={fadeUp} initial="hidden" animate="visible" custom={7 + content.sections.length}
+              >
+                <img src="/luniisync/devices.png" alt="Lunii device variations" loading="lazy" />
+              </motion.div>
+            </>
+          ) : (
+            <>
+              <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
+                <h2 className="project-page__section-title">Le problème</h2>
+                <p className="project-page__section-body">{content.problem}</p>
+              </motion.div>
+
+              <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={6}>
+                <h2 className="project-page__section-title">La solution</h2>
+                <p className="project-page__section-body">{content.solution}</p>
+              </motion.div>
+
+              {content.sections.map((s, i) => (
+                <motion.div
+                  key={s.title}
+                  className="project-page__section"
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="visible"
+                  custom={7 + i}
+                >
+                  <h2 className="project-page__section-title">{s.title}</h2>
+                  <p className="project-page__section-body">{s.body}</p>
+                </motion.div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </div>
