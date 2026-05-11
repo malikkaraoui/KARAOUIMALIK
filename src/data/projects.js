@@ -1,5 +1,39 @@
 export const projects = [
   {
+    slug: "luniisync",
+    title: "LuniiSync",
+    eyebrow: "Outil macOS · Open-source",
+    description:
+      "Application macOS pour synchroniser des histoires MP3 sur une Fabrique à Histoires Lunii. Glissez vos fichiers audio dans un dossier — LuniiSync convertit, encode et transfère automatiquement sur l'appareil.",
+    tags: ["Python", "PySide6", "macOS", "Lunii", "Open-source"],
+    links: [
+      {
+        label: "Télécharger (macOS)",
+        href: "https://github.com/malikkaraoui/lunii-sync/releases/latest/download/LuniiSync-macOS.dmg",
+        kind: "download",
+      },
+      { label: "Code", href: "https://github.com/malikkaraoui/lunii-sync", kind: "code" },
+    ],
+    content: {
+      problem: "La Fabrique à Histoires Lunii ne permet d'écouter que les histoires achetées sur son store officiel. Il n'existe pas d'outil simple pour y charger ses propres fichiers audio sans passer par des manipulations techniques complexes.",
+      solution: "LuniiSync détecte automatiquement la Lunii branchée en USB, compare le contenu avec un dossier local de fichiers MP3/M4A, et synchronise les ajouts et suppressions. L'app gère la conversion, l'encodage au format Lunii et le transfert — en un clic.",
+      sections: [
+        {
+          title: "Comment ça marche",
+          body: "L'app scanne les partitions montées pour trouver la Lunii (fichier .md à la racine), lit son numéro de série, charge le manifest local et compare avec les fichiers audio du dossier choisi. Les nouveaux fichiers sont convertis en ZIP via studio-pack-generator puis importés directement sur l'appareil.",
+        },
+        {
+          title: "Stack technique",
+          body: "Python + PySide6 pour l'interface native macOS. PyInstaller pour le bundle .app. Signature Developer ID + notarisation Apple pour une installation sans friction. CI/CD GitHub Actions pour les releases automatiques.",
+        },
+        {
+          title: "Distribution",
+          body: "DMG signé et notarisé par Apple — installation en glisser-déposer, aucune alerte Gatekeeper. Compatible Apple Silicon et Intel.",
+        },
+      ],
+    },
+  },
+  {
     slug: "okazcar",
     title: "OKazCar",
     eyebrow: "Produit en ligne",
