@@ -150,22 +150,22 @@
 
 .boites-hero img {
   width: 100%;
-  height: auto;
+  height: 340px;
+  object-fit: cover;
+  object-position: center 30%;
   display: block;
   border-radius: 0;
 }
 
 @media (max-width: 700px) {
   .boites-hero img {
-    max-height: 240px;
-    object-fit: cover;
-    object-position: center;
+    height: 200px;
   }
 }
 
 @media (max-width: 480px) {
   .boites-hero img {
-    max-height: 180px;
+    height: 150px;
   }
 }
 
