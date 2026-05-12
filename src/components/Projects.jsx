@@ -62,6 +62,15 @@ export function renderLinkIcon(kind) {
     )
   }
 
+  if (kind === 'stripe') {
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+        <line x1="1" y1="10" x2="23" y2="10" />
+      </svg>
+    )
+  }
+
   if (kind === 'article') {
     return (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -133,6 +142,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="project-row__link"
                       aria-label={`Ouvrir ${link.label} pour ${project.title}`}
+                      onClick={link.kind === 'stripe' && link.platform ? () => sessionStorage.setItem('lunii_platform', link.platform) : undefined}
                     >
                       {renderLinkIcon(link.kind)}
                       {link.kind === 'live' && <span className="project-row__live-dot" />}

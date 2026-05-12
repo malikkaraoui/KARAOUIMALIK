@@ -38,6 +38,22 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="container hero__content">
+        <motion.a
+          href="https://apps.apple.com/fr/app/bo%C3%AEtes-%C3%A0-livres/id6768351762"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero__announcement"
+          initial={{ opacity: 0, x: -12 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.05, ease }}
+        >
+          <span className="hero__announcement-dot" aria-hidden="true" />
+          Boîtes à Livres est sur l&apos;App Store
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </motion.a>
+
         <motion.span
           className="hero__label"
           initial={{ opacity: 0, x: -12 }}

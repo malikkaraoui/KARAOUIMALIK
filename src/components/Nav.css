@@ -53,6 +53,27 @@
   color: var(--text);
 }
 
+.nav__appstore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-mid);
+  background: var(--surface);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav__appstore:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
 .nav__theme {
   display: flex;
   align-items: center;
@@ -139,6 +160,19 @@
 
 @media (max-width: 640px) {
   .nav__links { display: none; }
+  .nav__appstore { display: none; }
   .nav__burger { display: flex; }
   .nav__right { gap: 0.75rem; }
+}
+
+.nav__mobile-appstore {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+}
+
+.nav__mobile-appstore:hover {
+  color: var(--accent);
+  opacity: 0.8;
 }

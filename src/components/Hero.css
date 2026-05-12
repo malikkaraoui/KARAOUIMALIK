@@ -24,6 +24,42 @@
   padding-bottom: 5rem;
 }
 
+.hero__announcement {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem 0.3rem 0.55rem;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  border: 1px solid rgba(196, 124, 58, 0.28);
+  background: rgba(196, 124, 58, 0.06);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.hero__announcement:hover {
+  border-color: rgba(196, 124, 58, 0.5);
+  background: rgba(196, 124, 58, 0.1);
+}
+
+.hero__announcement-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.75); }
+}
+
 .hero__label {
   display: inline-block;
   font-family: var(--font-mono);

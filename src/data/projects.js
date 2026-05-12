@@ -72,11 +72,17 @@ export const projects = [
   {
     slug: "boites-a-livres",
     title: "Boîtes à Livres",
-    eyebrow: "Bénévol · iOS",
+    eyebrow: "Bénévol · iOS · App Store",
     description:
-      "Application iOS native pour cartographier les boîtes à livres en France et dans le monde. Carte interactive, contribution communautaire, signalement en temps réel — développée bénévolement pour faciliter le partage libre de la lecture.",
+      "Application iOS native pour cartographier les boîtes à livres en France et dans le monde. Carte interactive, contribution communautaire, signalement en temps réel — développée bénévolement pour faciliter le partage libre de la lecture. Disponible gratuitement sur l'App Store.",
     tags: ["iOS", "SwiftUI", "Swift", "MapKit", "Bénévol"],
-    links: [],
+    links: [
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/fr/app/bo%C3%AEtes-%C3%A0-livres/id6768351762",
+        kind: "store",
+      },
+    ],
     content: {
       problem: "Les boîtes à livres sont partout — en ville, en forêt, à la campagne — mais aucun outil ne permet de les trouver facilement ni d'y contribuer. Le projet part d'un constat simple : quelqu'un doit faire l'outil que personne n'a encore fait.",
       solution: "Une application iOS native qui centralise la carte mondiale des boîtes à livres. Les utilisateurs peuvent ajouter une boîte, signaler qu'elle a été déplacée ou endommagée, laisser un commentaire. Entièrement communautaire, sans monétisation.",
@@ -90,8 +96,8 @@ export const projects = [
           body: "Ce projet ne génère pas de revenus et n'en générera jamais. Il existe parce que le partage du livre mérite un outil propre. C'est ma contribution à quelque chose de plus grand que le code.",
         },
         {
-          title: "Statut",
-          body: "En développement actif. Correction des deux bugs bloquants (bande basse SwiftUI + régression des pins) avant soumission sur l'App Store.",
+          title: "Sur l'App Store",
+          body: "L'application est disponible gratuitement sur l'App Store. Télécharge, ajoute les boîtes près de chez toi, explore la carte mondiale — et contribue à quelque chose de plus grand que le code.",
         },
       ],
     },
