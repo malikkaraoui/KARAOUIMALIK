@@ -136,6 +136,39 @@
   margin: 0;
 }
 
+/* ── Boîtes à Livres hero banner ───────────────────────────────────────────── */
+
+.project-page--boites {
+  padding-top: 0;
+}
+
+.boites-hero {
+  width: 100%;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+.boites-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
+@media (max-width: 700px) {
+  .boites-hero img {
+    max-height: 240px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .boites-hero img {
+    max-height: 180px;
+  }
+}
+
 /* ── LuniiSync hero banner ─────────────────────────────────────────────────── */
 
 .project-page--lunii {

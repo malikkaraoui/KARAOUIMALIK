@@ -49,12 +49,13 @@ export default function ProjectPage() {
 
   const { title, eyebrow, description, tags, links, content } = project
   const isLunii = slug === 'luniisync'
+  const isBoites = slug === 'boites-a-livres'
 
   const stripeLinks = links.filter(l => l.kind === 'stripe')
   const otherLinks = links.filter(l => l.kind !== 'stripe')
 
   return (
-    <div className={`project-page${isLunii ? ' project-page--lunii' : ''}`}>
+    <div className={`project-page${isLunii ? ' project-page--lunii' : ''}${isBoites ? ' project-page--boites' : ''}`}>
       {isLunii && (
         <motion.div
           className="lunii-hero"
@@ -63,6 +64,16 @@ export default function ProjectPage() {
           transition={{ duration: 0.7, ease }}
         >
           <img src="/luniisync/hero.png" alt="LuniiSync — Glissez. Synchronisez. Écoutez." />
+        </motion.div>
+      )}
+      {isBoites && (
+        <motion.div
+          className="boites-hero"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease }}
+        >
+          <img src="/boites-a-livres/hero.png" alt="Boîtes à Livres — La France lit. Partout." />
         </motion.div>
       )}
 
