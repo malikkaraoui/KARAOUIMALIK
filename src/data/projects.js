@@ -156,6 +156,7 @@ export const projects = [
   {
     slug: "second-cerveau",
     category: "projet",
+    mediumUrl: null,
     title: "Second Cerveau",
     eyebrow: "Vault Obsidian · IA locale · Coffre-fort personnel",
     description:

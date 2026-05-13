@@ -451,6 +451,39 @@
   }
 }
 
+.project-page__medium-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.4rem 1rem 0.4rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.project-page__medium-btn--live {
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+.project-page__medium-btn--live:hover {
+  background: var(--surface);
+  border-color: var(--text-tertiary);
+}
+
+.project-page__medium-btn--draft {
+  color: var(--text-tertiary);
+  border: 1px dashed var(--border);
+  background: transparent;
+  cursor: default;
+}
+
 @media (max-width: 480px) {
   .lunii-hero img {
     max-height: 180px;
