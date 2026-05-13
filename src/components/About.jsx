@@ -41,11 +41,6 @@ export default function About() {
               du <strong>web</strong> et des <strong>protocoles décentralisés</strong>.
               Curieux par nature, chaque projet est une exploration.
             </p>
-            <p className="about__certs">
-              <span>Python — Nomades Technologies, Genève</span>
-              <span className="about__dot">·</span>
-              <span>JavaScript Engineer</span>
-            </p>
           </motion.div>
 
           <div className="about__right">

@@ -2,10 +2,10 @@ export const projects = [
   {
     slug: "luniisync",
     title: "LuniiSync",
-    eyebrow: "Outil macOS · 9,99 €",
+    eyebrow: "macOS & Windows · 9,99 €",
     description:
-      "Application macOS pour synchroniser des histoires MP3 sur une Fabrique à Histoires Lunii. Glissez vos fichiers audio dans un dossier — LuniiSync convertit, encode et transfère automatiquement sur l'appareil.",
-    tags: ["Python", "PySide6", "macOS", "Lunii"],
+      "Application macOS et Windows pour synchroniser des histoires MP3 sur une Fabrique à Histoires Lunii. Glissez vos fichiers audio dans un dossier — LuniiSync convertit, encode et transfère automatiquement sur l'appareil.",
+    tags: ["Python", "PySide6", "macOS", "Windows", "Lunii"],
     links: [
       {
         label: "macOS — 9,99 €",
@@ -32,16 +32,20 @@ export const projects = [
           title: "Distribution Windows",
           body: "Extraire le ZIP puis lancer LuniiSync.exe. Windows peut afficher une alerte SmartScreen au premier lancement (l'exe n'est pas signé) : cliquer \"Informations complémentaires\" → \"Exécuter quand même\".",
         },
+        {
+          title: "Ce qui arrive avec LuniiSync Studio",
+          body: "La prochaine version va bien au-delà de la synchronisation. Au programme : suppression d'histoires directement depuis l'app, génération d'histoires personnalisées (sujet, matière, âge de l'enfant), création de parcours audio sur mesure. Tout cela réuni dans LuniiSync Studio.",
+        },
       ],
     },
   },
   {
     slug: "okazcar",
     title: "OKazCar",
-    eyebrow: "Produit en ligne",
+    eyebrow: "Extension Chrome · Gratuit · Version finale bientôt",
     description:
-      "OKazCar analyse les annonces auto en un clic sur Leboncoin, La Centrale et AutoScout24. Le produit combine score de fiabilité, prix marché, alertes utiles et lecture immédiate d'une annonce.",
-    tags: ["Chrome Extension", "Manifest V3", "JavaScript", "Python", "Flask", "Web app", "IA intégrée"],
+      "OKazCar analyse les annonces auto en un clic sur Leboncoin, La Centrale, AutoScout24 et ParuVendu. Score de fiabilité, prix marché, alertes utiles, email IA au vendeur — directement injecté dans la page d'annonce. 178 marques, 3 200+ modèles, gratuit.",
+    tags: ["Chrome Extension", "Manifest V3", "React", "Firebase", "IA intégrée", "Vite"],
     links: [
       { label: "Site", href: "https://okazcar.com", kind: "live" },
       {
@@ -52,19 +56,23 @@ export const projects = [
     ],
     content: {
       problem: "Acheter une voiture d'occasion est un parcours du combattant : des dizaines d'annonces sur plusieurs plateformes, des prix qui varient du simple au double, des historiques opaques. La majorité des acheteurs prennent leur décision sur des intuitions plutôt que des données.",
-      solution: "OKazCar injecte directement dans les pages d'annonces un panneau d'analyse : score de fiabilité calculé sur les données constructeur, position du prix par rapport au marché en temps réel, alertes sur les anomalies (kilométrage suspect, prix trop bas, historique introuvable).",
+      solution: "OKazCar injecte directement dans les pages d'annonces un panneau d'analyse complet : score de fiabilité sur 12 critères, position du prix par rapport au marché en temps réel, alertes anomalies, rappels constructeur avec liens officiels, et un email personnalisé généré par IA pour contacter le vendeur.",
       sections: [
         {
-          title: "Comment ça marche",
-          body: "L'extension scrape les données de l'annonce courante (marque, modèle, année, kilométrage, prix) et les envoie à une API Python/Flask. Le backend croise ces données avec une base de valeurs marché, des stats de fiabilité et les signalements connus, puis renvoie un score et des alertes en moins d'une seconde.",
+          title: "Sites compatibles",
+          body: "Leboncoin, La Centrale, AutoScout24 (12 pays) et ParuVendu. L'extension fonctionne directement sur les pages d'annonces de chaque plateforme — pas besoin de copier-coller d'URL.",
         },
         {
-          title: "Stack technique",
-          body: "Extension Chrome Manifest V3 (JavaScript vanilla, Service Worker), API Flask déployée sur un VPS, base de données SQLite pour le cache marché, scripts Python pour l'agrégation des données constructeur.",
+          title: "Une base de données sérieuse",
+          body: "178 marques, 1 389 générations, 3 200+ modèles, ~546 000 versions cataloguées de 2000 à 2026. Le score de fiabilité croise ces données avec les historiques de fiabilité constructeur, les rappels Takata, les alertes pneus neige (loi montagne) et les signaux d'import ou de vendeur pro camouflé.",
         },
         {
-          title: "Ce que j'ai appris",
-          body: "Manifest V3 a changé les règles des extensions Chrome en profondeur : plus de persistent background pages, tout passe par des Service Workers éphémères. J'ai dû revoir l'architecture de communication entre content script, service worker et popup pour garantir la fiabilité.",
+          title: "Email IA au vendeur",
+          body: "OKazCar génère automatiquement un email personnalisé à envoyer au vendeur, basé sur l'analyse de l'annonce. Points à négocier, questions pertinentes, ton adapté — en un clic.",
+        },
+        {
+          title: "Statut",
+          body: "Actuellement en phase de test finale. La version définitive sort dans quelques semaines et sera gratuite dans un premier temps.",
         },
       ],
     },
@@ -72,10 +80,10 @@ export const projects = [
   {
     slug: "boites-a-livres",
     title: "Boîtes à Livres",
-    eyebrow: "Bénévol · iOS · App Store",
+    eyebrow: "Bénévol · iOS · Android à venir",
     description:
-      "Application iOS native pour cartographier les boîtes à livres en France et dans le monde. Carte interactive, contribution communautaire, signalement en temps réel — développée bénévolement pour faciliter le partage libre de la lecture. Disponible gratuitement sur l'App Store.",
-    tags: ["iOS", "SwiftUI", "Swift", "MapKit", "Bénévol"],
+      "Application pour cartographier les boîtes à livres en France et dans le monde. Plus de 17 000 points recensés, une base qui monte vers 80 000. Contribution communautaire, signalement en temps réel — bénévol, sans publicité, sans monétisation.",
+    tags: ["iOS", "SwiftUI", "Swift", "MapKit", "Android", "Bénévol"],
     links: [
       {
         label: "App Store",
@@ -85,19 +93,23 @@ export const projects = [
     ],
     content: {
       problem: "Les boîtes à livres sont partout — en ville, en forêt, à la campagne — mais aucun outil ne permet de les trouver facilement ni d'y contribuer. Le projet part d'un constat simple : quelqu'un doit faire l'outil que personne n'a encore fait.",
-      solution: "Une application iOS native qui centralise la carte mondiale des boîtes à livres. Les utilisateurs peuvent ajouter une boîte, signaler qu'elle a été déplacée ou endommagée, laisser un commentaire. Entièrement communautaire, sans monétisation.",
+      solution: "Une application native qui centralise la carte des boîtes à livres. Les utilisateurs ajoutent des boîtes, signalent les déplacements ou dégradations, et bientôt pourront noter et commenter. La base de données dépasse 17 000 points en France et est activement enrichie pour atteindre 80 000 points d'intérêt.",
       sections: [
         {
-          title: "Choix techniques",
-          body: "SwiftUI + MapKit pour une intégration native iOS parfaite. La carte en plein écran était un défi technique réel : SwiftUI impose des contraintes sur les vues embarquées dans TabView. La solution : sortir la Map du TabView et gérer la navigation différemment.",
+          title: "iOS natif — et Android dans les cartons",
+          body: "L'app iOS est disponible sur l'App Store (SwiftUI + MapKit). Une version Android native est en cours de finalisation et sortira prochainement — même expérience, code natif, pas de compromis cross-platform.",
+        },
+        {
+          title: "Modération des contenus communautaires",
+          body: "L'app intègre un système de modération conforme aux exigences de l'App Store : les photos soumises par les utilisateurs passent par une validation avant publication. C'est une obligation dès lors qu'une app permet du contenu généré par des tiers — et c'est une responsabilité qu'on prend au sérieux.",
+        },
+        {
+          title: "Ce qui arrive bientôt",
+          body: "Notation et commentaires par boîte, enrichissement massif de la base (objectif 80 000 points), app Android native. Le projet grandit au rythme de sa communauté.",
         },
         {
           title: "Pourquoi bénévol",
           body: "Ce projet ne génère pas de revenus et n'en générera jamais. Il existe parce que le partage du livre mérite un outil propre. C'est ma contribution à quelque chose de plus grand que le code.",
-        },
-        {
-          title: "Sur l'App Store",
-          body: "L'application est disponible gratuitement sur l'App Store. Télécharge, ajoute les boîtes près de chez toi, explore la carte mondiale — et contribue à quelque chose de plus grand que le code.",
         },
       ],
     },
@@ -166,25 +178,33 @@ export const projects = [
   {
     slug: "tom-protocol",
     title: "ToM Protocol",
-    eyebrow: "Recherche",
+    eyebrow: "Protocole P2P · Phase 3 en cours",
     description:
-      "ToM Protocol est mon terrain d'exploration autour d'une architecture peer-to-peer pour une communication plus libre, plus résiliente et moins dépendante des plateformes centralisées.",
-    tags: ["TypeScript", "P2P", "Protocole", "Xcode", "iOS"],
+      "ToM est un protocole de transport décentralisé : chaque appareil devient un nœud du réseau. Pas de serveurs centraux, pas de dépendance aux plateformes. Les messages transitent directement, chiffrés de bout en bout, avec traversée NAT validée cross-border Suisse↔France.",
+    tags: ["Rust", "TypeScript", "QUIC", "P2P", "E2E Crypto", "NAT Traversal"],
     links: [
       { label: "Code", href: "https://github.com/malikkaraoui/ToM-protocol", kind: "code" },
       { label: "Medium", href: "https://medium.com/@karaoui.malik", kind: "article" },
     ],
     content: {
-      problem: "Nos communications passent par des serveurs centralisés que nous ne contrôlons pas. Un opérateur peut couper une conversation, lire les messages, vendre les métadonnées. La résilience du réseau dépend de la bonne volonté de quelques acteurs.",
-      solution: "ToM Protocol explore une couche de communication P2P où les messages transitent directement entre appareils, sans serveur central. L'identité est cryptographique, le routage décentralisé.",
+      problem: "Chaque message qu'on envoie passe par des serveurs que l'on ne contrôle pas. Un opérateur peut couper une conversation, lire les métadonnées, tomber en panne. La résilience du réseau dépend de la bonne volonté de quelques acteurs centralisés.",
+      solution: "ToM Protocol est une couche de transport P2P où les appareils se connectent directement via QUIC avec traversée NAT automatique. L'identité est cryptographique (Ed25519), les messages sont chiffrés et signés (XChaCha20-Poly1305), sans PKI centrale. Chaque nœud est à la fois client et relais potentiel.",
       sections: [
         {
-          title: "État de la recherche",
-          body: "Projet de recherche actif. Les articles Medium documentent les expérimentations au fil de l'eau : découverte de pairs, chiffrement de bout en bout sans PKI centrale, résistance aux partitions réseau.",
+          title: "Phases de développement",
+          body: "Phase 1 (TypeScript, WebRTC) : 8 épics sur 8 livrés — pile protocole complète, SDK développeur, démo Snake multijoueur P2P en navigateur. Phase 2 (Rust, QUIC) : transport natif validé — traversée NAT 100%, chiffrement E2E, messagerie de groupe avec failover de hub. Phase 3 en cours : convergence des deux piles en un protocole unifié.",
         },
         {
-          title: "Stack",
-          body: "TypeScript pour le nœud de réseau, Swift/Xcode pour le client iOS. Tests de charge en réseau local avant tout déploiement.",
+          title: "Résultats de tests réels",
+          body: "Stress test sur autoroute A40 (France↔Suisse) : 99,85% de fiabilité sur 2 752 pings, 54 minutes en continu, tunnels et changements de cellule inclus. Traversée NAT : 100% de réussite en LAN, 4G CGNAT et cross-border école Genève↔Freebox France. Latence directe post-hole-punch : 27–49 ms. Plus de 1 089 tests automatisés (771 TypeScript + 318 Rust).",
+        },
+        {
+          title: "Freebox & messagerie de groupe",
+          body: "Le NAS embarqué dans la Freebox Delta (ARM64 Cortex-A72, Debian) tourne comme nœud permanent du réseau. La messagerie de groupe utilise une réplication \"virus-like\" : un hub primaire, un shadow watchdog qui prend le relais en ~6 secondes si le primaire disparaît, un candidat déterministe prêt à monter en shadow. Pas de consensus, pas de split-brain.",
+        },
+        {
+          title: "Stack technique",
+          body: "Rust (QUIC via iroh, tokio async runtime, MessagePack, XChaCha20-Poly1305, HKDF-SHA256) pour le transport natif. TypeScript (WebRTC DataChannel, TweetNaCl.js, XSalsa20-Poly1305) pour la pile navigateur Phase 1. Cross-compilation ARM64 statique (cargo-zigbuild) pour NAS et Raspberry Pi.",
         },
       ],
     },
