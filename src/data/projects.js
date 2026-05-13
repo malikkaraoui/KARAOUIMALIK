@@ -1,6 +1,7 @@
 export const projects = [
   {
     slug: "luniisync",
+    category: "produit",
     title: "LuniiSync",
     eyebrow: "macOS & Windows · 9,99 €",
     description:
@@ -41,6 +42,7 @@ export const projects = [
   },
   {
     slug: "okazcar",
+    category: "produit",
     title: "OKazCar",
     eyebrow: "Extension Chrome · Gratuit · Version finale bientôt",
     description:
@@ -79,6 +81,7 @@ export const projects = [
   },
   {
     slug: "boites-a-livres",
+    category: "produit",
     title: "Boîtes à Livres",
     eyebrow: "Bénévol · iOS · Android à venir",
     description:
@@ -116,6 +119,7 @@ export const projects = [
   },
   {
     slug: "masterclaude-atelier",
+    category: "projet",
     title: "MasterClaude & Claude Atelier",
     eyebrow: "Outil open-source · Harnais IA",
     description:
@@ -151,6 +155,7 @@ export const projects = [
   },
   {
     slug: "bilan-ia-local",
+    category: "projet",
     title: "Bilan IA local",
     eyebrow: "IA locale · RAG",
     description:
@@ -177,6 +182,7 @@ export const projects = [
   },
   {
     slug: "tom-protocol",
+    category: "projet",
     title: "ToM Protocol",
     eyebrow: "Protocole P2P · Phase 3 en cours",
     description:
@@ -211,6 +217,7 @@ export const projects = [
   },
   {
     slug: "aieteck",
+    category: "projet",
     title: "AïeTeck",
     eyebrow: "Podcast",
     description:
@@ -233,6 +240,7 @@ export const projects = [
   },
   {
     slug: "pizzaella",
+    category: "projet",
     title: "Pizzaella.fr",
     eyebrow: "SaaS",
     description:

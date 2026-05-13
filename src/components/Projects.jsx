@@ -87,9 +87,77 @@ export function renderLinkIcon(kind) {
   )
 }
 
+function ProjectList({ list, inView, indexOffset = 0 }) {
+  return (
+    <div className="projects__list">
+      {list.map((project, i) => (
+        <motion.article
+          key={project.slug}
+          className="project-row"
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          custom={indexOffset + i + 1}
+        >
+          <div className="project-row__meta">
+            <p className="project-row__eyebrow">{project.eyebrow}</p>
+            <Link to={`/projects/${project.slug}`} className="project-row__title-link">
+              <h3 className="project-row__title">{project.title}</h3>
+              <span className="project-row__arrow" aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          <div className="project-row__body">
+            <p className="project-row__desc">{project.description}</p>
+
+            <div className="project-row__tags">
+              {project.tags.map((tag) => (
+                <span key={tag} className="project-row__tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="project-row__links">
+              {project.links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-row__link"
+                  aria-label={`Ouvrir ${link.label} pour ${project.title}`}
+                  onClick={link.kind === 'stripe' && link.platform ? () => sessionStorage.setItem('lunii_platform', link.platform) : undefined}
+                >
+                  {renderLinkIcon(link.kind)}
+                  {link.kind === 'live' && <span className="project-row__live-dot" />}
+                  <span>{link.label}</span>
+                </a>
+              ))}
+              <Link
+                to={`/projects/${project.slug}`}
+                className="project-row__link project-row__link--detail"
+                aria-label={`Voir le détail de ${project.title}`}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                <span>En savoir plus</span>
+              </Link>
+            </div>
+          </div>
+        </motion.article>
+      ))}
+    </div>
+  )
+}
+
 export default function Projects() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  const produits = projects.filter(p => p.category === 'produit')
+  const projets  = projects.filter(p => p.category === 'projet')
 
   return (
     <section id="projects" ref={ref}>
@@ -101,69 +169,22 @@ export default function Projects() {
           animate={inView ? 'visible' : 'hidden'}
           custom={0}
         >
+          Produits
+        </motion.div>
+
+        <ProjectList list={produits} inView={inView} indexOffset={0} />
+
+        <motion.div
+          className="section-label projects__section-gap"
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          custom={produits.length + 1}
+        >
           Projets
         </motion.div>
 
-        <div className="projects__list">
-          {projects.map((project, i) => (
-            <motion.article
-              key={project.slug}
-              className="project-row"
-              variants={fadeUp}
-              initial="hidden"
-              animate={inView ? 'visible' : 'hidden'}
-              custom={i + 1}
-            >
-              <div className="project-row__meta">
-                <p className="project-row__eyebrow">{project.eyebrow}</p>
-                <Link to={`/projects/${project.slug}`} className="project-row__title-link">
-                  <h3 className="project-row__title">{project.title}</h3>
-                  <span className="project-row__arrow" aria-hidden="true">→</span>
-                </Link>
-              </div>
-
-              <div className="project-row__body">
-                <p className="project-row__desc">{project.description}</p>
-
-                <div className="project-row__tags">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="project-row__tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="project-row__links">
-                  {project.links.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-row__link"
-                      aria-label={`Ouvrir ${link.label} pour ${project.title}`}
-                      onClick={link.kind === 'stripe' && link.platform ? () => sessionStorage.setItem('lunii_platform', link.platform) : undefined}
-                    >
-                      {renderLinkIcon(link.kind)}
-                      {link.kind === 'live' && <span className="project-row__live-dot" />}
-                      <span>{link.label}</span>
-                    </a>
-                  ))}
-                  <Link
-                    to={`/projects/${project.slug}`}
-                    className="project-row__link project-row__link--detail"
-                    aria-label={`Voir le détail de ${project.title}`}
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                    <span>En savoir plus</span>
-                  </Link>
-                </div>
-              </div>
-            </motion.article>
-          ))}
-        </div>
+        <ProjectList list={projets} inView={inView} indexOffset={produits.length + 1} />
       </div>
     </section>
   )

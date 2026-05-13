@@ -25,7 +25,8 @@
 }
 
 .hero__announcement {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 0.5rem;
   padding: 0.3rem 0.8rem 0.3rem 0.55rem;
