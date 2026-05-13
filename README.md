@@ -1,53 +1,59 @@
-# Malik Karaoui :fr: :switzerland:
+# Malik Karaoui
 
-**Développeur . Explorateur . Bâtisseur**
+**Développeur · Annecy, FR · Suisse**
 
-Python · IA · LLM · Blockchain · P2P
+Produits numériques & solutions IA sur mesure — de la feuille blanche à l'architecture, je transforme des idées en applications, outils métier et sites web, avec l'IA au cœur pour décupler leur impact.
+
+🌐 [malikkaraoui.com](https://malikkaraoui.com)
 
 ---
 
-## Qui suis-je
+## Produits
 
-Basé entre la France et la Suisse, je construis des outils à l'intersection de l'intelligence artificielle, du web et des protocoles décentralisés.
+| Produit | Description | Stack | Lien |
+|---------|-------------|-------|------|
+| **LuniiSync** | Application macOS & Windows pour synchroniser des histoires MP3 sur une Fabrique à Histoires Lunii. Glissez vos fichiers audio — LuniiSync convertit, encode et transfère automatiquement. | Python · PySide6 · macOS · Windows | [malikkaraoui.com](https://malikkaraoui.com/projects/luniisync) |
+| **Boîtes à Livres** | App iOS communautaire pour cartographier et enrichir les boîtes à livres de rue. Disponible sur l'App Store. | Swift · iOS · Firebase | [![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](https://apps.apple.com/fr/app/bo%C3%AEtes-%C3%A0-livres/id6768351762) |
+| **OkazCar** | Extension Chrome qui enrichit les annonces de voitures d'occasion en temps réel : historique prix, analyse IA, email automatique au vendeur. | Python · Chrome Extension · IA | [malikkaraoui.com](https://malikkaraoui.com/projects/okazcar) |
 
-Curieux par nature, je m'intéresse autant aux architectures techniques qu'aux questions de société que la technologie soulève. Chaque projet est une exploration.
-
-## Vision
-
-Je crois en une technologie qui sert l'humain — pas l'inverse. Mes projets tournent autour de trois axes :
-
-- **IA accessible** — Rendre l'intelligence artificielle locale, privée et utile au quotidien
-- **Décentralisation** — Construire des protocoles de communication libres et souverains
-- **Craft** — Écrire du code propre, penser chaque interface, soigner chaque détail
+---
 
 ## Projets
 
 | Projet | Description | Stack |
-|--------|------------|-------|
-| [ToM Protocol](https://github.com/malikkaraoui/ToM-protocol) | Protocole décentralisé P2P pour une communication libre et souveraine | TypeScript, P2P |
-| [Co-Pilot](https://github.com/malikkaraoui/Co-Pilot) | Extension Chrome propulsée par l'IA, assistant intelligent dans le navigateur | Python, Chrome Extension, IA |
-| [Pizzaella.fr](https://pizzaella.fr) | Plateforme SaaS pour pizzaïolos et food-trucks — commandes, paiements, livraisons | React, Firebase, Vite |
+|--------|-------------|-------|
+| **MasterClaude & Claude Atelier** | Harnais IA open-source pour orchestrer Claude Code en multi-agents. Routing Ollama local, monitoring multi-sessions Pulse, hooks et satellites thématiques. | Python · Claude · Ollama · Bash |
+| **Second Cerveau** | Vault Obsidian comme coffre-fort personnel : notes, liens YouTube, croquis, mails, audios, SMS — indexés par un moteur hybride BM25 + vecteurs local. Vos LLMs interrogent votre mémoire sans cloud. | Python · Obsidian · Ollama · RAG · Embeddings |
+| **ToM Protocol** | Protocole de transport P2P décentralisé : chaque appareil devient un nœud. Chiffrement E2E, traversée NAT validée cross-border Suisse↔France, 99,85 % de fiabilité sur réseau mobile. Phase 3 en cours. | Rust · TypeScript · QUIC · P2P |
+| **AïeTeck** | Podcast tech — épisodes sur l'IA, le développement et les protocoles décentralisés. | — |
+| **Pizzaella.fr** | SaaS pour pizzaïolos et food-trucks : commandes en ligne, paiements Stripe, gestion des livraisons. | React · Firebase · Stripe · Vite |
+
+---
 
 ## Stack technique
 
-```text
-IA & LLM        Python · LLM · IA locale · Prompt Engineering
-Web              React · Vite · JavaScript · TypeScript · CSS
-Backend & Data   Java · Firebase · SQL · API REST
-Blockchain       Blockchain · P2P · Protocoles
 ```
+IA & LLM        Python · Ollama · RAG · Embeddings · Claude · Prompt Engineering
+Mobile          Swift · SwiftUI · iOS · App Store
+Web             React · Vite · TypeScript · CSS
+Backend         FastAPI · Node.js · Firebase · Supabase
+Protocoles      Rust · QUIC · P2P · Chiffrement E2E
+DevOps          Docker · GitHub Actions · Vercel
+```
+
+---
 
 ## Me retrouver
 
 | | |
-| --- | --- |
-| :globe_with_meridians: | [malikkaraoui.com](https://malikkaraoui.com) |
-| :octocat: | [github.com/malikkaraoui](https://github.com/malikkaraoui) |
-| :briefcase: | [linkedin.com/in/malik-karaoui](https://www.linkedin.com/in/malik-karaoui/) |
-| :pencil: | [medium.com/@karaoui.malik](https://medium.com/@karaoui.malik) |
-| :email: | [karaoui.malik@gmail.com](mailto:karaoui.malik@gmail.com) |
-| :round_pushpin: | Annecy, France :fr: · Suisse :switzerland: |
+|---|---|
+| 🌐 | [malikkaraoui.com](https://malikkaraoui.com) |
+| 🐙 | [github.com/malikkaraoui](https://github.com/malikkaraoui) |
+| 💼 | [linkedin.com/in/malik-karaoui](https://www.linkedin.com/in/malik-karaoui/) |
+| ✍️ | [medium.com/@karaoui.malik](https://medium.com/@karaoui.malik) |
+| 📧 | [karaoui.malik@gmail.com](mailto:karaoui.malik@gmail.com) |
+| 📍 | Annecy, France · Suisse |
 
 ---
 
-> *"Chaque projet est une exploration."*
+> *"De la feuille blanche à l'architecture."*
