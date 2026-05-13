@@ -167,7 +167,7 @@ export const projects = [
     ],
     content: {
       problem: "Nos pensées vivent dans dix endroits à la fois — des notes Markdown orphelines, des liens YouTube jamais relus, des photos de croquis dans Camera Roll, des mails importants enfouis, des vocaux oubliés, des conversations SMS qui contiennent des décisions cruciales. On passe des heures à chercher ce qu'on a déjà pensé. Et quand on parle à un LLM, il repart de zéro — il ne sait rien de nous.",
-      solution: "Le vault Obsidian est un coffre-fort numérique : un dossier local chiffré qui centralise tout ce qui constitue votre pensée. Notes Markdown structurées, liens annotés, images, PDFs, transcriptions audio, exports SMS. Un moteur de recherche hybride (BM25 + embeddings vectoriels via Ollama) indexe l'intégralité du vault en local. Votre LLM favori — Mistral, LLaMA, Claude via API — interroge ce coffre comme une mémoire longue terme. Il sait ce que vous avez lu, pensé, décidé. Sans jamais sortir une seule donnée de votre machine.",
+      solution: "Le vault Obsidian est un coffre-fort numérique : un dossier local chiffré qui centralise tout ce qui constitue votre pensée. Notes Markdown structurées, liens annotés, images, PDFs, transcriptions audio, exports SMS. Un moteur de recherche hybride (BM25 + embeddings vectoriels via Ollama) indexe l'intégralité du vault en local. Votre LLM favori — Mistral, Ollama, Claude via API — interroge ce coffre comme une mémoire longue terme. Il sait ce que vous avez lu, pensé, décidé. Sans jamais sortir une seule donnée de votre machine.",
       sections: [
         {
           title: "Le vault comme externalisation du cerveau",
