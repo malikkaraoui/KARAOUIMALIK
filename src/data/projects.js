@@ -154,28 +154,40 @@ export const projects = [
     },
   },
   {
-    slug: "bilan-ia-local",
+    slug: "second-cerveau",
     category: "projet",
-    title: "Bilan IA local",
-    eyebrow: "IA locale · RAG",
+    title: "Second Cerveau",
+    eyebrow: "Vault Obsidian · IA locale · Coffre-fort personnel",
     description:
-      "Script Python qui parcourt des dossiers utilisateur en local, applique un RAG via Ollama, puis génère un bilan structuré en DOCX ou PDF — sans sortir les données de la machine.",
-    tags: ["Python", "Ollama", "RAG", "QMD", "DOCX/PDF"],
+      "Un vault Obsidian devient le réceptacle chiffré de toute une vie numérique — notes, liens YouTube, croquis, mails, audios, échanges SMS — puis s'ouvre à vos LLMs via un moteur de recherche hybride entièrement local. Votre mémoire augmentée, sans cloud.",
+    tags: ["Obsidian", "Python", "Ollama", "RAG", "BM25", "Embeddings", "DOCX/PDF"],
     links: [
       { label: "Code", href: "https://github.com/malikkaraoui/LOCAL.IA.GENERATED_COMPTE_RENDU", kind: "code" },
       { label: "Medium", href: "https://medium.com/@karaoui.malik", kind: "article" },
     ],
     content: {
-      problem: "Les professionnels de la santé, du social et de l'éducation passent des heures à rédiger des bilans à partir de notes éparses. Envoyer ces données à un cloud n'est pas une option — confidentialité et RGPD l'interdisent.",
-      solution: "Un pipeline entièrement local : les notes et documents source sont indexés en mémoire, Ollama (LLM local) génère le bilan structuré, python-docx ou ReportLab produit le document final. Aucune donnée ne quitte la machine.",
+      problem: "Nos pensées vivent dans dix endroits à la fois — des notes Markdown orphelines, des liens YouTube jamais relus, des photos de croquis dans Camera Roll, des mails importants enfouis, des vocaux oubliés, des conversations SMS qui contiennent des décisions cruciales. On passe des heures à chercher ce qu'on a déjà pensé. Et quand on parle à un LLM, il repart de zéro — il ne sait rien de nous.",
+      solution: "Le vault Obsidian est un coffre-fort numérique : un dossier local chiffré qui centralise tout ce qui constitue votre pensée. Notes Markdown structurées, liens annotés, images, PDFs, transcriptions audio, exports SMS. Un moteur de recherche hybride (BM25 + embeddings vectoriels via Ollama) indexe l'intégralité du vault en local. Votre LLM favori — Mistral, LLaMA, Claude via API — interroge ce coffre comme une mémoire longue terme. Il sait ce que vous avez lu, pensé, décidé. Sans jamais sortir une seule donnée de votre machine.",
       sections: [
         {
-          title: "Pipeline RAG local",
-          body: "Les documents source sont découpés en chunks et indexés avec des embeddings locaux (nomic-embed-text via Ollama). À la génération, les chunks les plus pertinents sont injectés dans le prompt contextuel envoyé au LLM. Le bilan résultant cite ses sources.",
+          title: "Le vault comme externalisation du cerveau",
+          body: "Obsidian n'est pas un simple éditeur de notes — c'est un graphe de connaissances. Chaque note est un nœud, chaque lien entre notes est une synapse. Sur cinq ans d'usage intensif, un vault accumule des milliers de connexions : une idée de 2021 reliée à un article de 2024, une conversation capturée qui répond à un problème d'aujourd'hui. Le vault devient plus riche que la mémoire biologique parce qu'il n'oublie rien et que tout est cherchable.",
         },
         {
-          title: "QMD — la même logique en plus puissant",
-          body: "Ce projet a directement inspiré l'adoption de QMD dans mon workflow personnel : un moteur de recherche local BM25+vecteurs sur le vault Obsidian. Même principe, appliqué à la mémoire personnelle.",
+          title: "Ce que le vault absorbe",
+          body: "Notes de réflexion personnelle et professionnelle. Liens YouTube avec résumé annoté. Photos de croquis et tableaux blancs (OCR local). Exports de mails importants. Transcriptions de vocaux (Whisper local). Extraits de conversations SMS ou iMessage. Passages de livres photographiés. Tout rentre dans le même graphe Markdown — unifié, cherchable, relié.",
+        },
+        {
+          title: "Moteur de recherche hybride BM25 + vecteurs",
+          body: "La recherche full-text classique (BM25) trouve les correspondances exactes. Les embeddings vectoriels (nomic-embed-text via Ollama) trouvent le sens — une note sur « la fatigue décisionnelle » ressort quand vous cherchez « trop de choix paralysent ». La combinaison des deux donne une précision chirurgicale sur des milliers de notes. L'index est recalculé incrémentalement à chaque modification du vault.",
+        },
+        {
+          title: "Interface LLM — votre mémoire devient son contexte",
+          body: "À chaque session, le LLM reçoit les chunks les plus pertinents du vault directement dans son contexte. Il peut ainsi citer vos propres notes, prolonger une réflexion commencée il y a six mois, ou croiser deux idées que vous n'aviez jamais connectées. Le résultat : un interlocuteur qui vous connaît vraiment — sans abonnement, sans profil cloud, sans cession de données.",
+        },
+        {
+          title: "Génération de documents — bilans et rapports",
+          body: "Le pipeline va plus loin que la simple conversation. À partir d'un ensemble de notes sources, Ollama génère un bilan structuré (compte-rendu, rapport, synthèse) et python-docx ou ReportLab produit le document final en DOCX ou PDF. Application directe : des professionnels de santé génèrent leurs bilans de suivi en quelques secondes à partir de notes de consultation — RGPD respecté, aucune donnée hors machine.",
         },
       ],
     },
