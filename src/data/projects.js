@@ -164,7 +164,6 @@ export const projects = [
     tags: ["Obsidian", "Python", "Ollama", "RAG", "BM25", "Embeddings", "DOCX/PDF"],
     links: [
       { label: "Code", href: "https://github.com/malikkaraoui/LOCAL.IA.GENERATED_COMPTE_RENDU", kind: "code" },
-      { label: "Medium", href: "https://medium.com/@karaoui.malik", kind: "article" },
     ],
     content: {
       problem: "Nos pensées vivent dans dix endroits à la fois — des notes Markdown orphelines, des liens YouTube jamais relus, des photos de croquis dans Camera Roll, des mails importants enfouis, des vocaux oubliés, des conversations SMS qui contiennent des décisions cruciales. On passe des heures à chercher ce qu'on a déjà pensé. Et quand on parle à un LLM, il repart de zéro — il ne sait rien de nous.",
