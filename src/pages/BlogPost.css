@@ -1,3 +1,20 @@
+.reading-progress__track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  z-index: 200;
+}
+
+.reading-progress__bar {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.1s linear;
+  max-width: 100%;
+}
+
 .blogpost {
   padding: 6rem 0 6rem;
   min-height: 100vh;
