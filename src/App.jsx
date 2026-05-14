@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Obsidian from './components/Obsidian'
 import Projects from './components/Projects'
+import GitHub from './components/GitHub'
 import Contact from './components/Contact'
 import ProjectPage from './pages/ProjectPage'
 import DownloadPage from './pages/DownloadPage'
@@ -22,6 +23,7 @@ function Home() {
       <About />
       <Obsidian />
       <Projects />
+      <GitHub />
       <Contact />
     </main>
   )
