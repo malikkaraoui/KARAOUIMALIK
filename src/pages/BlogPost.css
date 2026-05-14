@@ -189,6 +189,13 @@
   font-family: var(--font-mono);
 }
 
+.blogpost__footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
 .blogpost__back-link {
   font-size: 0.8rem;
   font-weight: 500;
@@ -199,4 +206,19 @@
 
 .blogpost__back-link:hover {
   color: var(--accent);
+}
+
+.blogpost__medium-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blogpost__medium-link:hover {
+  color: var(--text-primary);
 }
