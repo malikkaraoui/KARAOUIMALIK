@@ -32,6 +32,7 @@ export default function Nav({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const scrollToSection = useSectionNav()
+  const location = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -58,7 +59,12 @@ export default function Nav({ theme, onToggleTheme }) {
         <Link
           to="/"
           className="nav__logo"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={(e) => {
+            if (location.pathname === '/') {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+          }}
         >
           MK
         </Link>
