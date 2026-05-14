@@ -66,17 +66,19 @@ export default function Blog() {
               </div>
 
               <div className="blog-card__body">
-                <Link to={`/blog/${post.slug}`} className="blog-card__title-link">
-                  <h2 className="blog-card__title">{post.title}</h2>
-                  <span className="blog-card__arrow" aria-hidden="true">→</span>
-                </Link>
+                <h2 className="blog-card__title">
+                  <Link to={`/blog/${post.slug}`} className="blog-card__title-link">
+                    {post.title}
+                    <span className="blog-card__arrow" aria-hidden="true">→</span>
+                  </Link>
+                </h2>
                 <p className="blog-card__summary">{post.summary}</p>
-                <Link to={`/blog/${post.slug}`} className="blog-card__read">
+                <span className="blog-card__read" aria-hidden="true">
                   Lire l'article
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </Link>
+                </span>
               </div>
             </motion.article>
           ))}

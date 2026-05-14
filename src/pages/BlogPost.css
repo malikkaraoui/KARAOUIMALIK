@@ -93,6 +93,20 @@
   margin: 0;
 }
 
+.blogpost__hero {
+  margin-bottom: 3rem;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.blogpost__hero-img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
 .blogpost__body {
   display: flex;
   flex-direction: column;

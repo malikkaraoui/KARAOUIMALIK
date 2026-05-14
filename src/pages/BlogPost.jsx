@@ -92,6 +92,12 @@ export default function BlogPost() {
               </motion.h1>
             </header>
 
+            {post.image && (
+              <div className="blogpost__hero">
+                <img src={post.image} alt={post.title} className="blogpost__hero-img" />
+              </div>
+            )}
+
             <div className="blogpost__body">
               {post.content.map((block, i) => {
                 if (block.type === 'lead') {
