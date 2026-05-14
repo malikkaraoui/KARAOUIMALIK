@@ -2,61 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import './GitHub.css'
 
-const REFRESH_MS = 5 * 60 * 1000
-
-function timeAgo(dateStr) {
-  const diff = Date.now() - new Date(dateStr).getTime()
-  const m = Math.floor(diff / 60000)
-  const h = Math.floor(m / 60)
-  const d = Math.floor(h / 24)
-  if (d > 0) return `${d}j`
-  if (h > 0) return `${h}h`
-  if (m > 0) return `${m}min`
-  return 'maintenant'
-}
-
-function aggregateEvents(data) {
-  const pushes = data.filter(e => e.type === 'PushEvent').length
-  const prs = data.filter(e => e.type === 'PullRequestEvent').length
-  const repos = new Set(data.map(e => e.repo?.name).filter(Boolean)).size
-  const commits = data
-    .filter(e => e.type === 'PushEvent')
-    .reduce((sum, e) => sum + (e.payload?.size || e.payload?.distinct_size || e.payload?.commits?.length || 1), 0)
-  return { pushes, prs, repos, commits }
-}
-
-function AnthropicLogo() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="agent-logo">
-      <path d="M13.8 3.5h-3.6L3.5 20.5h3.4l1.4-3.8h7.6l1.4 3.8H20.5L13.8 3.5zm-2.3 10.5 2.5-6.8 2.5 6.8h-5z"/>
-    </svg>
-  )
-}
-
-function CopilotLogo() {
-  return (
-    <img src="/icons/copilot.png" alt="GitHub Copilot" className="agent-logo" />
-  )
-}
-
-function OpenAILogo() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="agent-logo">
-      <path d="M22.28 9.28a5.998 5.998 0 0 0-.52-4.93 6.07 6.07 0 0 0-6.52-2.91A6 6 0 0 0 10.72 0a6.07 6.07 0 0 0-5.78 4.2 5.99 5.99 0 0 0-4 2.91 6.07 6.07 0 0 0 .74 7.12 5.99 5.99 0 0 0 .52 4.93 6.07 6.07 0 0 0 6.52 2.91A6 6 0 0 0 13.28 24a6.07 6.07 0 0 0 5.78-4.2 5.99 5.99 0 0 0 4-2.91 6.07 6.07 0 0 0-.78-7.61zM13.28 22.5a4.5 4.5 0 0 1-2.89-1.04l.14-.08 4.8-2.77a.78.78 0 0 0 .4-.68v-6.77l2.03 1.17a.07.07 0 0 1 .04.05v5.6a4.52 4.52 0 0 1-4.52 4.52zm-9.7-4.14a4.5 4.5 0 0 1-.54-3.03l.14.09 4.8 2.77a.78.78 0 0 0 .78 0l5.86-3.38v2.34a.07.07 0 0 1-.03.06l-4.85 2.8a4.52 4.52 0 0 1-6.16-1.65zM2.4 8.24a4.5 4.5 0 0 1 2.35-1.98v5.7a.78.78 0 0 0 .4.68l5.85 3.38-2.03 1.17a.07.07 0 0 1-.07 0L3.97 14.4A4.52 4.52 0 0 1 2.4 8.24zm16.63 3.88-5.85-3.38 2.03-1.17a.07.07 0 0 1 .07 0l4.93 2.85a4.52 4.52 0 0 1-.7 7.29v-5.7a.78.78 0 0 0-.48-.89zm2.02-3.04-.14-.09-4.8-2.77a.78.78 0 0 0-.78 0L9.47 9.6V7.26a.07.07 0 0 1 .03-.06l4.85-2.79a4.52 4.52 0 0 1 6.7 4.67zm-12.7 4.18-2.03-1.17a.07.07 0 0 1-.04-.05V6.44a4.52 4.52 0 0 1 7.41-3.47l-.14.08-4.8 2.77a.78.78 0 0 0-.4.68v6.77zm1.1-2.37 2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5V10.9z"/>
-    </svg>
-  )
-}
-
-function OllamaLogo() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="agent-logo">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
-      <circle cx="8.5" cy="6" r="1.5"/>
-      <circle cx="15.5" cy="6" r="1.5"/>
-    </svg>
-  )
-}
-
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i) => ({
@@ -68,24 +13,22 @@ const fadeUp = {
 export default function GitHub() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-  const [stats, setStats] = useState(null)
-  const [updatedAt, setUpdatedAt] = useState(null)
+  const [contributions, setContributions] = useState(null)
+  const [profile, setProfile] = useState(null)
   const [ollamaModels, setOllamaModels] = useState([])
 
-  const fetchEvents = async () => {
-    try {
-      const res = await fetch('https://api.github.com/users/malikkaraoui/events?per_page=100')
-      if (!res.ok) return
-      const data = await res.json()
-      setStats(aggregateEvents(data))
-      setUpdatedAt(new Date())
-    } catch { /* silent */ }
-  }
+  useEffect(() => {
+    fetch('https://github-contributions-api.jogruber.de/v4/malikkaraoui?y=last')
+      .then(r => r.json())
+      .then(d => setContributions(d.total?.lastYear ?? null))
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
-    fetchEvents()
-    const id = setInterval(fetchEvents, REFRESH_MS)
-    return () => clearInterval(id)
+    fetch('https://api.github.com/users/malikkaraoui')
+      .then(r => r.json())
+      .then(d => setProfile(d))
+      .catch(() => {})
   }, [])
 
   useEffect(() => {
@@ -98,31 +41,31 @@ export default function GitHub() {
       .finally(() => clearTimeout(timeout))
   }, [])
 
-  const statItems = stats ? [
-    { label: 'pushes', value: stats.pushes },
-    { label: 'commits', value: stats.commits },
-    { label: 'pull requests', value: stats.prs },
-    { label: 'repos actifs', value: stats.repos },
-  ] : []
+  const statItems = [
+    { label: '12 derniers mois', value: contributions ?? '…' },
+    { label: 'repos publics', value: profile?.public_repos ?? '…' },
+    { label: 'followers', value: profile?.followers ?? '…' },
+    { label: 'following', value: profile?.following ?? '…' },
+  ]
 
   const agents = [
     {
       key: 'claude',
-      logo: <AnthropicLogo />,
+      logo: <img src="/icons/anthropic.png" alt="Anthropic" className="agent-logo" />,
       name: 'Claude',
       models: ['Opus 4.7', 'Sonnet 4.6'],
       color: 'var(--accent-warm)',
     },
     {
       key: 'copilot',
-      logo: <CopilotLogo />,
+      logo: <img src="/icons/copilot.png" alt="GitHub Copilot" className="agent-logo" />,
       name: 'Copilot',
       models: ['GPT-5.5'],
       color: '#2563eb',
     },
     {
       key: 'ollama',
-      logo: <OllamaLogo />,
+      logo: <img src="/icons/ollama.png" alt="Ollama" className="agent-logo" />,
       name: 'Ollama',
       models: ollamaModels.length > 0 ? ollamaModels : ['local'],
       color: '#6366f1',
@@ -138,12 +81,6 @@ export default function GitHub() {
 
         <motion.div className="github__header" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={1}>
           <h2 className="github__title">Activité<em>.</em></h2>
-          {updatedAt && (
-            <span className="github__refresh">
-              <span className="github__dot" aria-hidden="true" />
-              live · {timeAgo(updatedAt.toISOString())}
-            </span>
-          )}
         </motion.div>
 
         <motion.div className="github__chart" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2}>
@@ -151,20 +88,17 @@ export default function GitHub() {
             src="https://ghchart.rshah.org/409b5e/malikkaraoui"
             alt="Graphe de contributions GitHub — Malik Karaoui"
             className="github__chart-img"
-            key={updatedAt?.toISOString()}
           />
         </motion.div>
 
-        {stats && (
-          <motion.div className="github__stats" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={3}>
-            {statItems.map(({ label, value }) => (
-              <div key={label} className="github__stat">
-                <span className="github__stat-value">{value}</span>
-                <span className="github__stat-label">{label}</span>
-              </div>
-            ))}
-          </motion.div>
-        )}
+        <motion.div className="github__stats" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={3}>
+          {statItems.map(({ label, value }) => (
+            <div key={label} className="github__stat">
+              <span className="github__stat-value">{value}</span>
+              <span className="github__stat-label">{label}</span>
+            </div>
+          ))}
+        </motion.div>
 
         <motion.div className="github__team" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={4}>
           <p className="github__team-label">Mon équipe IA</p>
