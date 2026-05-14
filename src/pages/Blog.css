@@ -26,6 +26,8 @@
   border-bottom: 1px solid var(--border);
   position: relative;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .blog-card__meta {
