@@ -25,10 +25,12 @@ export default function Contact() {
           Discutons<em>.</em>
         </motion.h2>
 
-        <motion.p className="contact__text" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2}>
-          Un projet, une idée, ou simplement l&apos;envie de parler produit, IA locale,
-          protocoles ou extensions Chrome &mdash; je suis toujours partant.
-        </motion.p>
+        <motion.div className="contact__text" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2}>
+          <p>Vous avez un projet à lancer, un produit à faire évoluer, ou simplement besoin de quelqu&apos;un pour poser les bonnes questions avant d&apos;écrire la première ligne de code. J&apos;interviens à différentes étapes : amorçage, conseil, architecture, développement, accompagnement sur la durée.</p>
+          <p>Ce qui me distingue, c&apos;est une vision globale de la chaîne technique. Applications mobiles, backend, protocoles de communication, outils métier, intégrations IA. Jusqu&apos;au hardware quand c&apos;est nécessaire : IoT, Bluetooth, systèmes embarqués. Assez de profondeur sur chaque couche pour prendre les bonnes décisions à chaque étape.</p>
+          <p>L&apos;IA reste encore massivement sous-exploitée dans la plupart des organisations. Pas parce que la technologie manque, mais parce qu&apos;on ne sait pas encore bien la placer dans une chaîne de valeur réelle. C&apos;est exactement là que j&apos;interviens.</p>
+          <p>Si vous cherchez quelqu&apos;un qui pense autant qu&apos;il construit, parlons de votre projet.</p>
+        </motion.div>
 
         <motion.div className="contact__actions" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={3}>
           <a href="mailto:karaoui.malik@gmail.com" className="contact__btn">
