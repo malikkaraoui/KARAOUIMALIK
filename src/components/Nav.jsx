@@ -74,6 +74,7 @@ export default function Nav({ theme, onToggleTheme }) {
                 {link.label}
               </a>
             ))}
+            <Link to="/blog" className="nav__link">Blog</Link>
           </div>
           <a
             href="https://apps.apple.com/fr/app/bo%C3%AEtes-%C3%A0-livres/id6768351762"
@@ -134,6 +135,7 @@ export default function Nav({ theme, onToggleTheme }) {
                   {link.label}
                 </a>
               ))}
+              <Link to="/blog" className="nav__mobile-link" onClick={closeMenu}>Blog</Link>
               <a
                 href="https://apps.apple.com/fr/app/bo%C3%AEtes-%C3%A0-livres/id6768351762"
                 target="_blank"

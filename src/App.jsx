@@ -9,6 +9,8 @@ import Contact from './components/Contact'
 import ProjectPage from './pages/ProjectPage'
 import DownloadPage from './pages/DownloadPage'
 import PrivacyPage from './pages/PrivacyPage'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import useLenis from './hooks/useLenis'
 import useScrollEffects from './hooks/useScrollEffects'
 
@@ -45,6 +47,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects/:slug" element={<ProjectPage />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/download" element={<DownloadPage />} />
         <Route path="/projects/boites-a-livres/privacy" element={<PrivacyPage />} />
       </Routes>
