@@ -247,19 +247,37 @@
 }
 
 .lunii-ticket--win {
-  background: var(--accent-warm);
-  box-shadow: 0 4px 20px rgba(196, 124, 58, 0.28);
+  background: #1a3060;
+  box-shadow: 0 4px 20px rgba(26, 48, 96, 0.32);
 }
 
 .lunii-ticket--win:hover {
-  box-shadow: 0 8px 32px rgba(196, 124, 58, 0.42);
+  box-shadow: 0 8px 32px rgba(26, 48, 96, 0.48);
 }
 
 .lunii-ticket__os {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.lunii-ticket__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+  animation: lunii-pulse 2s ease-in-out infinite;
+}
+
+@keyframes lunii-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
 }
 
 .lunii-ticket--mac .lunii-ticket__os,

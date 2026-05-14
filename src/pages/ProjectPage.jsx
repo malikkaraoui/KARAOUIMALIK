@@ -23,7 +23,10 @@ function StripeTicket({ link }) {
       rel="noopener noreferrer"
       className={`lunii-ticket lunii-ticket--${isMac ? 'mac' : 'win'}`}
     >
-      <span className="lunii-ticket__os">{isMac ? 'macOS' : 'Windows'}</span>
+      <span className="lunii-ticket__os">
+        <span className="lunii-ticket__dot" aria-hidden="true" />
+        {isMac ? 'macOS' : 'Windows'}
+      </span>
       <span className="lunii-ticket__price">9,99 €</span>
       <span className="lunii-ticket__sub">One-time · Lifetime</span>
       <svg className="lunii-ticket__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
