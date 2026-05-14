@@ -35,9 +35,7 @@ function AnthropicLogo() {
 
 function CopilotLogo() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="agent-logo">
-      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.5 2 2 6 2 11v4c0 3.9 3.1 7 7 7h6c3.9 0 7-3.1 7-7v-4c0-5-4.5-9-10-9zM4 10h7.5v6H4zM12.5 10H20v6h-7.5zM5 17.5h2.5v2.5H5zM9 17.5h2.5v2.5H9zM12.5 17.5h2.5v2.5h-2.5zM16.5 17.5h2.5v2.5h-2.5z"/>
-    </svg>
+    <img src="/icons/copilot.png" alt="GitHub Copilot" className="agent-logo" />
   )
 }
 
