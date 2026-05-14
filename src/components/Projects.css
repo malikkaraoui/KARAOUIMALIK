@@ -3,14 +3,14 @@
 }
 
 .projects__section-gap {
-  margin-top: 4rem;
+  margin-top: var(--sp-8);
 }
 
 .project-row {
   display: grid;
   grid-template-columns: 18rem 1fr;
-  gap: 3rem;
-  padding: 2.5rem 0;
+  gap: var(--sp-6);
+  padding: var(--sp-5) 0;
   border-bottom: 1px solid var(--border);
   transition: background 0.2s ease;
 }
@@ -24,30 +24,30 @@
 
 .project-row__eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
+  font-size: var(--fs-10);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-tertiary);
 }
 
 .project-row__title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-size: var(--title-sm);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--text);
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .project-row__body {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: var(--sp-2);
 }
 
 .project-row__desc {
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: var(--fs-14);
+  line-height: 1.7;
   color: var(--text-secondary);
   max-width: 52rem;
 }
@@ -60,7 +60,7 @@
 
 .project-row__tag {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: var(--fs-10);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -71,7 +71,7 @@
 .project-row__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  gap: var(--sp-3);
   padding-top: 0.25rem;
 }
 
@@ -80,7 +80,7 @@
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: var(--fs-12);
   font-weight: 600;
   letter-spacing: 0.05em;
   color: var(--text-tertiary);
@@ -94,7 +94,7 @@
 .project-row__title-link {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: var(--sp-1);
   text-decoration: none;
   group: true;
 }
@@ -104,7 +104,7 @@
 }
 
 .project-row__arrow {
-  font-size: 1.1rem;
+  font-size: var(--fs-16);
   color: var(--text-tertiary);
   opacity: 0;
   transform: translateX(-4px);
@@ -143,27 +143,27 @@
 @media (max-width: 900px) {
   .project-row {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--sp-2);
   }
 }
 
 @media (max-width: 640px) {
   .project-row {
-    padding: 1.75rem 0;
-    gap: 0.75rem;
+    padding: var(--sp-4) 0;
+    gap: var(--sp-2);
   }
 
   .project-row__title {
-    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    font-size: clamp(1.3rem, 5vw, 1.75rem);
   }
 
   .project-row__desc {
     max-width: none;
-    font-size: 0.9rem;
+    font-size: var(--fs-14);
   }
 
   .project-row__links {
-    gap: 0.75rem;
+    gap: var(--sp-2);
   }
 
   .project-row__arrow {

@@ -1,5 +1,5 @@
 .project-page {
-  padding: 6rem 0 6rem;
+  padding: var(--sp-8) 0;
   min-height: 100vh;
 }
 
@@ -9,20 +9,20 @@
   align-items: center;
   justify-content: center;
   height: 60vh;
-  gap: 1rem;
+  gap: var(--sp-2);
   color: var(--text-secondary);
 }
 
 .project-page__nav {
-  margin-bottom: 3rem;
+  margin-bottom: var(--sp-6);
 }
 
 .project-page__back {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--sp-1);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-10);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -39,47 +39,47 @@
 
 .project-page__header {
   max-width: 52rem;
-  margin-bottom: 4rem;
+  margin-bottom: var(--sp-8);
 }
 
 .project-page__eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
+  font-size: var(--fs-10);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-tertiary);
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--sp-2);
 }
 
 .project-page__title {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: var(--title-lg);
   font-weight: 400;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
   line-height: 1.05;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--sp-3);
 }
 
 .project-page__desc {
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: var(--fs-18);
+  line-height: 1.7;
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--sp-3);
 }
 
 .project-page__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: var(--sp-4);
 }
 
 .project-page__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
-  margin-top: 1rem;
+  gap: var(--sp-3);
+  margin-top: var(--sp-2);
 }
 
 .project-page__link {
@@ -87,11 +87,11 @@
   align-items: center;
   gap: 0.45rem;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: var(--fs-12);
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--text-tertiary);
-  padding: 0.55rem 1rem;
+  padding: var(--sp-1) var(--sp-2);
   border: 1px solid var(--border);
   border-radius: 6px;
   transition: color 0.2s, border-color 0.2s;
@@ -105,7 +105,7 @@
 .project-page__body {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: var(--sp-4);
   max-width: 72rem;
 }
 
@@ -113,25 +113,25 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 2rem;
+  padding: var(--sp-4);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--sp-2);
 }
 
 .project-page__section-title {
   font-family: 'Syne', sans-serif;
-  font-size: 0.78rem;
+  font-size: var(--fs-10);
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
   margin: 0;
 }
 
 .project-page__section-body {
-  font-size: 0.925rem;
-  line-height: 1.75;
+  font-size: var(--fs-14);
+  line-height: 1.7;
   color: var(--text-secondary);
   margin: 0;
 }
@@ -144,7 +144,7 @@
 
 .boites-hero {
   width: 100%;
-  margin-bottom: 4rem;
+  margin-bottom: var(--sp-8);
   overflow: hidden;
 }
 
@@ -177,7 +177,7 @@
 
 .lunii-hero {
   width: 100%;
-  margin-bottom: 4rem;
+  margin-bottom: var(--sp-8);
   overflow: hidden;
 }
 
@@ -196,8 +196,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-1);
 }
 
 .lunii-ticket {
@@ -205,7 +205,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  padding: 1.1rem 1.6rem 1.1rem 1.8rem;
+  padding: var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-4);
   border-radius: 10px;
   min-width: 160px;
   cursor: pointer;
@@ -260,7 +260,7 @@
   align-items: center;
   gap: 0.45rem;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--fs-12);
   font-weight: 600;
   letter-spacing: 0.06em;
 }
@@ -296,8 +296,8 @@
 
 .lunii-ticket__sub {
   font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
+  font-size: var(--fs-10);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -306,8 +306,8 @@
 
 .lunii-ticket__arrow {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: var(--sp-2);
+  right: var(--sp-2);
   opacity: 0;
   transition: opacity 0.18s, transform 0.18s;
 }
@@ -323,7 +323,7 @@
 .lunii-tickets__note {
   align-self: flex-end;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: var(--fs-10);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -336,7 +336,7 @@
   grid-column: 1 / -1;
   flex-direction: row;
   align-items: center;
-  gap: 2.5rem;
+  gap: var(--sp-5);
   padding: 0;
   overflow: hidden;
   background: var(--surface);
@@ -352,13 +352,13 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 2.5rem 2rem 2.5rem 2.5rem;
+  gap: var(--sp-2);
+  padding: var(--sp-5) var(--sp-4) var(--sp-5) var(--sp-5);
   min-width: 0;
 }
 
 .lunii-section--reverse .lunii-section__text {
-  padding: 2.5rem 2.5rem 2.5rem 2rem;
+  padding: var(--sp-5) var(--sp-5) var(--sp-5) var(--sp-4);
 }
 
 .lunii-section__img {
@@ -428,7 +428,7 @@
   }
 
   .lunii-section__text {
-    padding: 2rem !important;
+    padding: var(--sp-4) !important;
   }
 }
 
@@ -449,11 +449,11 @@
 
 @media (max-width: 640px) {
   .project-page {
-    padding: 4rem 0;
+    padding: var(--sp-8) 0 var(--sp-6);
   }
 
   .project-page__header {
-    margin-bottom: 2.5rem;
+    margin-bottom: var(--sp-5);
   }
 
   .project-page__title {
@@ -461,22 +461,22 @@
   }
 
   .project-page__section {
-    padding: 1.5rem;
+    padding: var(--sp-3);
   }
 
   .lunii-section__text {
-    padding: 1.5rem !important;
+    padding: var(--sp-3) !important;
   }
 }
 
 .project-page__medium-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
-  padding: 0.4rem 1rem 0.4rem 0.75rem;
+  gap: var(--sp-1);
+  margin-top: var(--sp-3);
+  padding: var(--sp-1) var(--sp-2) var(--sp-1) var(--sp-2);
   font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: var(--fs-12);
   font-weight: 500;
   letter-spacing: 0.02em;
   border-radius: 2px;

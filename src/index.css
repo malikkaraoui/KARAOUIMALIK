@@ -56,6 +56,28 @@ body {
   --container-width: min(82rem, 92vw);
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Échelle typographique ───────────────────────── */
+  --fs-10: 0.625rem;   /* labels micro : section-index, tags, eyebrows mono */
+  --fs-12: 0.75rem;    /* secondaire : dates, meta, annotations, nav links  */
+  --fs-14: 0.875rem;   /* corps principal : descriptions, boutons, liens     */
+  --fs-16: 1rem;       /* medium : lead text, noms d'agents, petits titres   */
+  --fs-18: 1.125rem;   /* grand lead : intro paragraphe                      */
+
+  /* ── Titres responsives ──────────────────────────── */
+  --title-sm:   clamp(1.75rem, 3vw, 2.25rem);   /* sous-sections            */
+  --title-md:   clamp(2.25rem, 4vw, 3rem);       /* sections (About, Obsidian) */
+  --title-lg:   clamp(2.75rem, 5.5vw, 4rem);    /* majeurs (GitHub, Contact, Projects) */
+  --title-hero: clamp(3.5rem, 9vw, 7rem);        /* hero typewriter          */
+
+  /* ── Grille d'espacement 8 px = 0.5 rem ─────────── */
+  --sp-1: 0.5rem;    /*  8px */
+  --sp-2: 1rem;      /* 16px */
+  --sp-3: 1.5rem;    /* 24px */
+  --sp-4: 2rem;      /* 32px */
+  --sp-5: 2.5rem;    /* 40px */
+  --sp-6: 3rem;      /* 48px */
+  --sp-8: 4rem;      /* 64px */
 }
 
 ::-webkit-scrollbar { width: 4px; }
@@ -81,10 +103,10 @@ section {
 
 .section-index {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
+  font-size: var(--fs-10);
+  letter-spacing: 0.1em;
   color: var(--text-tertiary);
-  margin-bottom: 3rem;
+  margin-bottom: var(--sp-6);
 }
 
 :focus-visible {

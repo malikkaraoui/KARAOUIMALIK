@@ -6,16 +6,16 @@
 .github__header {
   display: flex;
   align-items: baseline;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
   flex-wrap: wrap;
 }
 
 .github__title {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: var(--title-lg);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--text);
   margin: 0;
   line-height: 1.05;
@@ -31,7 +31,7 @@
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: var(--fs-10);
   letter-spacing: 0.08em;
   color: var(--text-tertiary);
 }
@@ -51,7 +51,7 @@
 }
 
 .github__chart {
-  margin-bottom: 3rem;
+  margin-bottom: var(--sp-6);
   overflow: hidden;
 }
 
@@ -76,20 +76,20 @@
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--sp-5);
 }
 
 .github__stat {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  padding: 1.5rem 1.25rem;
+  padding: var(--sp-3) var(--sp-3);
   background: var(--bg);
 }
 
 .github__stat-value {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 400;
   letter-spacing: -0.03em;
   color: var(--text);
@@ -98,25 +98,25 @@
 
 .github__stat-label {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: var(--fs-10);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-tertiary);
 }
 
 .github__team {
-  margin-top: 3.5rem;
+  margin-top: var(--sp-6);
   border-top: 1px solid var(--border);
-  padding-top: 2.5rem;
+  padding-top: var(--sp-5);
 }
 
 .github__team-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
+  font-size: var(--fs-10);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-tertiary);
-  margin-bottom: 1.75rem;
+  margin-bottom: var(--sp-4);
 }
 
 .github__agents {
@@ -131,8 +131,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding: 1.75rem 1.5rem;
+  gap: var(--sp-1);
+  padding: var(--sp-4) var(--sp-3);
   background: var(--bg);
   transition: background 0.2s ease;
 }
@@ -153,7 +153,7 @@
 }
 
 .github__agent-name {
-  font-size: 0.95rem;
+  font-size: var(--fs-16);
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.01em;
@@ -167,7 +167,7 @@
 
 .github__agent-model {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--fs-10);
   color: var(--agent-color, var(--text-tertiary));
   letter-spacing: 0.04em;
   opacity: 0.85;
@@ -183,10 +183,10 @@
   }
 
   .github__agent {
-    padding: 1.25rem 1rem;
+    padding: var(--sp-3) var(--sp-2);
   }
 
   .github__agent-name {
-    font-size: 0.8rem;
+    font-size: var(--fs-14);
   }
 }
