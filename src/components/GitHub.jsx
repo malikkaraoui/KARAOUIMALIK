@@ -21,7 +21,7 @@ function aggregateEvents(data) {
   const repos = new Set(data.map(e => e.repo?.name).filter(Boolean)).size
   const commits = data
     .filter(e => e.type === 'PushEvent')
-    .reduce((sum, e) => sum + (e.payload?.size ?? e.payload?.commits?.length ?? 0), 0)
+    .reduce((sum, e) => sum + (e.payload?.size || e.payload?.distinct_size || e.payload?.commits?.length || 1), 0)
   return { pushes, prs, repos, commits }
 }
 
@@ -36,15 +36,7 @@ function AnthropicLogo() {
 function CopilotLogo() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className="agent-logo">
-      <path fillRule="evenodd" clipRule="evenodd" d="
-        M12 2C6.48 2 2 6.2 2 11.2V15c0 3.87 3.13 7 7 7h6c3.87 0 7-3.13 7-7v-3.8C22 6.2 17.52 2 12 2z
-        M2.5 9h8.75c.41 0 .75.34.75.75v5.5c0 .41-.34.75-.75.75H2.5a.75.75 0 0 1-.75-.75V9.75c0-.41.34-.75.75-.75z
-        M12.75 9H21.5c.41 0 .75.34.75.75v5.5c0 .41-.34.75-.75.75h-8.75a.75.75 0 0 1-.75-.75V9.75c0-.41.34-.75.75-.75z
-        M3.5 17.5H6v2.5H3.5V17.5z
-        M8 17.5h2.5V20H8v-2.5z
-        M13.5 17.5H16V20h-2.5v-2.5z
-        M18 17.5h2.5V20H18v-2.5z
-      "/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.5 2 2 6 2 11v4c0 3.9 3.1 7 7 7h6c3.9 0 7-3.1 7-7v-4c0-5-4.5-9-10-9zM4 10h7.5v6H4zM12.5 10H20v6h-7.5zM5 17.5h2.5v2.5H5zM9 17.5h2.5v2.5H9zM12.5 17.5h2.5v2.5h-2.5zM16.5 17.5h2.5v2.5h-2.5z"/>
     </svg>
   )
 }
