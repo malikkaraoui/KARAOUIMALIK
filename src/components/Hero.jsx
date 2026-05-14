@@ -60,7 +60,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease }}
         >
-          Développeur · Annecy, FR
+          Architecte · Bâtisseur · Développeur
         </motion.span>
 
         <h1 className="hero__title">
@@ -73,9 +73,6 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.52, ease }}
         >
-          <p className="hero__tagline">
-            Produits numériques &amp; solutions IA sur mesure
-          </p>
           <p className="hero__lead">
             De la feuille blanche à l&apos;architecture, je transforme vos idées
             en applications, outils métier et sites web — avec l&apos;IA au cœur
