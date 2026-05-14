@@ -66,6 +66,10 @@
   filter: invert(1) hue-rotate(180deg) brightness(0.85);
 }
 
+[data-theme='light'] .agent-logo {
+  filter: brightness(0);
+}
+
 .github__stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
