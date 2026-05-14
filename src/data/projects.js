@@ -198,7 +198,7 @@ export const projects = [
     eyebrow: "Protocole P2P · Phase 3 en cours",
     description:
       "ToM est un protocole de transport décentralisé : chaque appareil devient un nœud du réseau. Pas de serveurs centraux, pas de dépendance aux plateformes. Les messages transitent directement, chiffrés de bout en bout, avec traversée NAT validée cross-border Suisse↔France.",
-    tags: ["Rust", "TypeScript", "QUIC", "P2P", "E2E Crypto", "NAT Traversal"],
+    tags: ["Rust", "TypeScript", "QUIC", "P2P", "E2E Crypto", "NAT Traversal", "Freebox OS"],
     links: [
       { label: "Code", href: "https://github.com/malikkaraoui/ToM-protocol", kind: "code" },
       { label: "Medium", href: "https://medium.com/@karaoui.malik", kind: "article" },
