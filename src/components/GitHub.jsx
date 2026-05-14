@@ -21,7 +21,7 @@ function aggregateEvents(data) {
   const repos = new Set(data.map(e => e.repo?.name).filter(Boolean)).size
   const commits = data
     .filter(e => e.type === 'PushEvent')
-    .reduce((sum, e) => sum + (e.payload?.commits?.length ?? 0), 0)
+    .reduce((sum, e) => sum + (e.payload?.size ?? e.payload?.commits?.length ?? 0), 0)
   return { pushes, prs, repos, commits }
 }
 
@@ -36,10 +36,7 @@ function AnthropicLogo() {
 function CopilotLogo() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className="agent-logo">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm-4 9.5c0-1.5 2-2.3 4-2.3s4 .8 4 2.3V16H8v-1.5z"/>
-      <circle cx="9" cy="10" r="1.2"/>
-      <circle cx="15" cy="10" r="1.2"/>
-      <rect x="9.5" y="13.5" width="5" height="1.2" rx="0.6"/>
+      <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 1.5a8.5 8.5 0 1 1 0 17 8.5 8.5 0 0 1 0-17zM8.25 9.75A2.25 2.25 0 1 0 8.25 14.25 2.25 2.25 0 0 0 8.25 9.75zm7.5 0A2.25 2.25 0 1 0 15.75 14.25 2.25 2.25 0 0 0 15.75 9.75zM8.75 16a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5z"/>
     </svg>
   )
 }

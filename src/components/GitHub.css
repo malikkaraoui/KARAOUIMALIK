@@ -175,6 +175,14 @@
   }
 
   .github__agents {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .github__agent {
+    padding: 1.25rem 1rem;
+  }
+
+  .github__agent-name {
+    font-size: 0.8rem;
   }
 }
