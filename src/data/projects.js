@@ -86,7 +86,7 @@ export const projects = [
     eyebrow: "Bénévol · iOS · Android à venir",
     description:
       "Application pour cartographier les boîtes à livres en France et dans le monde. Plus de 17 000 points recensés, une base qui monte vers 80 000. Contribution communautaire, signalement en temps réel — bénévol, sans publicité, sans monétisation.",
-    tags: ["iOS", "SwiftUI", "Swift", "MapKit", "Android", "Bénévol"],
+    tags: ["iOS", "Swift", "MapKit", "Android", "Bénévol"],
     links: [
       {
         label: "App Store",
@@ -100,7 +100,7 @@ export const projects = [
       sections: [
         {
           title: "iOS natif — et Android dans les cartons",
-          body: "L'app iOS est disponible sur l'App Store (SwiftUI + MapKit). Une version Android native est en cours de finalisation et sortira prochainement — même expérience, code natif, pas de compromis cross-platform.",
+          body: "L'app iOS est disponible sur l'App Store (Swift + MapKit). Une version Android native est en cours de finalisation et sortira prochainement — même expérience, code natif, pas de compromis cross-platform.",
         },
         {
           title: "Modération des contenus communautaires",
