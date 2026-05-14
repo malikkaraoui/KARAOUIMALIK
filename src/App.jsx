@@ -13,6 +13,7 @@ import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import useLenis from './hooks/useLenis'
 import useScrollEffects from './hooks/useScrollEffects'
+import useScrollToTop from './hooks/useScrollToTop'
 
 function Home() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
 
   useLenis()
   useScrollEffects()
+  useScrollToTop()
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
