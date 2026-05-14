@@ -100,8 +100,81 @@
   color: var(--text-tertiary);
 }
 
+.github__team {
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 2.5rem;
+}
+
+.github__team-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 1.75rem;
+}
+
+.github__agents {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.github__agent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.75rem 1.5rem;
+  background: var(--bg);
+  transition: background 0.2s ease;
+}
+
+.github__agent-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--agent-color, var(--text-secondary));
+  margin-bottom: 0.25rem;
+}
+
+.agent-logo {
+  width: 28px;
+  height: 28px;
+}
+
+.github__agent-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.github__agent-models {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.github__agent-model {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--agent-color, var(--text-tertiary));
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
 @media (max-width: 640px) {
   .github__stats {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .github__agents {
+    grid-template-columns: 1fr;
   }
 }
