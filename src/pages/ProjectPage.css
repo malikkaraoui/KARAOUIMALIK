@@ -169,6 +169,105 @@
   }
 }
 
+/* ── Boîtes à Livres stats ─────────────────────────────────────────────────── */
+
+.boites-stats {
+  margin: 0 0 var(--sp-8);
+}
+
+.boites-stats__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+}
+
+.boites-stats__highlight {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 120px;
+  padding: var(--sp-4) var(--sp-4);
+  background: var(--color-surface, rgba(255,255,255,0.04));
+  border: 1px solid var(--border-color, rgba(255,255,255,0.08));
+  border-radius: 8px;
+  text-align: center;
+}
+
+.boites-stats__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.boites-stats__label {
+  font-size: var(--fs-12, 0.75rem);
+  color: var(--text-secondary);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.boites-stats__tables {
+  display: flex;
+  gap: var(--sp-6);
+  flex-wrap: wrap;
+}
+
+.boites-stats__table {
+  flex: 1 1 220px;
+}
+
+.boites-stats__table-title {
+  font-size: var(--fs-14);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--sp-3);
+}
+
+.boites-stats__table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-14);
+}
+
+.boites-stats__table th {
+  text-align: left;
+  font-size: var(--fs-12, 0.75rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  padding: var(--sp-2) var(--sp-2);
+  border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.08));
+}
+
+.boites-stats__table td {
+  padding: var(--sp-2) var(--sp-2);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.04));
+}
+
+.boites-stats__table td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.boites-stats__pct {
+  opacity: 0.55;
+  font-size: 0.85em;
+}
+
+@media (max-width: 480px) {
+  .boites-stats__highlight {
+    flex: 1 1 80px;
+  }
+  .boites-stats__tables {
+    flex-direction: column;
+  }
+}
+
 /* ── LuniiSync hero banner ─────────────────────────────────────────────────── */
 
 .project-page--lunii {

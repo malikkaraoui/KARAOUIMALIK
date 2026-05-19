@@ -85,7 +85,7 @@ export const projects = [
     title: "Boîtes à Livres",
     eyebrow: "Bénévol · iOS · Android à venir",
     description:
-      "Application pour cartographier les boîtes à livres en France et dans le monde. Plus de 17 000 points recensés, une base qui monte vers 80 000. Contribution communautaire, signalement en temps réel — bénévol, sans publicité, sans monétisation.",
+      "Application pour cartographier les boîtes à livres dans le monde. 98 172 boîtes recensées, 135 pays, 94 244 villes couvertes. Contribution communautaire, signalement en temps réel — bénévol, sans publicité, sans monétisation.",
     tags: ["iOS", "Swift", "MapKit", "Android", "Bénévol"],
     links: [
       {
@@ -94,9 +94,37 @@ export const projects = [
         kind: "store",
       },
     ],
+    stats: {
+      highlights: [
+        { value: "98 172", label: "boîtes" },
+        { value: "135",    label: "pays" },
+        { value: "94 244", label: "villes" },
+        { value: "16 777", label: "photos" },
+        { value: "99,9 %", label: "géocodées" },
+      ],
+      regions: [
+        { flag: "🌍", name: "Europe",    count: "55 812", pct: "57 %" },
+        { flag: "🌎", name: "Amériques", count: "37 280", pct: "38 %" },
+        { flag: "🌏", name: "Océanie",   count: "4 242",  pct: "4 %"  },
+        { flag: "🌏", name: "Asie",      count: "261",    pct: "<1 %" },
+      ],
+      topCountries: [
+        { flag: "🇺🇸", name: "États-Unis",    count: "33 709" },
+        { flag: "🇫🇷", name: "France",        count: "28 693" },
+        { flag: "🇩🇪", name: "Allemagne",     count: "13 110" },
+        { flag: "🇦🇺", name: "Australie",     count: "4 072"  },
+        { flag: "🇳🇱", name: "Pays-Bas",      count: "3 212"  },
+        { flag: "🇨🇦", name: "Canada",        count: "3 160"  },
+        { flag: "🇬🇧", name: "Royaume-Uni",   count: "2 473"  },
+        { flag: "🇧🇪", name: "Belgique",      count: "1 538"  },
+        { flag: "🇦🇹", name: "Autriche",      count: "1 358"  },
+        { flag: "🇨🇿", name: "Rép. tchèque", count: "1 035"  },
+        { flag: "🇷🇺", name: "Russie",        count: "915"    },
+      ],
+    },
     content: {
       problem: "Les boîtes à livres sont partout — en ville, en forêt, à la campagne — mais aucun outil ne permet de les trouver facilement ni d'y contribuer. Le projet part d'un constat simple : quelqu'un doit faire l'outil que personne n'a encore fait.",
-      solution: "Une application native qui centralise la carte des boîtes à livres. Les utilisateurs ajoutent des boîtes, signalent les déplacements ou dégradations, et bientôt pourront noter et commenter. La base de données dépasse 17 000 points en France et est activement enrichie pour atteindre 80 000 points d'intérêt.",
+      solution: "Une application native qui centralise la carte des boîtes à livres. Les utilisateurs ajoutent des boîtes, signalent les déplacements ou dégradations, et bientôt pourront noter et commenter. La base dépasse 98 000 boîtes dans 135 pays, avec 99,9 % des points géocodés.",
       sections: [
         {
           title: "iOS natif — et Android dans les cartons",
@@ -108,7 +136,7 @@ export const projects = [
         },
         {
           title: "Ce qui arrive bientôt",
-          body: "Notation et commentaires par boîte, enrichissement massif de la base (objectif 80 000 points), app Android native. Le projet grandit au rythme de sa communauté.",
+          body: "Notation et commentaires par boîte, app Android native. Le projet grandit au rythme de sa communauté — 98 000 boîtes aujourd'hui, et ça continue.",
         },
         {
           title: "Pourquoi bénévol",

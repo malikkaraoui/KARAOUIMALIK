@@ -179,6 +179,49 @@ export default function ProjectPage() {
           )}
         </div>
 
+        {isBoites && project.stats && (
+          <motion.div className="boites-stats" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
+            <div className="boites-stats__highlights">
+              {project.stats.highlights.map(h => (
+                <div key={h.label} className="boites-stats__highlight">
+                  <span className="boites-stats__value">{h.value}</span>
+                  <span className="boites-stats__label">{h.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="boites-stats__tables">
+              <div className="boites-stats__table">
+                <h3 className="boites-stats__table-title">Par zone</h3>
+                <table>
+                  <thead><tr><th>Zone</th><th>Boîtes</th></tr></thead>
+                  <tbody>
+                    {project.stats.regions.map(r => (
+                      <tr key={r.name}>
+                        <td>{r.flag} {r.name}</td>
+                        <td>{r.count} <span className="boites-stats__pct">({r.pct})</span></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="boites-stats__table">
+                <h3 className="boites-stats__table-title">Top pays</h3>
+                <table>
+                  <thead><tr><th>Pays</th><th>Total</th></tr></thead>
+                  <tbody>
+                    {project.stats.topCountries.map(c => (
+                      <tr key={c.name}>
+                        <td>{c.flag} {c.name}</td>
+                        <td>{c.count}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         <div className="project-page__body">
           {isLunii ? (
             <>
@@ -225,12 +268,12 @@ export default function ProjectPage() {
             </>
           ) : (
             <>
-              <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
+              <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={6}>
                 <h2 className="project-page__section-title">Le problème</h2>
                 <p className="project-page__section-body">{content.problem}</p>
               </motion.div>
 
-              <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={6}>
+              <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={7}>
                 <h2 className="project-page__section-title">La solution</h2>
                 <p className="project-page__section-body">{content.solution}</p>
               </motion.div>
