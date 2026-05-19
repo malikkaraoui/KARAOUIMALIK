@@ -179,6 +179,19 @@ export default function ProjectPage() {
           )}
         </div>
 
+        {isBoites && (
+          <motion.div className="boites-screens" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
+            {[
+              { src: '/boites-a-livres/screen-hero.png',       alt: 'Écran d\'accueil — Des histoires à chaque coin de rue' },
+              { src: '/boites-a-livres/screen-carte.png',      alt: 'Carte interactive — Une carte, mille lectures' },
+              { src: '/boites-a-livres/screen-detail.png',     alt: 'Détail boîte — Un livre déposé, une histoire qui voyage' },
+              { src: '/boites-a-livres/screen-contribuer.png', alt: 'Contribuer — Ce sont les lecteurs qui font vivre l\'app' },
+            ].map(s => (
+              <img key={s.src} src={s.src} alt={s.alt} loading="lazy" />
+            ))}
+          </motion.div>
+        )}
+
         {isBoites && project.stats && (
           <motion.div className="boites-stats" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
             <div className="boites-stats__highlights">
