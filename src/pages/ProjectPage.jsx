@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { getProjectBySlug } from '../data/projects'
@@ -39,6 +40,7 @@ function StripeTicket({ link }) {
 export default function ProjectPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
+  const [lightbox, setLightbox] = useState(null)
   const project = getProjectBySlug(slug)
 
   if (!project) {
@@ -285,12 +287,24 @@ export default function ProjectPage() {
               >
                 {[
                   { src: '/luniisync/screen-1.png', alt: "Interface Synchro Boite à Histoires — vue principale" },
-                  { src: '/luniisync/screen-2.png', alt: "Interface Synchro Boite à Histoires — synchronisation" },
                   { src: '/luniisync/screen-3.png', alt: "Interface Synchro Boite à Histoires — liste des histoires" },
                 ].map(s => (
-                  <img key={s.src} src={s.src} alt={s.alt} loading="lazy" />
+                  <img
+                    key={s.src}
+                    src={s.src}
+                    alt={s.alt}
+                    loading="lazy"
+                    className="lunii-screens__img"
+                    onClick={() => setLightbox(s)}
+                  />
                 ))}
               </motion.div>
+
+              {lightbox && (
+                <div className="lunii-lightbox" onClick={() => setLightbox(null)}>
+                  <img src={lightbox.src} alt={lightbox.alt} />
+                </div>
+              )}
             </>
           ) : (
             <>
