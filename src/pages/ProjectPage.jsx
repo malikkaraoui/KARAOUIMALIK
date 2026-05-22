@@ -66,7 +66,7 @@ export default function ProjectPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
         >
-          <img src="/luniisync/hero.png" alt="LuniiSync — Glissez. Synchronisez. Écoutez." />
+          <img src="/luniisync/hero.png" alt="Synchro Boite à Histoires — Glissez. Synchronisez. Écoutez." />
         </motion.div>
       )}
       {isBoites && (
@@ -277,6 +277,19 @@ export default function ProjectPage() {
                 variants={fadeUp} initial="hidden" animate="visible" custom={7 + content.sections.length}
               >
                 <img src="/luniisync/devices.png" alt="Lunii device variations" loading="lazy" />
+              </motion.div>
+
+              <motion.div
+                className="lunii-screens"
+                variants={fadeUp} initial="hidden" animate="visible" custom={8 + content.sections.length}
+              >
+                {[
+                  { src: '/luniisync/screen-1.png', alt: "Interface Synchro Boite à Histoires — vue principale" },
+                  { src: '/luniisync/screen-2.png', alt: "Interface Synchro Boite à Histoires — synchronisation" },
+                  { src: '/luniisync/screen-3.png', alt: "Interface Synchro Boite à Histoires — liste des histoires" },
+                ].map(s => (
+                  <img key={s.src} src={s.src} alt={s.alt} loading="lazy" />
+                ))}
               </motion.div>
             </>
           ) : (

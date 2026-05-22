@@ -523,6 +523,29 @@
   border-radius: 12px;
 }
 
+/* ── Lunii app screenshots ─────────────────────────────────────────────────── */
+
+.lunii-screens {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+  margin: 0 0 var(--sp-8);
+}
+
+.lunii-screens img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.14);
+}
+
+@media (max-width: 700px) {
+  .lunii-screens {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+  }
+}
+
 /* ── Dark mode adjustments ─────────────────────────────────────────────────── */
 
 [data-theme="dark"] .lunii-ticket--mac,

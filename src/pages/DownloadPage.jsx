@@ -96,7 +96,7 @@ export default function DownloadPage() {
             : "Ce lien de téléchargement n'est pas valide ou a expiré."}
         </p>
         <Link to="/projects/luniisync" className="project-page__link">
-          Retourner à la page LuniiSync
+          Retourner à la page Synchro Boite à Histoires
         </Link>
       </div>
     )
@@ -111,7 +111,7 @@ export default function DownloadPage() {
         Merci pour ton achat !
       </h1>
       <p style={{ color: 'var(--text-secondary, #888)', marginBottom: '2rem' }}>
-        LuniiSync est prêt à être téléchargé.
+        Synchro Boite à Histoires est prêt à être téléchargé.
       </p>
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>

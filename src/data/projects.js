@@ -2,10 +2,10 @@ export const projects = [
   {
     slug: "luniisync",
     category: "produit",
-    title: "LuniiSync",
+    title: "Synchro Boite à Histoires",
     eyebrow: "macOS & Windows · 9,99 €",
     description:
-      "Application macOS et Windows pour synchroniser des histoires MP3 sur une Fabrique à Histoires Lunii. Glissez vos fichiers audio dans un dossier — LuniiSync convertit, encode et transfère automatiquement sur l'appareil.",
+      "Application macOS et Windows pour synchroniser des histoires MP3 sur une Fabrique à Histoires Lunii. Glissez vos fichiers audio dans un dossier — Synchro convertit, encode et transfère automatiquement sur l'appareil.",
     tags: ["Python", "PySide6", "macOS", "Windows", "Lunii"],
     links: [
       {
@@ -23,7 +23,7 @@ export const projects = [
     ],
     content: {
       problem: "La Fabrique à Histoires Lunii ne permet d'écouter que les histoires achetées sur son store officiel. Il n'existe pas d'outil simple pour y charger ses propres fichiers audio sans passer par des manipulations techniques complexes.",
-      solution: "LuniiSync détecte automatiquement la Lunii branchée en USB, compare le contenu avec un dossier local de fichiers MP3/M4A, et synchronise les ajouts et suppressions. L'app gère la conversion, l'encodage au format Lunii et le transfert — en un clic.",
+      solution: "Synchro Boite à Histoires détecte automatiquement la Lunii branchée en USB, compare le contenu avec un dossier local de fichiers MP3/M4A, et synchronise les ajouts et suppressions. L'app gère la conversion, l'encodage au format Lunii et le transfert — en un clic.",
       sections: [
         {
           title: "Distribution macOS",
@@ -34,8 +34,8 @@ export const projects = [
           body: "Télécharger puis lancer LuniiSync.exe. Windows peut afficher une alerte SmartScreen au premier lancement (l'exe n'est pas signé) : cliquer \"Informations complémentaires\" → \"Exécuter quand même\".",
         },
         {
-          title: "Ce qui arrive avec LuniiSync Studio",
-          body: "La prochaine version va bien au-delà de la synchronisation. Au programme : suppression d'histoires directement depuis l'app, génération d'histoires personnalisées (sujet, matière, âge de l'enfant), création de parcours audio sur mesure. Tout cela réuni dans LuniiSync Studio.",
+          title: "Ce qui arrive ensuite",
+          body: "La prochaine version va bien au-delà de la synchronisation. Au programme : suppression d'histoires directement depuis l'app, génération d'histoires personnalisées (sujet, matière, âge de l'enfant), création de parcours audio sur mesure.",
         },
       ],
     },
