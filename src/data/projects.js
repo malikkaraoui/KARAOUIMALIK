@@ -31,7 +31,7 @@ export const projects = [
         },
         {
           title: "Distribution Windows",
-          body: "Extraire le ZIP puis lancer LuniiSync.exe. Windows peut afficher une alerte SmartScreen au premier lancement (l'exe n'est pas signé) : cliquer \"Informations complémentaires\" → \"Exécuter quand même\".",
+          body: "Télécharger puis lancer LuniiSync.exe. Windows peut afficher une alerte SmartScreen au premier lancement (l'exe n'est pas signé) : cliquer \"Informations complémentaires\" → \"Exécuter quand même\".",
         },
         {
           title: "Ce qui arrive avec LuniiSync Studio",

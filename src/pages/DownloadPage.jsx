@@ -19,16 +19,24 @@ if (import.meta.env.DEV) {
 
 const DOWNLOADS = {
   macos: {
-    label: 'Télécharger pour macOS (.dmg)',
-    href: 'https://github.com/malikkaraoui/lunii-sync/releases/latest/download/LuniiSync-macOS.dmg',
-    note: 'DMG signé et notarisé — glisser-déposer dans Applications.',
+    primary: {
+      label: 'Télécharger pour macOS — Apple Silicon (.dmg)',
+      href: 'https://github.com/malikkaraoui/Lunii_Synchro/releases/latest/download/LuniiSync-macOS-AppleSilicon.dmg',
+    },
+    secondary: {
+      label: 'Télécharger pour macOS — Intel (.dmg)',
+      href: 'https://github.com/malikkaraoui/Lunii_Synchro/releases/latest/download/LuniiSync-macOS-Intel.dmg',
+    },
+    note: 'Choisis Apple Silicon pour M1 / M2 / M3 / M4. Choisis Intel si ton Mac est un ancien modèle Intel.',
     other: 'windows',
     otherLabel: 'Télécharger Windows',
   },
   windows: {
-    label: 'Télécharger pour Windows (.zip)',
-    href: 'https://github.com/malikkaraoui/lunii-sync/releases/latest/download/LuniiSync-Windows.zip',
-    note: 'Extraire le ZIP puis lancer LuniiSync.exe. SmartScreen peut afficher une alerte au premier lancement — cliquer "Informations complémentaires" → "Exécuter quand même".',
+    primary: {
+      label: 'Télécharger pour Windows (.exe)',
+      href: 'https://github.com/malikkaraoui/Lunii_Synchro/releases/latest/download/LuniiSync-Windows.exe',
+    },
+    note: 'Télécharge puis lance LuniiSync.exe. Windows peut afficher une alerte SmartScreen au premier lancement — cliquer « Informations complémentaires » → « Exécuter quand même ».',
     other: 'macos',
     otherLabel: 'Télécharger macOS',
   },
@@ -95,6 +103,7 @@ export default function DownloadPage() {
   }
 
   const download = DOWNLOADS[platform]
+  const otherPlatform = DOWNLOADS[download.other]
 
   return (
     <div style={centeredStyle}>
@@ -107,7 +116,7 @@ export default function DownloadPage() {
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
         <a
-          href={download.href}
+          href={download.primary.href}
           className="project-page__link"
           style={{ fontSize: '1rem', padding: '0.75rem 1.5rem' }}
         >
@@ -116,14 +125,30 @@ export default function DownloadPage() {
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
-          <span>{download.label}</span>
+          <span>{download.primary.label}</span>
         </a>
+
+        {download.secondary && (
+          <a
+            href={download.secondary.href}
+            className="project-page__link"
+            style={{ fontSize: '0.95rem', padding: '0.7rem 1.4rem', opacity: 0.95 }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span>{download.secondary.label}</span>
+          </a>
+        )}
+
         <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary, #888)', maxWidth: '400px' }}>
           {download.note}
         </p>
         <p style={{ fontSize: '0.8rem', marginTop: '1rem' }}>
           Besoin de l'autre version ?{' '}
-          <a href={DOWNLOADS[download.other].href} style={{ color: 'inherit' }}>
+          <a href={otherPlatform.primary.href} style={{ color: 'inherit' }}>
             {download.otherLabel}
           </a>
         </p>
