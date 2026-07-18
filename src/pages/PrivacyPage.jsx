@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLocale, useLocalizedPath } from '../i18n/LocaleContext'
 
 const s = {
   page: {
@@ -47,57 +48,67 @@ const s = {
   },
 }
 
+const T = {
+  fr: {
+    eyebrow: 'iOS · SwiftUI · MapKit',
+    title: 'Politique de confidentialité',
+    date: 'Boîtes à Livres · Dernière mise à jour : 11 mai 2026',
+    sections: [
+      { h: 'Données collectées', p: "Boîtes à Livres ne collecte aucune donnée personnelle. L'application ne nécessite pas de compte, d'inscription, ni d'authentification d'aucune sorte." },
+      { h: 'Localisation', p: "L'application peut demander l'accès à votre position géographique afin de centrer la carte sur votre position actuelle. Cette donnée est utilisée uniquement localement, sur votre appareil, via le système MapKit d'Apple. Elle n'est jamais transmise, stockée sur un serveur, ni partagée avec des tiers." },
+      { h: 'Trackers et analytics', p: "L'application ne contient aucun outil de tracking, aucun SDK publicitaire et aucune solution d'analytics. Aucune donnée de comportement ou d'usage n'est collectée." },
+      { h: 'Partage avec des tiers', p: "Aucune donnée n'est vendue, louée ou partagée avec des tiers, quels qu'ils soient." },
+      { h: "Données stockées sur l'appareil", p: "Les préférences de l'application (favoris, filtres) sont conservées localement sur votre appareil et restent sous votre contrôle. Vous pouvez les supprimer à tout moment en désinstallant l'application." },
+    ],
+    contactH: 'Contact',
+    contactP: 'Pour toute question relative à cette politique, vous pouvez me contacter à',
+    back: '← Retour au projet',
+  },
+  en: {
+    eyebrow: 'iOS · SwiftUI · MapKit',
+    title: 'Privacy Policy',
+    date: 'Boîtes à Livres · Last updated: May 11, 2026',
+    sections: [
+      { h: 'Data collected', p: "Boîtes à Livres does not collect any personal data. The app does not require an account, sign-up, or any form of authentication." },
+      { h: 'Location', p: "The app may request access to your geographic location to center the map on your current position. This data is used only locally, on your device, through Apple's MapKit framework. It is never transmitted, stored on a server, or shared with third parties." },
+      { h: 'Trackers and analytics', p: 'The app contains no tracking tools, no advertising SDK, and no analytics solution. No behavioral or usage data is collected.' },
+      { h: 'Sharing with third parties', p: 'No data is sold, rented, or shared with any third party.' },
+      { h: 'Data stored on the device', p: 'App preferences (favorites, filters) are stored locally on your device and remain under your control. You can delete them at any time by uninstalling the app.' },
+    ],
+    contactH: 'Contact',
+    contactP: 'For any question about this policy, you can reach me at',
+    back: '← Back to the project',
+  },
+}
+
 export default function PrivacyPage() {
+  const locale = useLocale()
+  const withLocale = useLocalizedPath()
+  const t = T[locale]
+
   return (
     <div style={s.page}>
-      <p style={s.eyebrow}>iOS · SwiftUI · MapKit</p>
-      <h1 style={s.h1}>Politique de confidentialité</h1>
-      <p style={s.date}>Boîtes à Livres · Dernière mise à jour : 11 mai 2026</p>
+      <p style={s.eyebrow}>{t.eyebrow}</p>
+      <h1 style={s.h1}>{t.title}</h1>
+      <p style={s.date}>{t.date}</p>
 
-      <h2 style={s.h2}>Données collectées</h2>
-      <p style={s.p}>
-        Boîtes à Livres ne collecte aucune donnée personnelle. L'application ne
-        nécessite pas de compte, d'inscription, ni d'authentification d'aucune sorte.
-      </p>
+      {t.sections.map((sec) => (
+        <div key={sec.h}>
+          <h2 style={s.h2}>{sec.h}</h2>
+          <p style={s.p}>{sec.p}</p>
+        </div>
+      ))}
 
-      <h2 style={s.h2}>Localisation</h2>
+      <h2 style={s.h2}>{t.contactH}</h2>
       <p style={s.p}>
-        L'application peut demander l'accès à votre position géographique afin de
-        centrer la carte sur votre position actuelle. Cette donnée est utilisée
-        uniquement localement, sur votre appareil, via le système MapKit d'Apple.
-        Elle n'est jamais transmise, stockée sur un serveur, ni partagée avec des
-        tiers.
-      </p>
-
-      <h2 style={s.h2}>Trackers et analytics</h2>
-      <p style={s.p}>
-        L'application ne contient aucun outil de tracking, aucun SDK publicitaire et
-        aucune solution d'analytics. Aucune donnée de comportement ou d'usage n'est
-        collectée.
-      </p>
-
-      <h2 style={s.h2}>Partage avec des tiers</h2>
-      <p style={s.p}>
-        Aucune donnée n'est vendue, louée ou partagée avec des tiers, quels qu'ils soient.
-      </p>
-
-      <h2 style={s.h2}>Données stockées sur l'appareil</h2>
-      <p style={s.p}>
-        Les préférences de l'application (favoris, filtres) sont conservées
-        localement sur votre appareil et restent sous votre contrôle. Vous pouvez
-        les supprimer à tout moment en désinstallant l'application.
-      </p>
-
-      <h2 style={s.h2}>Contact</h2>
-      <p style={s.p}>
-        Pour toute question relative à cette politique, vous pouvez me contacter à{' '}
+        {t.contactP}{' '}
         <a href="mailto:karaoui.malik@gmail.com" style={{ color: 'inherit' }}>
           karaoui.malik@gmail.com
         </a>.
       </p>
 
-      <Link to="/" style={s.back}>
-        ← Retour au projet
+      <Link to={withLocale('/')} style={s.back}>
+        {t.back}
       </Link>
     </div>
   )

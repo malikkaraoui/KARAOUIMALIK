@@ -1,11 +1,49 @@
 import { useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { getProjectBySlug } from '../data/projects'
+import { getProjectBySlugForLocale } from '../data/locale'
+import { useLocale, useStrings, useLocalizedPath } from '../i18n/LocaleContext'
 import { renderLinkIcon } from '../components/Projects'
 import './ProjectPage.css'
 
 const ease = [0.16, 1, 0.3, 1]
+
+const PRESENTATION = {
+  fr: {
+    luniiHeroAlt: 'Synchro Boite à Histoires. Glissez. Synchronisez. Écoutez.',
+    boitesHeroAlt: 'Boîtes à Livres. La France lit. Partout.',
+    problemAlt: 'Le problème',
+    solutionAlt: 'La solution',
+    lithoDevices: 'Variantes de Lunii',
+    boitesScreens: [
+      { src: '/boites-a-livres/screen-hero.png', alt: "Écran d'accueil : des histoires à chaque coin de rue" },
+      { src: '/boites-a-livres/screen-carte.png', alt: 'Carte interactive : une carte, mille lectures' },
+      { src: '/boites-a-livres/screen-detail.png', alt: 'Détail boîte : un livre déposé, une histoire qui voyage' },
+      { src: '/boites-a-livres/screen-contribuer.png', alt: "Contribuer : ce sont les lecteurs qui font vivre l'app" },
+    ],
+    luniiScreens: [
+      { src: '/luniisync/screen-1.png', alt: 'Interface Synchro Boite à Histoires, vue principale' },
+      { src: '/luniisync/screen-3.png', alt: 'Interface Synchro Boite à Histoires, liste des histoires' },
+    ],
+  },
+  en: {
+    luniiHeroAlt: 'Synchro Boite à Histoires. Drag it in. Sync it. Listen.',
+    boitesHeroAlt: 'Boîtes à Livres. Street libraries, everywhere.',
+    problemAlt: 'The problem',
+    solutionAlt: 'The solution',
+    lithoDevices: 'Lunii device variations',
+    boitesScreens: [
+      { src: '/boites-a-livres/screen-hero.png', alt: 'Home screen: a story on every street corner' },
+      { src: '/boites-a-livres/screen-carte.png', alt: 'Interactive map: one map, a thousand reads' },
+      { src: '/boites-a-livres/screen-detail.png', alt: 'Box detail: a book dropped off, a story on the move' },
+      { src: '/boites-a-livres/screen-contribuer.png', alt: 'Contribute: readers keep the app alive' },
+    ],
+    luniiScreens: [
+      { src: '/luniisync/screen-1.png', alt: 'Synchro Boite à Histoires interface, main view' },
+      { src: '/luniisync/screen-3.png', alt: 'Synchro Boite à Histoires interface, story list' },
+    ],
+  },
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -41,13 +79,17 @@ export default function ProjectPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
   const [lightbox, setLightbox] = useState(null)
-  const project = getProjectBySlug(slug)
+  const locale = useLocale()
+  const t = useStrings()
+  const withLocale = useLocalizedPath()
+  const p = PRESENTATION[locale]
+  const project = getProjectBySlugForLocale(slug, locale)
 
   if (!project) {
     return (
       <div className="project-page__not-found">
-        <p>Projet introuvable.</p>
-        <Link to="/" className="project-page__back">← Retour</Link>
+        <p>{t.projectPage.notFound}</p>
+        <Link to={withLocale('/')} className="project-page__back">{t.projectPage.backArrow}</Link>
       </div>
     )
   }
@@ -68,7 +110,7 @@ export default function ProjectPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
         >
-          <img src="/luniisync/hero.png" alt="Synchro Boite à Histoires. Glissez. Synchronisez. Écoutez." />
+          <img src="/luniisync/hero.png" alt={p.luniiHeroAlt} />
         </motion.div>
       )}
       {isBoites && (
@@ -78,7 +120,7 @@ export default function ProjectPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
         >
-          <img src="/boites-a-livres/hero.png" alt="Boîtes à Livres. La France lit. Partout." />
+          <img src="/boites-a-livres/hero.png" alt={p.boitesHeroAlt} />
         </motion.div>
       )}
 
@@ -93,7 +135,7 @@ export default function ProjectPage() {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M12 5l-7 7 7 7" />
             </svg>
-            Projets
+            {t.projectPage.back}
           </button>
         </motion.div>
 
@@ -126,7 +168,7 @@ export default function ProjectPage() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
                   </svg>
-                  Lire sur Medium
+                  {t.projectPage.readOnMedium}
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
@@ -136,7 +178,7 @@ export default function ProjectPage() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
                   </svg>
-                  Article · Bientôt sur Medium
+                  {t.projectPage.soonOnMedium}
                 </span>
               )}
             </motion.div>
@@ -183,12 +225,7 @@ export default function ProjectPage() {
 
         {isBoites && (
           <motion.div className="boites-screens" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
-            {[
-              { src: '/boites-a-livres/screen-hero.png',       alt: 'Écran d\'accueil : des histoires à chaque coin de rue' },
-              { src: '/boites-a-livres/screen-carte.png',      alt: 'Carte interactive : une carte, mille lectures' },
-              { src: '/boites-a-livres/screen-detail.png',     alt: 'Détail boîte : un livre déposé, une histoire qui voyage' },
-              { src: '/boites-a-livres/screen-contribuer.png', alt: 'Contribuer : ce sont les lecteurs qui font vivre l\'app' },
-            ].map(s => (
+            {p.boitesScreens.map(s => (
               <img key={s.src} src={s.src} alt={s.alt} loading="lazy" />
             ))}
           </motion.div>
@@ -206,9 +243,9 @@ export default function ProjectPage() {
             </div>
             <div className="boites-stats__tables">
               <div className="boites-stats__table">
-                <h3 className="boites-stats__table-title">Par zone</h3>
+                <h3 className="boites-stats__table-title">{t.projectPage.byZone}</h3>
                 <table>
-                  <thead><tr><th>Zone</th><th>Boîtes</th></tr></thead>
+                  <thead><tr><th>{t.projectPage.zone}</th><th>{t.projectPage.boxes}</th></tr></thead>
                   <tbody>
                     {project.stats.regions.map(r => (
                       <tr key={r.name}>
@@ -220,9 +257,9 @@ export default function ProjectPage() {
                 </table>
               </div>
               <div className="boites-stats__table">
-                <h3 className="boites-stats__table-title">Top pays</h3>
+                <h3 className="boites-stats__table-title">{t.projectPage.topCountries}</h3>
                 <table>
-                  <thead><tr><th>Pays</th><th>Total</th></tr></thead>
+                  <thead><tr><th>{t.projectPage.country}</th><th>{t.projectPage.total}</th></tr></thead>
                   <tbody>
                     {project.stats.topCountries.map(c => (
                       <tr key={c.name}>
@@ -242,21 +279,21 @@ export default function ProjectPage() {
             <>
               <motion.div className="project-page__section lunii-section--illus" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
                 <div className="lunii-section__text">
-                  <h2 className="project-page__section-title">Le problème</h2>
+                  <h2 className="project-page__section-title">{t.projectPage.problem}</h2>
                   <p className="project-page__section-body">{content.problem}</p>
                 </div>
                 <div className="lunii-section__img">
-                  <img src="/luniisync/problem.png" alt="Le problème" loading="lazy" />
+                  <img src="/luniisync/problem.png" alt={p.problemAlt} loading="lazy" />
                 </div>
               </motion.div>
 
               <motion.div className="project-page__section lunii-section--illus lunii-section--reverse" variants={fadeUp} initial="hidden" animate="visible" custom={6}>
                 <div className="lunii-section__text">
-                  <h2 className="project-page__section-title">La solution</h2>
+                  <h2 className="project-page__section-title">{t.projectPage.solution}</h2>
                   <p className="project-page__section-body">{content.solution}</p>
                 </div>
                 <div className="lunii-section__img">
-                  <img src="/luniisync/solution.png" alt="La solution" loading="lazy" />
+                  <img src="/luniisync/solution.png" alt={p.solutionAlt} loading="lazy" />
                 </div>
               </motion.div>
 
@@ -278,17 +315,14 @@ export default function ProjectPage() {
                 className="project-page__section lunii-section--devices"
                 variants={fadeUp} initial="hidden" animate="visible" custom={7 + content.sections.length}
               >
-                <img src="/luniisync/devices.png" alt="Lunii device variations" loading="lazy" />
+                <img src="/luniisync/devices.png" alt={p.lithoDevices} loading="lazy" />
               </motion.div>
 
               <motion.div
                 className="lunii-screens"
                 variants={fadeUp} initial="hidden" animate="visible" custom={8 + content.sections.length}
               >
-                {[
-                  { src: '/luniisync/screen-1.png', alt: "Interface Synchro Boite à Histoires, vue principale" },
-                  { src: '/luniisync/screen-3.png', alt: "Interface Synchro Boite à Histoires, liste des histoires" },
-                ].map(s => (
+                {p.luniiScreens.map(s => (
                   <img
                     key={s.src}
                     src={s.src}

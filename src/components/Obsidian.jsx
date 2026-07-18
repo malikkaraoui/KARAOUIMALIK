@@ -1,21 +1,8 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import ObsidianGraph from './ObsidianGraph'
+import { useStrings } from '../i18n/LocaleContext'
 import './Obsidian.css'
-
-const stats = [
-  { val: '43+',   unit: 'notes',             sub: 'vault local' },
-  { val: '563',   unit: 'connexions',         sub: 'graphe de liens' },
-  { val: '<10ms', unit: 'latence',            sub: 'requête QMD' },
-  { val: '0',     unit: 'bytes uploadés',     sub: 'local-first absolu' },
-]
-
-const pipeline = [
-  { name: 'Vault',    tech: 'Obsidian',   desc: 'Notes & décisions' },
-  { name: 'Index',    tech: 'QMD',        desc: 'BM25 + vecteurs' },
-  { name: 'LLM',      tech: 'Ollama',     desc: 'RAG sans cloud' },
-  { name: 'Agents',   tech: 'Claude',     desc: 'Mémoire persistante' },
-]
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 24 },
@@ -28,6 +15,9 @@ const fadeUp = {
 export default function Obsidian() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const t = useStrings()
+  const stats = t.obsidian.stats
+  const pipeline = t.obsidian.pipeline
 
   return (
     <section id="obsidian" ref={ref} className="obsidian">
@@ -37,7 +27,7 @@ export default function Obsidian() {
           variants={fadeUp} initial="hidden"
           animate={inView ? 'visible' : 'hidden'} custom={0}
         >
-          02 · Second cerveau
+          {t.obsidian.index}
         </motion.p>
 
         <div className="obsidian__header">
@@ -46,16 +36,15 @@ export default function Obsidian() {
             variants={fadeUp} initial="hidden"
             animate={inView ? 'visible' : 'hidden'} custom={1}
           >
-            La connaissance,<br />
-            <em>locale et souveraine.</em>
+            {t.obsidian.titleLine1}<br />
+            <em>{t.obsidian.titleLine2}</em>
           </motion.h2>
           <motion.p
             className="obsidian__lead"
             variants={fadeUp} initial="hidden"
             animate={inView ? 'visible' : 'hidden'} custom={2}
           >
-            Un vault Obsidian entièrement local, indexé par QMD, consommé par Ollama.
-            Mon contexte personnel alimente chaque agent, sans exposer une ligne à un serveur externe.
+            {t.obsidian.lead}
           </motion.p>
         </div>
 
@@ -66,7 +55,7 @@ export default function Obsidian() {
         >
           <ObsidianGraph />
           <div className="obsidian__graph-label">
-            <span>Vault Obsidian · {'>'}43 notes · graphe local</span>
+            <span>{t.obsidian.graphLabel}</span>
           </div>
         </motion.div>
 

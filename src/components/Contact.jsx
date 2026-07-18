@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useStrings } from '../i18n/LocaleContext'
 import './Contact.css'
 
 const fadeUp = {
@@ -13,23 +14,21 @@ const fadeUp = {
 export default function Contact() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const t = useStrings()
 
   return (
     <section id="contact" className="contact" ref={ref}>
       <div className="container">
         <motion.p className="section-index" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={0}>
-          03 · Contact
+          {t.contact.index}
         </motion.p>
 
         <motion.h2 className="contact__title" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={1}>
-          Discutons<em>.</em>
+          {t.contact.title}<em>.</em>
         </motion.h2>
 
         <motion.div className="contact__text" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2}>
-          <p>Vous avez un projet à lancer, un produit à faire évoluer, ou simplement besoin de quelqu&apos;un pour poser les bonnes questions avant d&apos;écrire la première ligne de code. J&apos;interviens à différentes étapes : amorçage, conseil, architecture, développement, accompagnement sur la durée.</p>
-          <p>Ce qui me distingue, c&apos;est une vision globale de la chaîne technique. Applications mobiles, backend, protocoles de communication, outils métier, intégrations IA. Jusqu&apos;au hardware quand c&apos;est nécessaire : IoT, Bluetooth, systèmes embarqués. Assez de profondeur sur chaque couche pour prendre les bonnes décisions à chaque étape.</p>
-          <p>L&apos;IA reste encore massivement sous-exploitée dans la plupart des organisations. Pas parce que la technologie manque, mais parce qu&apos;on ne sait pas encore bien la placer dans une chaîne de valeur réelle. C&apos;est exactement là que j&apos;interviens.</p>
-          <p>Si vous cherchez quelqu&apos;un qui pense autant qu&apos;il construit, parlons de votre projet.</p>
+          {t.contact.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
         </motion.div>
 
         <motion.div className="contact__actions" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={3}>
@@ -38,7 +37,7 @@ export default function Contact() {
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
             </svg>
-            Me contacter
+            {t.contact.cta}
           </a>
 
           <div className="contact__socials">
@@ -69,7 +68,7 @@ export default function Contact() {
 
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2026 Malik Karaoui</p>
+          <p>{t.contact.footer}</p>
         </div>
       </footer>
     </section>

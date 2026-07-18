@@ -74,7 +74,8 @@
   border-color: var(--accent);
 }
 
-.nav__theme {
+.nav__theme,
+.nav__lang {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,10 +85,13 @@
   background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
+  font-size: var(--fs-14);
+  line-height: 1;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
-.nav__theme:hover {
+.nav__theme:hover,
+.nav__lang:hover {
   color: var(--text);
   border-color: var(--accent);
   background: var(--surface);
@@ -175,4 +179,12 @@
 .nav__mobile-appstore:hover {
   color: var(--accent);
   opacity: 0.8;
+}
+
+.nav__mobile-lang {
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
 }

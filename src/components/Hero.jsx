@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useStrings } from '../i18n/LocaleContext'
 import './Hero.css'
 
 const ease = [0.16, 1, 0.3, 1]
@@ -21,6 +22,7 @@ const STACK = [
 export default function Hero() {
   const [text, setText] = useState('')
   const fullName = 'Malik Karaoui'
+  const t = useStrings()
 
   useEffect(() => {
     let i = 0
@@ -48,7 +50,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.05, ease }}
         >
           <span className="hero__announcement-dot" aria-hidden="true" />
-          Boîtes à Livres est sur l&apos;App Store
+          {t.hero.announcement}
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
@@ -60,7 +62,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease }}
         >
-          Architecte · Bâtisseur · Développeur
+          {t.hero.label}
         </motion.span>
 
         <h1 className="hero__title">
@@ -74,9 +76,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.52, ease }}
         >
           <p className="hero__lead">
-            De la feuille blanche à l&apos;architecture, je transforme vos idées
-            en applications, outils métier et sites web, avec l&apos;IA au cœur
-            pour décupler leur impact.
+            {t.hero.lead}
           </p>
         </motion.div>
 
@@ -87,13 +87,13 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.66, ease }}
         >
           <a href="#projects" className="hero__cta">
-            Voir les projets
+            {t.hero.ctaProjects}
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
           <a href="#contact" className="hero__cta hero__cta--ghost">
-            Me contacter
+            {t.hero.ctaContact}
           </a>
         </motion.div>
       </div>
@@ -103,7 +103,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.1 }}
-        aria-label="Technologies maîtrisées"
+        aria-label={t.hero.stackAria}
       >
         <div className="hero__stack-scroll">
           {[...STACK, ...STACK].map((tech, i) => (

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useStrings } from '../i18n/LocaleContext'
 import './GitHub.css'
 
 const fadeUp = {
@@ -41,11 +42,13 @@ export default function GitHub() {
       .finally(() => clearTimeout(timeout))
   }, [])
 
+  const t = useStrings()
+
   const statItems = [
-    { label: '12 derniers mois', value: contributions ?? '…' },
-    { label: 'repos publics', value: profile?.public_repos ?? '…' },
-    { label: 'followers', value: profile?.followers ?? '…' },
-    { label: 'following', value: profile?.following ?? '…' },
+    { label: t.github.stats.year, value: contributions ?? '…' },
+    { label: t.github.stats.repos, value: profile?.public_repos ?? '…' },
+    { label: t.github.stats.followers, value: profile?.followers ?? '…' },
+    { label: t.github.stats.following, value: profile?.following ?? '…' },
   ]
 
   const agents = [
@@ -80,13 +83,13 @@ export default function GitHub() {
         </motion.p>
 
         <motion.div className="github__header" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={1}>
-          <h2 className="github__title">Activité<em>.</em></h2>
+          <h2 className="github__title">{t.github.title}<em>.</em></h2>
         </motion.div>
 
         <motion.div className="github__chart" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2}>
           <img
             src="https://ghchart.rshah.org/409b5e/malikkaraoui"
-            alt="Graphe de contributions GitHub de Malik Karaoui"
+            alt={t.github.chartAlt}
             className="github__chart-img"
           />
         </motion.div>
@@ -101,7 +104,7 @@ export default function GitHub() {
         </motion.div>
 
         <motion.div className="github__team" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={4}>
-          <p className="github__team-label">Mon équipe IA</p>
+          <p className="github__team-label">{t.github.teamLabel}</p>
           <div className="github__agents">
             {agents.map(agent => (
               <div key={agent.key} className="github__agent" style={{ '--agent-color': agent.color }}>

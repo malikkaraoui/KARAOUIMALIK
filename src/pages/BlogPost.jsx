@@ -1,7 +1,8 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { getPostBySlug } from '../data/posts'
+import { getPostBySlugForLocale } from '../data/locale'
+import { useLocale, useStrings, useLocalizedPath } from '../i18n/LocaleContext'
 import './BlogPost.css'
 
 const ease = [0.16, 1, 0.3, 1]
@@ -14,8 +15,8 @@ const fadeUp = {
   }),
 }
 
-function formatDate(dateStr) {
-  return new Date(dateStr).toLocaleDateString('fr-FR', {
+function formatDate(dateStr, locale) {
+  return new Date(dateStr).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR', {
     day: 'numeric', month: 'long', year: 'numeric',
   })
 }
@@ -44,13 +45,16 @@ function ReadingProgress() {
 export default function BlogPost() {
   const { slug } = useParams()
   const navigate = useNavigate()
-  const post = getPostBySlug(slug)
+  const locale = useLocale()
+  const t = useStrings()
+  const withLocale = useLocalizedPath()
+  const post = getPostBySlugForLocale(slug, locale)
 
   if (!post) {
     return (
       <div className="blogpost__not-found">
-        <p>Article introuvable.</p>
-        <Link to="/blog" className="blogpost__back">← Blog</Link>
+        <p>{t.blog.notFound}</p>
+        <Link to={withLocale('/blog')} className="blogpost__back">← {t.blog.back}</Link>
       </div>
     )
   }
@@ -68,21 +72,21 @@ export default function BlogPost() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, ease }}
           >
-            <button onClick={() => navigate('/blog')} className="blogpost__back">
+            <button onClick={() => navigate(withLocale('/blog'))} className="blogpost__back">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M19 12H5M12 5l-7 7 7 7" />
               </svg>
-              Blog
+              {t.blog.back}
             </button>
           </motion.div>
 
           <article>
             <header className="blogpost__header">
               <motion.div className="blogpost__meta" variants={fadeUp} initial="hidden" animate="visible" custom={0}>
-                <time className="blogpost__date" dateTime={post.date}>{formatDate(post.date)}</time>
+                <time className="blogpost__date" dateTime={post.date}>{formatDate(post.date, locale)}</time>
                 <div className="blogpost__tags">
-                  {post.tags.map(t => (
-                    <span key={t} className="project-row__tag">{t}</span>
+                  {post.tags.map(tag => (
+                    <span key={tag} className="project-row__tag">{tag}</span>
                   ))}
                 </div>
               </motion.div>
@@ -147,7 +151,7 @@ export default function BlogPost() {
           <footer className="blogpost__footer">
             <div className="blogpost__author">
               <span className="blogpost__author-name">Malik Karaoui</span>
-              <span className="blogpost__author-role">Développeur · Annecy, FR</span>
+              <span className="blogpost__author-role">{t.blog.authorRole}</span>
             </div>
             <div className="blogpost__footer-links">
               {post.mediumUrl && (
@@ -155,10 +159,10 @@ export default function BlogPost() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
                   </svg>
-                  Lire sur Medium
+                  {t.blog.readOnMedium}
                 </a>
               )}
-              <Link to="/blog" className="blogpost__back-link">← Tous les articles</Link>
+              <Link to={withLocale('/blog')} className="blogpost__back-link">{t.blog.backAll}</Link>
             </div>
           </footer>
         </div>

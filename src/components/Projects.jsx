@@ -1,7 +1,8 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { projects } from '../data/projects'
+import { getProjectsForLocale } from '../data/locale'
+import { useLocale, useStrings, useLocalizedPath } from '../i18n/LocaleContext'
 import './Projects.css'
 
 const fadeUp = {
@@ -88,10 +89,13 @@ export function renderLinkIcon(kind) {
 }
 
 function ProjectList({ list, inView, indexOffset = 0 }) {
+  const t = useStrings()
+  const withLocale = useLocalizedPath()
+
   return (
     <div className="projects__list">
       {list.map((project, i) => {
-        const detailPath = project.detailPath ?? `/projects/${project.slug}`
+        const detailPath = withLocale(project.detailPath ?? `/projects/${project.slug}`)
         return (
         <motion.article
           key={project.slug}
@@ -128,7 +132,7 @@ function ProjectList({ list, inView, indexOffset = 0 }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="project-row__link"
-                  aria-label={`Ouvrir ${link.label} pour ${project.title}`}
+                  aria-label={t.projects.openLinkAria(link.label, project.title)}
                   onClick={link.kind === 'stripe' && link.platform ? () => sessionStorage.setItem('lunii_platform', link.platform) : undefined}
                 >
                   {renderLinkIcon(link.kind)}
@@ -139,12 +143,12 @@ function ProjectList({ list, inView, indexOffset = 0 }) {
               <Link
                 to={detailPath}
                 className="project-row__link project-row__link--detail"
-                aria-label={`Voir le détail de ${project.title}`}
+                aria-label={t.projects.detailAria(project.title)}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
-                <span>En savoir plus</span>
+                <span>{t.projects.readMore}</span>
               </Link>
             </div>
           </div>
@@ -158,6 +162,9 @@ function ProjectList({ list, inView, indexOffset = 0 }) {
 export default function Projects() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const locale = useLocale()
+  const t = useStrings()
+  const projects = getProjectsForLocale(locale)
 
   const produits = projects.filter(p => p.category === 'produit')
   const projets  = projects.filter(p => p.category === 'projet')
@@ -172,7 +179,7 @@ export default function Projects() {
           animate={inView ? 'visible' : 'hidden'}
           custom={0}
         >
-          Produits
+          {t.projects.produits}
         </motion.div>
 
         <ProjectList list={produits} inView={inView} indexOffset={0} />
@@ -184,7 +191,7 @@ export default function Projects() {
           animate={inView ? 'visible' : 'hidden'}
           custom={produits.length + 1}
         >
-          Projets
+          {t.projects.projets}
         </motion.div>
 
         <ProjectList list={projets} inView={inView} indexOffset={produits.length + 1} />

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { renderLinkIcon } from '../components/Projects'
+import { useLocale, useLocalizedPath } from '../i18n/LocaleContext'
 import './ProjectPage.css'
 
 // ── À compléter ──────────────────────────────────────────────────────────────
@@ -18,24 +19,48 @@ const fadeUp = {
   }),
 }
 
-const TAGS = ['iOS', 'iPhone', 'Photo', '100 % hors-ligne', 'Sans compte']
-
-const SECTIONS = [
-  {
-    title: '100 % sur votre iPhone',
-    body: "Tout ce que fait YZPhotos se passe localement, sur votre appareil. Vos images ne sont ni téléversées, ni copiées sur un serveur, ni analysées à distance. Elles restent là où elles doivent être : entre vos mains.",
+const T = {
+  fr: {
+    home: 'Accueil',
+    eyebrow: 'iOS · iPhone · Application photo',
+    desc: "YZPhotos est une application photo pour iPhone pensée autour d'un principe non négociable : vos images ne quittent jamais votre appareil. Pas de compte, pas de cloud, pas de traqueurs : juste vos photos, chez vous.",
+    tags: ['iOS', 'iPhone', 'Photo', '100 % hors-ligne', 'Sans compte'],
+    appStore: 'App Store',
+    comingSoon: "Bientôt disponible sur l'App Store",
+    privacy: 'Confidentialité',
+    sections: [
+      { title: '100 % sur votre iPhone', body: "Tout ce que fait YZPhotos se passe localement, sur votre appareil. Vos images ne sont ni téléversées, ni copiées sur un serveur, ni analysées à distance. Elles restent là où elles doivent être : entre vos mains." },
+      { title: 'Aucune donnée collectée', body: "YZPhotos ne collecte aucune donnée personnelle. Pas de compte à créer, pas d'e-mail à fournir, pas d'identifiant publicitaire. L'application fonctionne intégralement hors-ligne." },
+      { title: 'Zéro traqueur, zéro publicité', body: "Aucun SDK d'analytics, aucune régie publicitaire, aucun pixel de suivi. YZPhotos ne sait rien de vous, et c'est un choix d'architecture, pas une option à activer." },
+    ],
+    privacyByDesignTitle: 'Confidentialité par conception',
+    privacyByDesignBody: "La protection de vos photos n'est pas une promesse marketing : c'est l'architecture même de l'application.",
+    privacyByDesignLink: 'Consulter la politique de confidentialité',
   },
-  {
-    title: 'Aucune donnée collectée',
-    body: "YZPhotos ne collecte aucune donnée personnelle. Pas de compte à créer, pas d'e-mail à fournir, pas d'identifiant publicitaire. L'application fonctionne intégralement hors-ligne.",
+  en: {
+    home: 'Home',
+    eyebrow: 'iOS · iPhone · Photo app',
+    desc: "YZPhotos is an iPhone photo app built around one non-negotiable principle: your images never leave your device. No account, no cloud, no trackers: just your photos, at home.",
+    tags: ['iOS', 'iPhone', 'Photo', '100% offline', 'No account'],
+    appStore: 'App Store',
+    comingSoon: 'Coming soon on the App Store',
+    privacy: 'Privacy',
+    sections: [
+      { title: '100% on your iPhone', body: "Everything YZPhotos does happens locally, on your device. Your images are never uploaded, copied to a server, or analyzed remotely. They stay exactly where they should: in your hands." },
+      { title: 'No data collected', body: "YZPhotos does not collect any personal data. No account to create, no email to provide, no advertising identifier. The app works entirely offline." },
+      { title: 'Zero trackers, zero ads', body: "No analytics SDK, no ad network, no tracking pixel. YZPhotos knows nothing about you, and that's an architectural choice, not a setting to enable." },
+    ],
+    privacyByDesignTitle: 'Privacy by design',
+    privacyByDesignBody: "Protecting your photos isn't a marketing promise: it's the app's actual architecture.",
+    privacyByDesignLink: 'Read the privacy policy',
   },
-  {
-    title: 'Zéro traqueur, zéro publicité',
-    body: "Aucun SDK d'analytics, aucune régie publicitaire, aucun pixel de suivi. YZPhotos ne sait rien de vous, et c'est un choix d'architecture, pas une option à activer.",
-  },
-]
+}
 
 export default function YZPhotosPage() {
+  const locale = useLocale()
+  const withLocale = useLocalizedPath()
+  const t = T[locale]
+
   return (
     <div className="project-page">
       <div className="container">
@@ -45,30 +70,28 @@ export default function YZPhotosPage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, ease }}
         >
-          <Link to="/" className="project-page__back">
+          <Link to={withLocale('/')} className="project-page__back">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M12 5l-7 7 7 7" />
             </svg>
-            Accueil
+            {t.home}
           </Link>
         </motion.div>
 
         <div className="project-page__header">
           <motion.p className="project-page__eyebrow" variants={fadeUp} initial="hidden" animate="visible" custom={0}>
-            iOS · iPhone · Application photo
+            {t.eyebrow}
           </motion.p>
           <motion.h1 className="project-page__title" variants={fadeUp} initial="hidden" animate="visible" custom={1}>
             YZPhotos
           </motion.h1>
           <motion.p className="project-page__desc" variants={fadeUp} initial="hidden" animate="visible" custom={2}>
-            YZPhotos est une application photo pour iPhone pensée autour d'un principe
-            non négociable : vos images ne quittent jamais votre appareil. Pas de compte,
-            pas de cloud, pas de traqueurs : juste vos photos, chez vous.
+            {t.desc}
           </motion.p>
 
           <motion.div className="project-page__tags" variants={fadeUp} initial="hidden" animate="visible" custom={3}>
-            {TAGS.map((t) => (
-              <span key={t} className="project-row__tag">{t}</span>
+            {t.tags.map((tag) => (
+              <span key={tag} className="project-row__tag">{tag}</span>
             ))}
           </motion.div>
 
@@ -81,21 +104,21 @@ export default function YZPhotosPage() {
                 className="project-page__link"
               >
                 {renderLinkIcon('store')}
-                <span>App Store</span>
+                <span>{t.appStore}</span>
               </a>
             ) : (
               <span className="project-page__medium-btn project-page__medium-btn--draft">
-                Bientôt disponible sur l'App Store
+                {t.comingSoon}
               </span>
             )}
-            <Link to="/YZPhotos/privacy" className="project-page__link">
-              <span>Confidentialité</span>
+            <Link to={withLocale('/YZPhotos/privacy')} className="project-page__link">
+              <span>{t.privacy}</span>
             </Link>
           </motion.div>
         </div>
 
         <div className="project-page__body">
-          {SECTIONS.map((s, i) => (
+          {t.sections.map((s, i) => (
             <motion.div
               key={s.title}
               className="project-page__section"
@@ -114,14 +137,13 @@ export default function YZPhotosPage() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            custom={5 + SECTIONS.length}
+            custom={5 + t.sections.length}
           >
-            <h2 className="project-page__section-title">Confidentialité par conception</h2>
+            <h2 className="project-page__section-title">{t.privacyByDesignTitle}</h2>
             <p className="project-page__section-body">
-              La protection de vos photos n'est pas une promesse marketing : c'est
-              l'architecture même de l'application.{' '}
-              <Link to="/YZPhotos/privacy" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
-                Consulter la politique de confidentialité
+              {t.privacyByDesignBody}{' '}
+              <Link to={withLocale('/YZPhotos/privacy')} style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+                {t.privacyByDesignLink}
               </Link>.
             </p>
           </motion.div>

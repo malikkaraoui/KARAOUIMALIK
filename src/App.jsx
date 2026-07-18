@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { LocaleProvider } from './i18n/LocaleContext'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -48,7 +49,7 @@ export default function App() {
   const toggle = () => setTheme(t => t === 'light' ? 'dark' : 'light')
 
   return (
-    <>
+    <LocaleProvider>
       <Nav theme={theme} onToggleTheme={toggle} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -59,7 +60,16 @@ export default function App() {
         <Route path="/projects/boites-a-livres/privacy" element={<PrivacyPage />} />
         <Route path="/YZPhotos" element={<YZPhotosPage />} />
         <Route path="/YZPhotos/privacy" element={<YZPhotosPrivacyPage />} />
+
+        <Route path="/en" element={<Home />} />
+        <Route path="/en/projects/:slug" element={<ProjectPage />} />
+        <Route path="/en/blog" element={<Blog />} />
+        <Route path="/en/blog/:slug" element={<BlogPost />} />
+        <Route path="/en/download" element={<DownloadPage />} />
+        <Route path="/en/projects/boites-a-livres/privacy" element={<PrivacyPage />} />
+        <Route path="/en/YZPhotos" element={<YZPhotosPage />} />
+        <Route path="/en/YZPhotos/privacy" element={<YZPhotosPrivacyPage />} />
       </Routes>
-    </>
+    </LocaleProvider>
   )
 }

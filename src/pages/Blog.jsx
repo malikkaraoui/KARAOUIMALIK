@@ -1,7 +1,8 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { posts } from '../data/posts'
+import { getPostsForLocale } from '../data/locale'
+import { useLocale, useStrings, useLocalizedPath } from '../i18n/LocaleContext'
 import './Blog.css'
 
 const fadeUp = {
@@ -13,8 +14,8 @@ const fadeUp = {
   }),
 }
 
-function formatDate(dateStr) {
-  return new Date(dateStr).toLocaleDateString('fr-FR', {
+function formatDate(dateStr, locale) {
+  return new Date(dateStr).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR', {
     day: 'numeric', month: 'long', year: 'numeric',
   })
 }
@@ -22,6 +23,10 @@ function formatDate(dateStr) {
 export default function Blog() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const locale = useLocale()
+  const t = useStrings()
+  const withLocale = useLocalizedPath()
+  const posts = getPostsForLocale(locale)
 
   return (
     <div className="blog-page" ref={ref}>
@@ -33,7 +38,7 @@ export default function Blog() {
           animate={inView ? 'visible' : 'hidden'}
           custom={0}
         >
-          Blog
+          {t.blog.label}
         </motion.div>
 
         <motion.h1
@@ -43,7 +48,7 @@ export default function Blog() {
           animate={inView ? 'visible' : 'hidden'}
           custom={1}
         >
-          Réflexions & explorations
+          {t.blog.title}
         </motion.h1>
 
         <div className="blog-page__list">
@@ -57,24 +62,24 @@ export default function Blog() {
               custom={i + 2}
             >
               <div className="blog-card__meta">
-                <time className="blog-card__date">{formatDate(post.date)}</time>
+                <time className="blog-card__date">{formatDate(post.date, locale)}</time>
                 <div className="blog-card__tags">
-                  {post.tags.map(t => (
-                    <span key={t} className="project-row__tag">{t}</span>
+                  {post.tags.map(tag => (
+                    <span key={tag} className="project-row__tag">{tag}</span>
                   ))}
                 </div>
               </div>
 
               <div className="blog-card__body">
                 <h2 className="blog-card__title">
-                  <Link to={`/blog/${post.slug}`} className="blog-card__title-link">
+                  <Link to={withLocale(`/blog/${post.slug}`)} className="blog-card__title-link">
                     {post.title}
                     <span className="blog-card__arrow" aria-hidden="true">→</span>
                   </Link>
                 </h2>
                 <p className="blog-card__summary">{post.summary}</p>
                 <span className="blog-card__read" aria-hidden="true">
-                  Lire l'article
+                  {t.blog.read}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
