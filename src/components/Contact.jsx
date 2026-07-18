@@ -18,7 +18,7 @@ export default function Contact() {
     <section id="contact" className="contact" ref={ref}>
       <div className="container">
         <motion.p className="section-index" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={0}>
-          03 — Contact
+          03 · Contact
         </motion.p>
 
         <motion.h2 className="contact__title" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={1}>

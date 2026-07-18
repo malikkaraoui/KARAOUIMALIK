@@ -52,7 +52,7 @@ export default function PrivacyPage() {
     <div style={s.page}>
       <p style={s.eyebrow}>iOS · SwiftUI · MapKit</p>
       <h1 style={s.h1}>Politique de confidentialité</h1>
-      <p style={s.date}>Boîtes à Livres — Dernière mise à jour : 11 mai 2026</p>
+      <p style={s.date}>Boîtes à Livres · Dernière mise à jour : 11 mai 2026</p>
 
       <h2 style={s.h2}>Données collectées</h2>
       <p style={s.p}>

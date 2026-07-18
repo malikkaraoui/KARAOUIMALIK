@@ -68,7 +68,7 @@ export default function ProjectPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
         >
-          <img src="/luniisync/hero.png" alt="Synchro Boite à Histoires — Glissez. Synchronisez. Écoutez." />
+          <img src="/luniisync/hero.png" alt="Synchro Boite à Histoires. Glissez. Synchronisez. Écoutez." />
         </motion.div>
       )}
       {isBoites && (
@@ -78,7 +78,7 @@ export default function ProjectPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
         >
-          <img src="/boites-a-livres/hero.png" alt="Boîtes à Livres — La France lit. Partout." />
+          <img src="/boites-a-livres/hero.png" alt="Boîtes à Livres. La France lit. Partout." />
         </motion.div>
       )}
 
@@ -184,10 +184,10 @@ export default function ProjectPage() {
         {isBoites && (
           <motion.div className="boites-screens" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
             {[
-              { src: '/boites-a-livres/screen-hero.png',       alt: 'Écran d\'accueil — Des histoires à chaque coin de rue' },
-              { src: '/boites-a-livres/screen-carte.png',      alt: 'Carte interactive — Une carte, mille lectures' },
-              { src: '/boites-a-livres/screen-detail.png',     alt: 'Détail boîte — Un livre déposé, une histoire qui voyage' },
-              { src: '/boites-a-livres/screen-contribuer.png', alt: 'Contribuer — Ce sont les lecteurs qui font vivre l\'app' },
+              { src: '/boites-a-livres/screen-hero.png',       alt: 'Écran d\'accueil : des histoires à chaque coin de rue' },
+              { src: '/boites-a-livres/screen-carte.png',      alt: 'Carte interactive : une carte, mille lectures' },
+              { src: '/boites-a-livres/screen-detail.png',     alt: 'Détail boîte : un livre déposé, une histoire qui voyage' },
+              { src: '/boites-a-livres/screen-contribuer.png', alt: 'Contribuer : ce sont les lecteurs qui font vivre l\'app' },
             ].map(s => (
               <img key={s.src} src={s.src} alt={s.alt} loading="lazy" />
             ))}
@@ -286,8 +286,8 @@ export default function ProjectPage() {
                 variants={fadeUp} initial="hidden" animate="visible" custom={8 + content.sections.length}
               >
                 {[
-                  { src: '/luniisync/screen-1.png', alt: "Interface Synchro Boite à Histoires — vue principale" },
-                  { src: '/luniisync/screen-3.png', alt: "Interface Synchro Boite à Histoires — liste des histoires" },
+                  { src: '/luniisync/screen-1.png', alt: "Interface Synchro Boite à Histoires, vue principale" },
+                  { src: '/luniisync/screen-3.png', alt: "Interface Synchro Boite à Histoires, liste des histoires" },
                 ].map(s => (
                   <img
                     key={s.src}

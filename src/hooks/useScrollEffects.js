@@ -8,7 +8,7 @@ export default function useScrollEffects() {
   useEffect(() => {
     const ctx = gsap.context(() => {
 
-      // ── Hero parallax — content monte plus vite que le scroll
+      // ── Hero parallax : le contenu monte plus vite que le scroll
       gsap.to('.hero__content', {
         y: -60,
         ease: 'none',
@@ -32,7 +32,7 @@ export default function useScrollEffects() {
         },
       })
 
-      // ── Section About — lignes de compétences scrubbed
+      // ── Section About : lignes de compétences scrubbed
       gsap.fromTo('.about__row',
         { opacity: 0, x: -20 },
         {
@@ -49,7 +49,7 @@ export default function useScrollEffects() {
         }
       )
 
-      // ── Obsidian section — graph scale-in depuis légèrement réduit
+      // ── Obsidian section : graph scale-in depuis légèrement réduit
       gsap.fromTo('.obsidian__graph-wrap',
         { scale: 0.94, opacity: 0 },
         {
@@ -65,7 +65,7 @@ export default function useScrollEffects() {
         }
       )
 
-      // ── Projects — chaque ligne glisse depuis la droite
+      // ── Projects : chaque ligne glisse depuis la droite
       gsap.utils.toArray('.project-row').forEach((row, i) => {
         gsap.fromTo(row,
           { opacity: 0, y: 30 },
@@ -83,7 +83,7 @@ export default function useScrollEffects() {
         )
       })
 
-      // ── Section index labels — clip reveal (glissement du bas)
+      // ── Section index labels : clip reveal (glissement du bas)
       gsap.utils.toArray('.section-index').forEach((el) => {
         gsap.fromTo(el,
           { clipPath: 'inset(100% 0 0 0)', opacity: 0 },

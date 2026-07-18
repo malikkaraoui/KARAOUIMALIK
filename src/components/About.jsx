@@ -4,7 +4,7 @@ import './About.css'
 
 const expertise = [
   { label: 'Produits', value: 'Conception web, extensions Chrome, applications iOS, interfaces orientées usage.' },
-  { label: 'IA locale', value: 'Python, Ollama, RAG, QMD, Obsidian — un cerveau local comme source de vérité.' },
+  { label: 'IA locale', value: 'Python, Ollama, RAG, QMD, Obsidian, un cerveau local comme source de vérité.' },
   { label: 'Automatisation LLM', value: 'Harnais Claude Code (hooks, skills, gate, handoffs) pour une gestion fine des tokens, du contexte et de la qualité.' },
   { label: 'Protocoles', value: 'Architectures décentralisées et communications souveraines.' },
   { label: 'Stack', value: 'React, Vite, TypeScript, Node.js, Swift, Firebase, API REST, SQL.' },
@@ -26,7 +26,7 @@ export default function About() {
     <section id="about" ref={ref}>
       <div className="container">
         <motion.p className="section-index" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={0}>
-          01 — À propos
+          01 · À propos
         </motion.p>
 
         <div className="about__grid">

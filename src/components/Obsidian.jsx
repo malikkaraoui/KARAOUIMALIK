@@ -37,7 +37,7 @@ export default function Obsidian() {
           variants={fadeUp} initial="hidden"
           animate={inView ? 'visible' : 'hidden'} custom={0}
         >
-          02 — Second cerveau
+          02 · Second cerveau
         </motion.p>
 
         <div className="obsidian__header">
@@ -55,7 +55,7 @@ export default function Obsidian() {
             animate={inView ? 'visible' : 'hidden'} custom={2}
           >
             Un vault Obsidian entièrement local, indexé par QMD, consommé par Ollama.
-            Mon contexte personnel alimente chaque agent — sans exposer une ligne à un serveur externe.
+            Mon contexte personnel alimente chaque agent, sans exposer une ligne à un serveur externe.
           </motion.p>
         </div>
 

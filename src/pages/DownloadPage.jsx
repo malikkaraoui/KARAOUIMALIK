@@ -20,12 +20,12 @@ if (import.meta.env.DEV) {
 const DOWNLOADS = {
   macos: {
     primary: {
-      label: 'Télécharger pour macOS — Apple Silicon (.dmg)',
-      href: 'https://github.com/malikkaraoui/Lunii_Synchro/releases/latest/download/LuniiSync-macOS-AppleSilicon.dmg',
+      label: 'Télécharger pour macOS · Apple Silicon (.dmg)',
+      href: 'https://github.com/malikkaraoui/Synchro_boite_a_histoires/releases/latest/download/LuniiSync-macOS-AppleSilicon.dmg',
     },
     secondary: {
-      label: 'Télécharger pour macOS — Intel (.dmg)',
-      href: 'https://github.com/malikkaraoui/Lunii_Synchro/releases/latest/download/LuniiSync-macOS-Intel.dmg',
+      label: 'Télécharger pour macOS · Intel (.dmg)',
+      href: 'https://github.com/malikkaraoui/Synchro_boite_a_histoires/releases/latest/download/LuniiSync-macOS-Intel.dmg',
     },
     note: 'Choisis Apple Silicon pour M1 / M2 / M3 / M4. Choisis Intel si ton Mac est un ancien modèle Intel.',
     other: 'windows',
@@ -34,9 +34,9 @@ const DOWNLOADS = {
   windows: {
     primary: {
       label: 'Télécharger pour Windows (.exe)',
-      href: 'https://github.com/malikkaraoui/Lunii_Synchro/releases/latest/download/LuniiSync-Windows.exe',
+      href: 'https://github.com/malikkaraoui/Synchro_boite_a_histoires/releases/latest/download/LuniiSync-Windows.exe',
     },
-    note: 'Télécharge puis lance LuniiSync.exe. Windows peut afficher une alerte SmartScreen au premier lancement — cliquer « Informations complémentaires » → « Exécuter quand même ».',
+    note: "Télécharge puis lance l'application. Windows peut afficher une alerte SmartScreen au premier lancement : cliquer « Informations complémentaires » → « Exécuter quand même ».",
     other: 'macos',
     otherLabel: 'Télécharger macOS',
   },

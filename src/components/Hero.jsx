@@ -75,7 +75,7 @@ export default function Hero() {
         >
           <p className="hero__lead">
             De la feuille blanche à l&apos;architecture, je transforme vos idées
-            en applications, outils métier et sites web — avec l&apos;IA au cœur
+            en applications, outils métier et sites web, avec l&apos;IA au cœur
             pour décupler leur impact.
           </p>
         </motion.div>

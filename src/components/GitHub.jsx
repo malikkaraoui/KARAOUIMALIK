@@ -86,7 +86,7 @@ export default function GitHub() {
         <motion.div className="github__chart" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2}>
           <img
             src="https://ghchart.rshah.org/409b5e/malikkaraoui"
-            alt="Graphe de contributions GitHub — Malik Karaoui"
+            alt="Graphe de contributions GitHub de Malik Karaoui"
             className="github__chart-img"
           />
         </motion.div>

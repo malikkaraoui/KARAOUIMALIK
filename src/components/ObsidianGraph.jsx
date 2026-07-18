@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import rawGraph from '../data/vault-graph.json'
 
-// Force-directed physics constants — calibrés pour ~1500 nœuds
+// Force-directed physics constants, calibrés pour ~1500 nœuds
 const REPULSION   = 420    // faible → nuage dense, plus de points visibles
 const SPRING_K    = 0.07
 const SPRING_REST = 16     // repos très court → clusters serrés
@@ -14,12 +14,12 @@ const MAX_V       = 2.5
 const PRE_SETTLE  = 100    // plus de settle pour convergence densifiée
 const K_NEAREST   = 5      // +1 voisin synthétique → meilleure cohésion
 
-// Palette light mode — tons profonds sur fond crème
+// Palette light mode : tons profonds sur fond crème
 const COLORS_LIGHT = [
   '#7a4520', '#1e4d7a', '#265c3a', '#4a2d6e', '#7a2828',
   '#1a5a5a', '#5a4a10', '#2a3a5a', '#5a2a1a', '#1e3a4a',
 ]
-// Palette dark mode — tons clairs désaturés sur fond sombre
+// Palette dark mode : tons clairs désaturés sur fond sombre
 const COLORS_DARK = [
   '#c8956a', '#7aafd4', '#8ec4a0', '#a892c8', '#c48a8a',
   '#68b4b4', '#c4a85e', '#8898b8', '#c4a080', '#88a4b4',
@@ -90,7 +90,7 @@ function applyForces(nodes, nodeById, synEdges, W, H) {
     }
   }
 
-  // Real edge springs (liens wiki réels — ressort raide)
+  // Real edge springs (liens wiki réels, ressort raide)
   for (const e of topEdges) {
     const a = nodeById.get(e.source), b = nodeById.get(e.target)
     if (!a || !b) continue
@@ -102,7 +102,7 @@ function applyForces(nodes, nodeById, synEdges, W, H) {
     b.vx -= fx; b.vy -= fy
   }
 
-  // Synthetic proximity springs (voisins même groupe — ressort doux)
+  // Synthetic proximity springs (voisins même groupe, ressort doux)
   for (const e of synEdges) {
     const a = nodeById.get(e.source), b = nodeById.get(e.target)
     if (!a || !b) continue
