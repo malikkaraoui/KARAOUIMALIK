@@ -1,0 +1,13 @@
+.footer {
+  margin-top: var(--section-padding);
+  padding: var(--sp-4) 0;
+  border-top: 1px solid var(--border);
+}
+
+.footer p {
+  font-family: var(--font-mono);
+  font-size: var(--fs-10);
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  text-align: center;
+}

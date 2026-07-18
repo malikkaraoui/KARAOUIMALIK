@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import { LocaleProvider } from './i18n/LocaleContext'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { LocaleProvider, useLocalizedPath } from './i18n/LocaleContext'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -8,6 +8,7 @@ import Obsidian from './components/Obsidian'
 import Projects from './components/Projects'
 import GitHub from './components/GitHub'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 import ProjectPage from './pages/ProjectPage'
 import DownloadPage from './pages/DownloadPage'
 import PrivacyPage from './pages/PrivacyPage'
@@ -30,6 +31,13 @@ function Home() {
       <Contact />
     </main>
   )
+}
+
+function SiteFooter() {
+  const { pathname } = useLocation()
+  const withLocale = useLocalizedPath()
+  const isHome = pathname === withLocale('/')
+  return isHome ? null : <Footer />
 }
 
 export default function App() {
@@ -70,6 +78,7 @@ export default function App() {
         <Route path="/en/YZPhotos" element={<YZPhotosPage />} />
         <Route path="/en/YZPhotos/privacy" element={<YZPhotosPrivacyPage />} />
       </Routes>
+      <SiteFooter />
     </LocaleProvider>
   )
 }

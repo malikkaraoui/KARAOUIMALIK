@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { useStrings } from '../i18n/LocaleContext'
+import Footer from './Footer'
 import './Contact.css'
 
 const fadeUp = {
@@ -66,11 +67,7 @@ export default function Contact() {
         </motion.div>
       </div>
 
-      <footer className="footer">
-        <div className="container">
-          <p>{t.contact.footer}</p>
-        </div>
-      </footer>
+      <Footer />
     </section>
   )
 }
