@@ -82,7 +82,7 @@ export const projectsEn = [
 {
   slug: "boites-a-livres",
   category: "produit",
-  title: "Little Free Libraries",
+  title: "Boîtes à Livres",
   eyebrow: "Volunteer · iOS · Android coming soon",
   description:
     "An app for mapping little free libraries around the world. 98,172 boxes recorded, 135 countries, 94,244 cities covered. Community contributions, real-time reporting, volunteer-run, no ads, no monetization.",
