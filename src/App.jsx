@@ -10,6 +10,8 @@ import Contact from './components/Contact'
 import ProjectPage from './pages/ProjectPage'
 import DownloadPage from './pages/DownloadPage'
 import PrivacyPage from './pages/PrivacyPage'
+import YZPhotosPage from './pages/YZPhotosPage'
+import YZPhotosPrivacyPage from './pages/YZPhotosPrivacyPage'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import useLenis from './hooks/useLenis'
@@ -55,6 +57,8 @@ export default function App() {
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/download" element={<DownloadPage />} />
         <Route path="/projects/boites-a-livres/privacy" element={<PrivacyPage />} />
+        <Route path="/YZPhotos" element={<YZPhotosPage />} />
+        <Route path="/YZPhotos/privacy" element={<YZPhotosPrivacyPage />} />
       </Routes>
     </>
   )
