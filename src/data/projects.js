@@ -225,8 +225,8 @@ export const projects = [
     title: "ToM Protocol",
     eyebrow: "Protocole P2P · Phase 3 en cours",
     description:
-      "ToM est un protocole de transport décentralisé : chaque appareil devient un nœud du réseau. Pas de serveurs centraux, pas de dépendance aux plateformes. Les messages transitent directement, chiffrés de bout en bout, avec traversée NAT validée cross-border Suisse↔France.",
-    tags: ["Rust", "TypeScript", "QUIC", "P2P", "E2E Crypto", "NAT Traversal", "Freebox OS"],
+      "ToM est un protocole de transport décentralisé : chaque appareil devient un nœud du réseau. Pas de serveurs centraux, pas de dépendance aux plateformes. En juillet 2026, deux personnes ont échangé leurs premiers messages en pair-à-pair direct — du relais cellulaire jusqu'à l'IPv6 sans intermédiaire — chiffrés de bout en bout, via des applications natives iOS, macOS et tvOS.",
+    tags: ["Rust", "TypeScript", "Swift", "QUIC", "P2P", "E2E Crypto", "NAT Traversal", "Freebox OS"],
     links: [
       { label: "Code", href: "https://github.com/malikkaraoui/ToM-protocol", kind: "code" },
       { label: "Medium", href: "https://medium.com/@karaoui.malik", kind: "article" },
@@ -237,11 +237,23 @@ export const projects = [
       sections: [
         {
           title: "Phases de développement",
-          body: "Phase 1 (TypeScript, WebRTC) : 8 épics sur 8 livrés — pile protocole complète, SDK développeur, démo Snake multijoueur P2P en navigateur. Phase 2 (Rust, QUIC) : transport natif validé — traversée NAT 100%, chiffrement E2E, messagerie de groupe avec failover de hub. Phase 3 en cours : convergence des deux piles en un protocole unifié.",
+          body: "Phase 1 (TypeScript, WebRTC) : 8 épics sur 8 livrés — pile protocole complète, SDK développeur, démo Snake multijoueur P2P en navigateur. Phase 2 (Rust, QUIC) : transport natif validé — traversée NAT 100%, chiffrement E2E, messagerie de groupe avec failover de hub. Phase 3 en cours : convergence des deux piles, plus une nouvelle couche d'applications natives Apple (iOS, macOS, tvOS) déjà déployée sur une flotte réelle d'appareils. La suite (R13+) vise le port-forwarding automatique pour l'auto-hébergement — la distribution publique plus large est conditionnée à cette étape.",
         },
         {
           title: "Résultats de tests réels",
-          body: "Stress test sur autoroute A40 (France↔Suisse) : 99,85% de fiabilité sur 2 752 pings, 54 minutes en continu, tunnels et changements de cellule inclus. Traversée NAT : 100% de réussite en LAN, 4G CGNAT et cross-border école Genève↔Freebox France. Latence directe post-hole-punch : 27–49 ms. Plus de 1 089 tests automatisés (771 TypeScript + 318 Rust).",
+          body: "Stress test sur autoroute A40 (France↔Suisse) : 99,85% de fiabilité sur 2 752 pings, 54 minutes en continu, tunnels et changements de cellule inclus. Traversée NAT : 100% de réussite en LAN, 4G CGNAT et cross-border école Genève↔Freebox France. Latence directe post-hole-punch : 27–49 ms. Suite de tests automatisée étendue en continu côté TypeScript et Rust, complétée par un nouveau banc de test « chaos » basé sur l'injection de pannes plutôt que sur le seul chemin nominal.",
+        },
+        {
+          title: "Le jalon P2P direct entre deux personnes",
+          body: "Le 17 juillet 2026, deux personnes ont échangé des messages chiffrés en pair-à-pair direct — d'abord via relais sur réseau cellulaire, puis en connexion IPv6 directe, sans aucun serveur intermédiaire. Un jalon symbolique pour un protocole pensé comme souverain dès l'origine.",
+        },
+        {
+          title: "Applications natives — tvOS, iOS, macOS",
+          body: "Au-dessus du transport Rust, une couche d'applications natives (SwiftUI, architecture MVVM) tourne sur une flotte de cinq appareils personnels : Mac, iPad, iPhone, Apple TV. Le pont Rust↔Swift passe par un xcframework FFI généré automatiquement.",
+        },
+        {
+          title: "Fiabilité, vitesse et sécurité",
+          body: "Le temps de reconnexion d'un nœud est passé de 45 secondes–2 minutes à moins d'une seconde ; celui de la flotte complète à moins de 18 secondes (release 2.1.0). Un test d'endurance de 25,5 heures a fait transiter environ 74 000 messages sans redémarrage ni crash. Côté sécurité, un exercice de red-team complet a ciblé la couche de preuve de présence — résistance Sybil, quorum de témoins, plafonds anti-DoS — et neutralisé les 6 scénarios d'attaque testés.",
         },
         {
           title: "Freebox & messagerie de groupe",
@@ -249,7 +261,7 @@ export const projects = [
         },
         {
           title: "Stack technique",
-          body: "Rust (QUIC via iroh, tokio async runtime, MessagePack, XChaCha20-Poly1305, HKDF-SHA256) pour le transport natif. TypeScript (WebRTC DataChannel, TweetNaCl.js, XSalsa20-Poly1305) pour la pile navigateur Phase 1. Cross-compilation ARM64 statique (cargo-zigbuild) pour NAS et Raspberry Pi.",
+          body: "Rust (QUIC via iroh, tokio async runtime, MessagePack, XChaCha20-Poly1305, HKDF-SHA256) pour le transport natif. TypeScript (WebRTC DataChannel, TweetNaCl.js, XSalsa20-Poly1305) pour la pile navigateur Phase 1. Swift/SwiftUI pour la couche d'applications natives Apple, reliée au cœur Rust via un xcframework FFI. Cross-compilation ARM64 statique (cargo-zigbuild) pour NAS et Raspberry Pi.",
         },
       ],
     },
