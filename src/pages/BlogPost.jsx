@@ -115,10 +115,11 @@ export default function BlogPost() {
                       <h2 className="blogpost__section-title">{block.title}</h2>
                       <table className="blogpost__table">
                         <tbody>
-                          {block.rows.map(([col1, col2], ri) => (
+                          {block.rows.map((cols, ri) => (
                             <tr key={ri}>
-                              <td className="blogpost__table-key">{col1}</td>
-                              <td className="blogpost__table-val">{col2}</td>
+                              {cols.map((col, ci) => (
+                                <td key={ci} className={ci === 0 ? 'blogpost__table-key' : 'blogpost__table-val'}>{col}</td>
+                              ))}
                             </tr>
                           ))}
                         </tbody>
@@ -134,6 +135,9 @@ export default function BlogPost() {
                     {block.body.split('\n\n').map((para, pi) => (
                       <p key={pi} className="blogpost__paragraph">{para}</p>
                     ))}
+                    {block.code && (
+                      <pre className="blogpost__code"><code>{block.code.text}</code></pre>
+                    )}
                   </motion.section>
                 )
               })}
