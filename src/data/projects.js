@@ -175,6 +175,34 @@ export const projects = [
     },
   },
   {
+    slug: "brickoff",
+    category: "produit",
+    title: "BrickOFF",
+    eyebrow: "iOS · IA embarquée · En développement",
+    description:
+      "BrickOFF scanne un tas de briques LEGO en vrac avec l'appareil photo et identifie chaque pièce — référence et couleur — grâce à un pipeline de vision entraîné sur mesure. L'app reconstitue l'inventaire, puis suggère les sets officiels déjà constructibles.",
+    tags: ["Swift", "SwiftUI", "CoreML", "PyTorch", "Vision", "iOS"],
+    links: [],
+    content: {
+      problem: "Les collectionneurs et les familles accumulent des tas de briques LEGO en vrac sans pouvoir en tirer parti : impossible de savoir quelles pièces on possède, ni quels sets on peut construire sans en racheter.",
+      solution: "Une photo suffit. BrickOFF détecte chaque brique, l'identifie par référence et couleur grâce à un pipeline de vision entraîné sur plus d'un million d'images, puis compare l'inventaire obtenu au catalogue officiel pour proposer les sets constructibles.",
+      sections: [
+        {
+          title: "Un pipeline de vision entraîné sur mesure",
+          body: "Détection (YOLO) et classification sur environ 1 000 références de pièces, identification de couleur déterministe en espace LAB. Le jeu d'entraînement combine plus d'1 million d'images certifiées et de la génération synthétique via Blender, qui a fait grimper le rappel de détection de 18 % à 51 %.",
+        },
+        {
+          title: "Une IA qui tient dans la poche",
+          body: "Modèle exporté en CoreML (7,6 Mo) et ONNX (14,9 Mo) pour tourner entièrement sur l'appareil — aucune image n'est envoyée à un serveur. Classification : 82,5 % top-1 / 98,1 % top-5 sur le jeu de test, 89 % top-1 sur photos réelles.",
+        },
+        {
+          title: "Statut",
+          body: "En développement actif — pipeline de scan, matching et inventaire fonctionnels. Interface et sortie App Store sont les prochaines étapes.",
+        },
+      ],
+    },
+  },
+  {
     slug: "masterclaude-atelier",
     category: "projet",
     title: "MasterClaude & Claude Atelier",
