@@ -90,7 +90,9 @@ export function renderLinkIcon(kind) {
 function ProjectList({ list, inView, indexOffset = 0 }) {
   return (
     <div className="projects__list">
-      {list.map((project, i) => (
+      {list.map((project, i) => {
+        const detailPath = project.detailPath ?? `/projects/${project.slug}`
+        return (
         <motion.article
           key={project.slug}
           className="project-row"
@@ -101,7 +103,7 @@ function ProjectList({ list, inView, indexOffset = 0 }) {
         >
           <div className="project-row__meta">
             <p className="project-row__eyebrow">{project.eyebrow}</p>
-            <Link to={`/projects/${project.slug}`} className="project-row__title-link">
+            <Link to={detailPath} className="project-row__title-link">
               <h3 className="project-row__title">{project.title}</h3>
               <span className="project-row__arrow" aria-hidden="true">→</span>
             </Link>
@@ -135,7 +137,7 @@ function ProjectList({ list, inView, indexOffset = 0 }) {
                 </a>
               ))}
               <Link
-                to={`/projects/${project.slug}`}
+                to={detailPath}
                 className="project-row__link project-row__link--detail"
                 aria-label={`Voir le détail de ${project.title}`}
               >
@@ -147,7 +149,8 @@ function ProjectList({ list, inView, indexOffset = 0 }) {
             </div>
           </div>
         </motion.article>
-      ))}
+        )
+      })}
     </div>
   )
 }

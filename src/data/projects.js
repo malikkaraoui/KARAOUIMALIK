@@ -146,6 +146,35 @@ export const projects = [
     },
   },
   {
+    slug: "yzphotos",
+    category: "produit",
+    title: "YZPhotos",
+    eyebrow: "iOS & iPadOS · Confidentialité totale · App Store en cours",
+    description:
+      "YZPhotos trie et fait le ménage dans des bibliothèques photo/vidéo de plusieurs téraoctets sur disque externe ou NAS, sans jamais tout copier sur l'appareil. Swipe façon Tinder pour garder ou jeter, détection automatique des doublons, zéro donnée collectée.",
+    tags: ["Swift", "SwiftUI", "iOS", "iPadOS", "GRDB", "SMB"],
+    links: [],
+    detailPath: "/YZPhotos",
+    content: {
+      problem: "Une bibliothèque de plusieurs centaines de milliers de photos et vidéos accumulées sur un disque externe ou un NAS devient impossible à trier sur iPhone ou iPad — il faudrait tout rapatrier en local, ce qui prend des heures et sature le stockage de l'appareil.",
+      solution: "YZPhotos se connecte directement au disque USB-C ou au partage réseau (SMB/NAS/Freebox) et affiche le contenu en streaming, sans copie préalable. Un geste façon Tinder pour garder ou jeter, une détection de doublons par hachage perceptuel, une corbeille différée instantanée et réversible.",
+      sections: [
+        {
+          title: "Vitesse sur réseau",
+          body: "93 000 fichiers scannés sur un disque réseau en environ 18 minutes, contre près de 3 heures avec une approche naïve — grâce à un pipeline Swift 6 en concurrence structurée (async/await, TaskGroup).",
+        },
+        {
+          title: "Zéro donnée collectée",
+          body: "Pas de compte, pas de cloud, pas de traqueur, pas d'analytics. Toute l'app tourne en local — c'est un choix d'architecture, pas une promesse marketing.",
+        },
+        {
+          title: "Statut",
+          body: "Utilisée quotidiennement en interne depuis plusieurs mois, stable sur USB-C comme sur réseau. La sortie sur l'App Store est en cours de finalisation.",
+        },
+      ],
+    },
+  },
+  {
     slug: "masterclaude-atelier",
     category: "projet",
     title: "MasterClaude & Claude Atelier",
