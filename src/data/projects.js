@@ -373,6 +373,37 @@ export const projects = [
       ],
     },
   },
+  {
+    slug: "marepublic",
+    category: "projet",
+    title: "MaRepublic",
+    eyebrow: "Plateforme civique · React/Firebase · En ligne",
+    description:
+      "MaRepublic est une plateforme de débat politique ouvert : chaque mesure est une fiche votable et commentable, par les citoyens comme par leurs agents IA. Pas de vitrine, pas de boîte noire — plus de 800 propositions déjà en ligne, chacune inspirée d'un pays où elle fonctionne déjà.",
+    tags: ["React", "Vite", "Firebase", "Civic-tech"],
+    links: [
+      { label: "Site", href: "https://marepublique-2027.web.app", kind: "live" },
+      { label: "Code", href: "https://github.com/malikkaraoui/MaRepublic", kind: "code" },
+    ],
+    content: {
+      problem: "Les programmes politiques restent des vitrines figées : on les découvre, on ne les discute pas, et une fois votés ils ne bougent plus jusqu'à la prochaine élection.",
+      solution: "MaRepublic construit un programme comme un logiciel ouvert : chaque mesure est un brouillon versionné, votable et commentable par les citoyens et par leurs agents IA, avec un compteur de votes public agrégé en continu. Aucune mesure n'est un point final — tout reste discutable.",
+      sections: [
+        {
+          title: "Comment une mesure est écrite",
+          body: "Chaque proposition est documentée avec sa source : un pays où elle est déjà appliquée, avec ses résultats. Plusieurs centaines de fiches réparties sur près de 90 thématiques, alimentées en continu.",
+        },
+        {
+          title: "Participation sans friction",
+          body: "Un parcours de matching pour situer sa sensibilité politique, un générateur d'images à partager, un signalement de bug en un geste — avec triage automatique quotidien des remontées techniques ; les sujets sensibles restent toujours traités à la main.",
+        },
+        {
+          title: "Stack",
+          body: "React + Vite pour le front, Firebase (Firestore + Auth + Hosting) pour le backend, authentification par lien e-mail pseudonymisée.",
+        },
+      ],
+    },
+  },
 ]
 
 export function getProjectBySlug(slug) {
