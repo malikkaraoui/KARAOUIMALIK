@@ -97,6 +97,7 @@ export default function ProjectPage() {
   const { title, eyebrow, description, tags, links, content, mediumUrl } = project
   const isLunii = slug === 'luniisync'
   const isBoites = slug === 'boites-a-livres'
+  const hasRichSections = content.sections.some(s => s.table || s.image)
 
   const stripeLinks = links.filter(l => l.kind === 'stripe')
   const otherLinks = links.filter(l => l.kind !== 'stripe')
@@ -274,7 +275,7 @@ export default function ProjectPage() {
           </motion.div>
         )}
 
-        <div className="project-page__body">
+        <div className={`project-page__body${hasRichSections ? ' project-page__body--single' : ''}`}>
           {isLunii ? (
             <>
               <motion.div className="project-page__section lunii-section--illus" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
@@ -355,7 +356,7 @@ export default function ProjectPage() {
               {content.sections.map((s, i) => (
                 <motion.div
                   key={s.title}
-                  className={`project-page__section${s.table ? ' project-page__section--wide' : ''}`}
+                  className="project-page__section"
                   variants={fadeUp}
                   initial="hidden"
                   animate="visible"

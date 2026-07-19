@@ -119,8 +119,9 @@
   gap: var(--sp-2);
 }
 
-.project-page__section--wide {
-  grid-column: 1 / -1;
+.project-page__body--single {
+  grid-template-columns: 1fr;
+  max-width: 48rem;
 }
 
 .project-page__section-title {
@@ -146,6 +147,7 @@
 
 .project-page__table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   margin-top: var(--sp-2);
 }
@@ -163,7 +165,7 @@
   font-size: var(--fs-14);
   font-weight: 600;
   color: var(--text-primary);
-  white-space: nowrap;
+  width: 30%;
 }
 
 .project-page__table-val {
