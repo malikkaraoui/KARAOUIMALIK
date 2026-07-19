@@ -178,26 +178,30 @@ export const projectsEn = [
   slug: "brickoff",
   category: "projet",
   title: "BrickOFF",
-  eyebrow: "iOS · On-device AI · In development",
+  eyebrow: "iOS · 100% on-device vision · Free, ad-supported",
   description:
-    "BrickOFF scans a pile of loose LEGO bricks with the camera and identifies every piece, part number, and color, using a custom-trained vision pipeline. The app rebuilds your inventory, then suggests which official sets you can already build.",
+    "BrickOFF scans a pile of loose LEGO bricks with the camera and identifies each piece, part number, and color, 100% on-device, no connection required. The app then suggests the sets you can actually build with exactly what you have, with step-by-step guidance.",
   tags: ["Swift", "SwiftUI", "CoreML", "PyTorch", "Vision", "iOS"],
   links: [],
   content: {
-    problem: "Collectors and families pile up loose LEGO bricks without being able to make anything of them: there's no way to know which pieces you own, or which sets you can build without buying more.",
-    solution: "A single photo is enough. BrickOFF detects every brick, identifies it by part number and color using a vision pipeline trained on more than a million images, then compares the resulting inventory against the official catalog to suggest buildable sets.",
+    problem: "A pile of loose LEGO, yours or the kind that thousands of people have sitting in bins of salvaged, inherited, mixed-up parts, is a useless asset: nobody wants to sort thousands of pieces by hand just to find out what they can build.",
+    solution: "A two-stage vision pipeline runs entirely on the phone, no photo ever leaves the device: detecting the pieces in the pile, classifying them across roughly 1,000 part numbers, and identifying color in LAB space. The app then compares the resulting inventory against the official Rebrickable catalog to suggest sets you can already build.",
     sections: [
       {
-        title: "A custom-trained vision pipeline",
-        body: "Detection (YOLO) and classification across roughly 1,000 part references, deterministic color identification in LAB space. The training set combines more than 1 million certified images with synthetic generation via Blender, which pushed detection recall from 18% to 51%.",
+        title: "Why two models instead of one",
+        body: "Single-class detection spots every piece in the pile and maximizes recall (miss nothing), then classification looks at each piece cropped in close-up for fine-grained precision across its ~1,000 possible part numbers. The two models improve independently. Architecture chosen: SSDLite320-MobileNetV3, picked as a starting baseline and then promoted to production candidate after proving itself end to end.",
       },
       {
-        title: "AI that fits in your pocket",
-        body: "Model exported to CoreML (7.6 MB) and ONNX (14.9 MB) to run entirely on-device: no image is ever sent to a server. Classification: 82.5% top-1 / 98.1% top-5 on the test set, 89% top-1 on real-world photos.",
+        title: "An ultra-light budget, kept",
+        body: "Detector exported to CoreML at 7.6 MB, half the fixed budget (15 MB), with bit-exact parity against the original PyTorch model. Classifier at around 22 MB. All training runs locally on a MacBook Pro M1, via PyTorch MPS, zero cloud.",
+      },
+      {
+        title: "Measured results",
+        body: "Detection mAP went from 0.679 to 0.826 over 4 days of iteration. The real gain: once an honest test judge was built on real dense piles never seen during training, recall on those piles jumped from 18% to 51%. Classification: 82.5% top-1 on the test set, 89% top-1 on real photos.",
       },
       {
         title: "Status",
-        body: "Actively in development: the scan, matching, and inventory pipeline is functional. The interface and App Store release are the next steps.",
+        body: "Legal is essentially wrapped up, the dataset holds 1.03 million certified images, iOS and the scan pipeline are functional (the mock runs, the real models still need to be wired in). Free, ad-supported. Next step: verdict on real piles, Rebrickable matching, then Android.",
       },
     ],
   },

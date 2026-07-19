@@ -142,6 +142,12 @@ export default function BlogPost() {
                     {block.code && (
                       <pre className="blogpost__code"><code>{block.code.text}</code></pre>
                     )}
+                    {block.image && (
+                      <figure className="blogpost__figure">
+                        <img src={block.image.src} alt={block.image.alt} loading="lazy" />
+                        {block.image.caption && <figcaption>{block.image.caption}</figcaption>}
+                      </figure>
+                    )}
                   </motion.section>
                 )
               })}

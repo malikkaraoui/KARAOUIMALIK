@@ -178,26 +178,30 @@ export const projects = [
     slug: "brickoff",
     category: "projet",
     title: "BrickOFF",
-    eyebrow: "iOS · IA embarquée · En développement",
+    eyebrow: "iOS · Vision 100 % embarquée · Gratuit, financé par la pub",
     description:
-      "BrickOFF scanne un tas de briques LEGO en vrac avec l'appareil photo et identifie chaque pièce, référence et couleur, grâce à un pipeline de vision entraîné sur mesure. L'app reconstitue l'inventaire, puis suggère les sets officiels déjà constructibles.",
+      "BrickOFF scanne un tas de briques LEGO en vrac avec l'appareil photo et identifie chaque pièce, référence et couleur, 100 % en local, sans connexion. L'app propose ensuite les sets réalisables avec exactement ce que vous avez, avec guidage pas à pas.",
     tags: ["Swift", "SwiftUI", "CoreML", "PyTorch", "Vision", "iOS"],
     links: [],
     content: {
-      problem: "Les collectionneurs et les familles accumulent des tas de briques LEGO en vrac sans pouvoir en tirer parti : impossible de savoir quelles pièces on possède, ni quels sets on peut construire sans en racheter.",
-      solution: "Une photo suffit. BrickOFF détecte chaque brique, l'identifie par référence et couleur grâce à un pipeline de vision entraîné sur plus d'un million d'images, puis compare l'inventaire obtenu au catalogue officiel pour proposer les sets constructibles.",
+      problem: "Un tas de LEGO en vrac, le vôtre ou celui de milliers de gens qui ont des bacs de pièces récupérées, héritées, mélangées, est un actif inutilisable : personne n'a envie de trier des milliers de pièces à la main pour savoir ce qu'il peut construire.",
+      solution: "Un pipeline de vision en deux étages tourne entièrement sur le téléphone, aucune photo n'est envoyée sur un serveur : détection des pièces dans le tas, classification sur environ 1 000 références, identification de la couleur en espace LAB. L'app compare ensuite l'inventaire obtenu au catalogue officiel Rebrickable pour proposer les sets déjà constructibles.",
       sections: [
         {
-          title: "Un pipeline de vision entraîné sur mesure",
-          body: "Détection (YOLO) et classification sur environ 1 000 références de pièces, identification de couleur déterministe en espace LAB. Le jeu d'entraînement combine plus d'1 million d'images certifiées et de la génération synthétique via Blender, qui a fait grimper le rappel de détection de 18 % à 51 %.",
+          title: "Pourquoi deux modèles plutôt qu'un",
+          body: "La détection mono-classe repère toutes les pièces dans le tas et maximise le rappel (ne rien manquer), puis la classification voit chaque pièce recadrée en gros plan pour une précision fine sur ses ~1 000 références possibles. Les deux modèles progressent indépendamment. Architecture retenue : SSDLite320-MobileNetV3, choisie comme référence de départ puis promue candidate de production après ses preuves de bout en bout.",
         },
         {
-          title: "Une IA qui tient dans la poche",
-          body: "Modèle exporté en CoreML (7,6 Mo) et ONNX (14,9 Mo) pour tourner entièrement sur l'appareil : aucune image n'est envoyée à un serveur. Classification : 82,5 % top-1 / 98,1 % top-5 sur le jeu de test, 89 % top-1 sur photos réelles.",
+          title: "Un budget ultra-léger, tenu",
+          body: "Détecteur exporté en CoreML à 7,6 Mo, la moitié du budget fixé (15 Mo), avec parité bit-fidèle face au modèle PyTorch d'origine. Classifieur à environ 22 Mo. Tout l'entraînement tourne en local sur un MacBook Pro M1, via PyTorch MPS, zéro cloud.",
+        },
+        {
+          title: "Résultats mesurés",
+          body: "mAP de détection passée de 0,679 à 0,826 en 4 jours d'itération. Le vrai gain : une fois un juge de test honnête construit sur de vrais tas denses jamais vus à l'entraînement, le rappel sur ces tas est passé de 18 % à 51 %. Classification : 82,5 % top-1 sur le jeu de test, 89 % top-1 sur photos réelles.",
         },
         {
           title: "Statut",
-          body: "En développement actif : pipeline de scan, matching et inventaire fonctionnels. Interface et sortie App Store sont les prochaines étapes.",
+          body: "Légal quasiment bouclé, dataset de 1,03 million d'images certifiées, iOS et pipeline de scan fonctionnels (le mock tourne, les vrais modèles restent à brancher). Gratuit, financé par la publicité. Prochaine étape : verdict sur de vrais tas, matching Rebrickable, puis Android.",
         },
       ],
     },
