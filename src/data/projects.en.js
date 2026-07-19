@@ -184,25 +184,53 @@ export const projectsEn = [
   tags: ["Swift", "SwiftUI", "CoreML", "PyTorch", "Vision", "iOS"],
   links: [],
   content: {
-    problem: "A pile of loose LEGO, yours or the kind that thousands of people have sitting in bins of salvaged, inherited, mixed-up parts, is a useless asset: nobody wants to sort thousands of pieces by hand just to find out what they can build.",
-    solution: "A two-stage vision pipeline runs entirely on the phone, no photo ever leaves the device: detecting the pieces in the pile, classifying them across roughly 1,000 part numbers, and identifying color in LAB space. The app then compares the resulting inventory against the official Rebrickable catalog to suggest sets you can already build.",
+    problem: "A pile of loose LEGO, yours or the kind that thousands of people have sitting in bins of salvaged, inherited, mixed-up parts, is a useless asset: nobody wants to sort thousands of pieces by hand. The few services that already offer this kind of recognition depend on costly cloud infrastructure and charge subscriptions around $39 a month, an absurd price for such an occasional use.",
+    solution: "A vision pipeline trained once, then run entirely on the phone: no cloud infrastructure to operate, so no recurring cost to pass on to the user. That's what makes a free, ad-supported model possible, or even a token subscription around $1 a month, where competitors charge $39 a month. Detection, classification across roughly 1,000 part numbers, and color identification all run 100% on-device; the app then compares the resulting inventory against the official Rebrickable catalog to suggest sets you can already build.",
     sections: [
-      {
-        title: "Why two models instead of one",
-        body: "Single-class detection spots every piece in the pile and maximizes recall (miss nothing), then classification looks at each piece cropped in close-up for fine-grained precision across its ~1,000 possible part numbers. The two models improve independently. Architecture chosen: SSDLite320-MobileNetV3, picked as a starting baseline and then promoted to production candidate after proving itself end to end.",
+    {
+      title: "Why two models instead of one",
+      body: "Single-class detection spots every piece in the pile and maximizes recall (miss nothing), then classification looks at each piece cropped in close-up for fine-grained precision across its ~1,000 possible part numbers. The two models improve independently.\n\nArchitecture choice (decision D11, locked in on 07/07 after 8 runs): SSDLite320-MobileNetV3 (torchvision, permissive BSD-3 license), picked as a starting baseline, promoted to production candidate after proving itself end to end. YOLOX and RT-DETR remain an escalation option if real-world targets aren't met.",
+    },
+    {
+      title: "An ultra-light budget, kept",
+      body: "Detector exported to CoreML at 7.6 MB, half the fixed budget (15 MB), with bit-exact parity against the original PyTorch model. Classifier at around 22 MB. All training runs locally on a MacBook Pro M1, via PyTorch MPS, zero cloud, which is exactly what removes the infrastructure cost competitors pass on through their subscription.",
+      table: { rows: [["Detector (.mlpackage)", "≤ 15 MB"], ["Classifier (.mlpackage)", "≤ 25 MB"], ["Palette + configs", "< 1 MB"], ["Rebrickable database (SQLite)", "≤ 80 MB"], ["Total assets", "≤ 120 MB"], ["Installed app (IPA)", "< 350 MB"]] },
+    },
+    {
+      title: "What's done",
+      body: "Legal (~95%): licenses verified (Rebrickable OK for commercial use, LDraw CC BY), BrickOFF trademark clear (zero conflict on TMview/EUIPO/USPTO), zero patent risk for the V1.5 blueprint approach.\n\nDataset: 1.03 million certified images (real and synthetic sources), audited, converted to YOLO format with numerical and visual validation.\n\nMobile export (dry run): CoreML at 7.6 MB and ONNX at 14.9 MB, perfect parity between the two formats (IoU 1.000 across 50 images), so the Android path is already technically proven.\n\niOS: navigation, camera permission, 22 passing tests, GitHub Actions CI.\n\nScan pipeline: camera, multi-frame aggregator, and review screen wired to the inventory (92 tests), all that's missing is wiring in the real models (the mock currently runs).\n\nInventory: local database persistence, scan cancellation, functional screen (48 tests).",
+    },
+    {
+      title: "The training log: what worked, what we learned",
+      table: { rows: [["det_v0 (05/07)", "0.679", "A mixed validation set (renders + photos) fools the automatic stopping criterion"], ["det_v0.1 (05/07)", "0.763", "Bugfix: horizontal flip wasn't flipping the boxes. +8.4 pts from a single fixed bug"], ["det_v1 (05/07)", "0.773", "Max recall 0.985: the model sees the pieces, it lacks confidence"], ["det_v2C (06/07)", "0.666", "Blender synthetic only, zero real photos: the renders do transfer to the real world"], ["det_v2A ⭐ (06/07)", "0.820", "70% real / 30% synthetic mix: the reference recipe, validated ever since"], ["det_v3 (06/07)", "0.826", "+ ±45° rotations and crop-zoom: best operational recall measured yet"], ["det_v4 (09/07)", "0.802", "Reveals the test judge was measuring the wrong case: on a real dense pile, the previous champion found only 20% of the pieces"], ["det_v4b ⭐ (10/07)", "0.822 single-piece", "Current champion, properly judged on holdout: recall on dense piles goes from 18% to 51% (×2.8)"]] },
+    },
+    {
+      title: "What the trajectory tells us",
+      body: "Overall trajectory: 0.679 to 0.826 mAP over 4 days, every gain traced back to its exact cause. Clean supervision (a bugfix) pays off more than any fine-tuning, and the real trap was methodological: the first test set didn't represent the real product case (a dense pile of 50 overlapping pieces). Once the right judge was built, real progress showed up: recall on a dense pile going from 18% to 51%.\n\nClassification (1,000 part numbers): 82.5% top-1 / 98.1% top-5 on the synthetic test set, 89.2% top-1 on real photos. The remaining confusions are almost all mold variants of the same piece, not vision errors but ambiguities in the catalog itself.",
+      image: {
+        src: "/brickoff/verif-annotations.jpg",
+        alt: "Grid of real photos with each detected piece outlined in a red box, including distractors (pen, cable, clothespin)",
+        caption: "Detector verification on real photos, with deliberate distractors to test for false positives.",
       },
-      {
-        title: "An ultra-light budget, kept",
-        body: "Detector exported to CoreML at 7.6 MB, half the fixed budget (15 MB), with bit-exact parity against the original PyTorch model. Classifier at around 22 MB. All training runs locally on a MacBook Pro M1, via PyTorch MPS, zero cloud.",
+    },
+    {
+      title: "Blender modeling",
+      body: "Lacking enough real photos of dense piles, the project generates its own scenes via Blender (headless EEVEE rendering, scripted LDraw import, 24,299 available pieces). Automatic annotation via Cryptomatte: a per-piece mask extracted straight from the render itself, guaranteed alignment.\n\nThe current batch (v2.1) has 12,000 scenes and 342,541 annotated pieces, generated overnight (about 13 hours of M1 compute): varied floors, non-LEGO distractors, densities from 0 to 75 pieces per scene. Winning recipe: the same 70% real / 30% synthetic mix per epoch, validated first in detection, carried over unchanged to classification.",
+      image: {
+        src: "/brickoff/synth-render.jpg",
+        alt: "Grid of synthetic Blender scenes of LEGO piles on different floors (tile, hardwood, plain)",
+        caption: "Synthetic v2.1 scenes: varied floors, non-LEGO distractors, different pile densities.",
       },
-      {
-        title: "Measured results",
-        body: "Detection mAP went from 0.679 to 0.826 over 4 days of iteration. The real gain: once an honest test judge was built on real dense piles never seen during training, recall on those piles jumped from 18% to 51%. Classification: 82.5% top-1 on the test set, 89% top-1 on real photos.",
+    },
+    {
+      title: "What's left to do",
+      body: "A final verdict on about 100 real photos of actual piles (10 to 40 pieces), the only judge that really counts. Improving localization precision on dense piles (recall has exploded, precision remains the next project). Wiring the real models into the iOS pipeline (currently: mock). Matching against the Rebrickable catalog, UI/UX, beta QA, then release.",
+      image: {
+        src: "/brickoff/piles-preannotation.jpg",
+        alt: "Grid of dense LEGO pile photos before annotation, showing overlapping pieces",
+        caption: "The next project: bounding-box precision on dense piles where pieces overlap.",
       },
-      {
-        title: "Status",
-        body: "Legal is essentially wrapped up, the dataset holds 1.03 million certified images, iOS and the scan pipeline are functional (the mock runs, the real models still need to be wired in). Free, ad-supported. Next step: verdict on real piles, Rebrickable matching, then Android.",
-      },
+    },
     ],
   },
 },

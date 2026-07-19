@@ -184,29 +184,57 @@ export const projects = [
     tags: ["Swift", "SwiftUI", "CoreML", "PyTorch", "Vision", "iOS"],
     links: [],
     content: {
-      problem: "Un tas de LEGO en vrac, le vôtre ou celui de milliers de gens qui ont des bacs de pièces récupérées, héritées, mélangées, est un actif inutilisable : personne n'a envie de trier des milliers de pièces à la main pour savoir ce qu'il peut construire.",
-      solution: "Un pipeline de vision en deux étages tourne entièrement sur le téléphone, aucune photo n'est envoyée sur un serveur : détection des pièces dans le tas, classification sur environ 1 000 références, identification de la couleur en espace LAB. L'app compare ensuite l'inventaire obtenu au catalogue officiel Rebrickable pour proposer les sets déjà constructibles.",
+      problem: "Un tas de LEGO en vrac, le vôtre ou celui de milliers de gens qui ont des bacs de pièces récupérées, héritées, mélangées, est un actif inutilisable : personne n'a envie de trier des milliers de pièces à la main. Les rares services qui proposent déjà ce genre de reconnaissance dépendent d'une infrastructure cloud coûteuse et facturent des abonnements de l'ordre de 39 € par mois, un prix délirant pour un usage aussi ponctuel.",
+      solution: "Un pipeline de vision entraîné une seule fois puis embarqué entièrement sur le téléphone : aucune infrastructure cloud à faire tourner, donc aucun coût récurrent à répercuter sur l'utilisateur. C'est ce qui rend possible un modèle gratuit financé par la publicité, voire un abonnement dérisoire de l'ordre d'1 € par mois, là où la concurrence facture 39 € par mois. Détection, classification sur environ 1 000 références et identification de la couleur tournent 100 % en local ; l'app compare ensuite l'inventaire obtenu au catalogue officiel Rebrickable pour proposer les sets déjà constructibles.",
       sections: [
-        {
-          title: "Pourquoi deux modèles plutôt qu'un",
-          body: "La détection mono-classe repère toutes les pièces dans le tas et maximise le rappel (ne rien manquer), puis la classification voit chaque pièce recadrée en gros plan pour une précision fine sur ses ~1 000 références possibles. Les deux modèles progressent indépendamment. Architecture retenue : SSDLite320-MobileNetV3, choisie comme référence de départ puis promue candidate de production après ses preuves de bout en bout.",
+      {
+        title: "Pourquoi deux modèles plutôt qu'un",
+        body: "La détection mono-classe repère toutes les pièces dans le tas et maximise le rappel (ne rien manquer), puis la classification voit chaque pièce recadrée en gros plan pour une précision fine sur ses ~1 000 références possibles. Les deux modèles progressent indépendamment.\n\nChoix d'architecture (décision D11, tranchée le 07/07 après 8 runs) : SSDLite320-MobileNetV3 (torchvision, licence BSD-3 permissive), retenu comme référence de départ, promu candidat de production après avoir fait ses preuves de bout en bout. YOLOX et RT-DETR restent une option d'escalade si les cibles réelles ne sont pas atteintes.",
+      },
+      {
+        title: "Un budget ultra-léger, tenu",
+        body: "Détecteur exporté en CoreML à 7,6 Mo, la moitié du budget fixé (15 Mo), avec parité bit-fidèle face au modèle PyTorch d'origine. Classifieur à environ 22 Mo. Tout l'entraînement tourne en local sur un MacBook Pro M1, via PyTorch MPS, zéro cloud, ce qui élimine justement le coût d'infrastructure que la concurrence répercute sur l'abonnement.",
+        table: { rows: [["Détecteur (.mlpackage)", "≤ 15 Mo"], ["Classifieur (.mlpackage)", "≤ 25 Mo"], ["Palette + configs", "< 1 Mo"], ["Base Rebrickable (SQLite)", "≤ 80 Mo"], ["Total assets", "≤ 120 Mo"], ["App installée (IPA)", "< 350 Mo"]] },
+      },
+      {
+        title: "Ce qui est fait",
+        body: "Légal (~95 %) : licences vérifiées (Rebrickable OK commercial, LDraw CC BY), marque BrickOFF libre (zéro conflit TMview/EUIPO/USPTO), risque brevet nul pour l'approche blueprints V1.5.\n\nDataset : 1,03 million d'images certifiées (sources réelles et synthétique), audité, converti au format YOLO avec validation numérique et visuelle.\n\nExport mobile (dry-run) : CoreML 7,6 Mo et ONNX 14,9 Mo, parité parfaite entre les deux formats (IoU 1.000 sur 50 images), la voie Android est donc déjà prouvée techniquement.\n\niOS : navigation, permission caméra, 22 tests verts, CI GitHub Actions.\n\nPipeline de scan : caméra, agrégateur multi-frames et écran de revue branché sur l'inventaire (92 tests), il ne manque que le branchement des vrais modèles (le mock tourne actuellement).\n\nInventaire : persistance en base locale, annulation de scan, écran fonctionnel (48 tests).",
+      },
+      {
+        title: "Le journal d'entraînement : ce qui a marché, ce qu'on a appris",
+        table: { rows: [["det_v0 (05/07)", "0,679", "Une val mélangée (rendus + photos) trompe l'arrêt automatique"], ["det_v0.1 (05/07)", "0,763", "Bugfix : le flip horizontal ne retournait pas les boîtes. +8,4 pts d'un seul bug corrigé"], ["det_v1 (05/07)", "0,773", "Rappel max 0,985 : le modèle voit les pièces, il manque de confiance"], ["det_v2C (06/07)", "0,666", "Synthétique Blender seul, zéro photo réelle : le rendu transfère bel et bien au réel"], ["det_v2A ⭐ (06/07)", "0,820", "Mélange 70 % réel / 30 % synthétique : recette de référence, validée depuis"], ["det_v3 (06/07)", "0,826", "+ rotations ±45° et crop-zoom : meilleur rappel opérationnel jamais mesuré"], ["det_v4 (09/07)", "0,802", "Révèle que le juge de test mesurait le mauvais cas : sur un vrai tas dense, l'ancien champion ne trouvait que 20 % des pièces"], ["det_v4b ⭐ (10/07)", "0,822 mono-pièce", "Champion actuel, jugé proprement en holdout : le rappel sur tas dense passe de 18 % à 51 % (×2,8)"]] },
+      },
+      {
+        title: "Ce que la trajectoire raconte",
+        body: "Trajectoire globale : 0,679 à 0,826 de mAP en 4 jours, chaque gain rattaché à sa cause exacte. Une supervision propre (un bugfix) rapporte plus que n'importe quel réglage fin, et le vrai piège a été méthodologique : le premier jeu de test ne représentait pas le cas produit réel (un tas dense de 50 pièces qui se chevauchent). Une fois le bon juge construit, le vrai progrès est apparu : passer de 18 % à 51 % de rappel sur un tas dense.\n\nClassification (1 000 références) : 82,5 % top-1 / 98,1 % top-5 sur test synthétique, 89,2 % top-1 sur photos réelles. Les confusions résiduelles sont presque toutes des variantes de moules de la même pièce, pas des erreurs de vision mais des ambiguïtés du catalogue lui-même.",
+        image: {
+          src: "/brickoff/verif-annotations.jpg",
+          alt: "Grille de photos réelles avec chaque pièce détectée entourée d'une boîte rouge, distracteurs inclus (stylo, câble, pince à linge)",
+          caption: "Vérification du détecteur sur photos réelles, avec distracteurs volontaires pour tester les faux positifs.",
         },
-        {
-          title: "Un budget ultra-léger, tenu",
-          body: "Détecteur exporté en CoreML à 7,6 Mo, la moitié du budget fixé (15 Mo), avec parité bit-fidèle face au modèle PyTorch d'origine. Classifieur à environ 22 Mo. Tout l'entraînement tourne en local sur un MacBook Pro M1, via PyTorch MPS, zéro cloud.",
+      },
+      {
+        title: "La modélisation Blender",
+        body: "Faute d'assez de photos réelles de tas denses, le projet génère ses propres scènes via Blender (rendu EEVEE headless, import LDraw scripté, 24 299 pièces disponibles). Annotations automatiques par Cryptomatte : masque par pièce extrait du rendu lui-même, alignement garanti.\n\nLe tir actuel (v2.1) compte 12 000 scènes et 342 541 pièces annotées, générées en une nuit (environ 13 h de M1) : sols variés, distracteurs non-LEGO, densités de 0 à 75 pièces par scène. Recette gagnante : le même mélange 70 % réel / 30 % synthétique par epoch, validé d'abord en détection, repris tel quel en classification.",
+        image: {
+          src: "/brickoff/synth-render.jpg",
+          alt: "Grille de scènes Blender synthétiques de tas de LEGO sur différents sols (carrelage, parquet, uni)",
+          caption: "Scènes synthétiques v2.1 : sols variés, distracteurs non-LEGO, densités de tas différentes.",
         },
-        {
-          title: "Résultats mesurés",
-          body: "mAP de détection passée de 0,679 à 0,826 en 4 jours d'itération. Le vrai gain : une fois un juge de test honnête construit sur de vrais tas denses jamais vus à l'entraînement, le rappel sur ces tas est passé de 18 % à 51 %. Classification : 82,5 % top-1 sur le jeu de test, 89 % top-1 sur photos réelles.",
+      },
+      {
+        title: "Ce qu'il reste à faire",
+        body: "Un verdict définitif sur environ 100 photos réelles de vrais tas (10 à 40 pièces), le seul juge qui compte vraiment. Améliorer la précision de cadrage sur les tas denses (le rappel a explosé, la précision reste le prochain chantier). Brancher les vrais modèles dans le pipeline iOS (aujourd'hui : mock). Matching avec le catalogue Rebrickable, UI/UX, QA bêta, puis release.",
+        image: {
+          src: "/brickoff/piles-preannotation.jpg",
+          alt: "Grille de photos de tas denses de LEGO avant annotation, montrant des pièces qui se chevauchent",
+          caption: "Le prochain chantier : la précision de cadrage sur des tas denses où les pièces se chevauchent.",
         },
-        {
-          title: "Statut",
-          body: "Légal quasiment bouclé, dataset de 1,03 million d'images certifiées, iOS et pipeline de scan fonctionnels (le mock tourne, les vrais modèles restent à brancher). Gratuit, financé par la publicité. Prochaine étape : verdict sur de vrais tas, matching Rebrickable, puis Android.",
-        },
+      },
       ],
     },
-  },
-  {
+},
+{
     slug: "masterclaude-atelier",
     category: "projet",
     title: "MasterClaude & Claude Atelier",

@@ -343,26 +343,47 @@ export default function ProjectPage() {
           ) : (
             <>
               <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={6}>
-                <h2 className="project-page__section-title">Le problème</h2>
+                <h2 className="project-page__section-title">{t.projectPage.problem}</h2>
                 <p className="project-page__section-body">{content.problem}</p>
               </motion.div>
 
               <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={7}>
-                <h2 className="project-page__section-title">La solution</h2>
+                <h2 className="project-page__section-title">{t.projectPage.solution}</h2>
                 <p className="project-page__section-body">{content.solution}</p>
               </motion.div>
 
               {content.sections.map((s, i) => (
                 <motion.div
                   key={s.title}
-                  className="project-page__section"
+                  className={`project-page__section${s.table ? ' project-page__section--wide' : ''}`}
                   variants={fadeUp}
                   initial="hidden"
                   animate="visible"
                   custom={7 + i}
                 >
                   <h2 className="project-page__section-title">{s.title}</h2>
-                  <p className="project-page__section-body">{s.body}</p>
+                  {s.body && s.body.split('\n\n').map((para, pi) => (
+                    <p key={pi} className="project-page__section-body">{para}</p>
+                  ))}
+                  {s.table && (
+                    <table className="project-page__table">
+                      <tbody>
+                        {s.table.rows.map((cols, ri) => (
+                          <tr key={ri}>
+                            {cols.map((col, ci) => (
+                              <td key={ci} className={ci === 0 ? 'project-page__table-key' : 'project-page__table-val'}>{col}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                  {s.image && (
+                    <figure className="project-page__figure">
+                      <img src={s.image.src} alt={s.image.alt} loading="lazy" />
+                      {s.image.caption && <figcaption>{s.image.caption}</figcaption>}
+                    </figure>
+                  )}
                 </motion.div>
               ))}
             </>
