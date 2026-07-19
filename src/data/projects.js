@@ -147,7 +147,7 @@ export const projects = [
   },
   {
     slug: "yzphotos",
-    category: "produit",
+    category: "projet",
     title: "YZPhotos",
     eyebrow: "iOS & iPadOS · Confidentialité totale · App Store en cours",
     description:
@@ -176,7 +176,7 @@ export const projects = [
   },
   {
     slug: "brickoff",
-    category: "produit",
+    category: "projet",
     title: "BrickOFF",
     eyebrow: "iOS · IA embarquée · En développement",
     description:
