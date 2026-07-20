@@ -355,6 +355,87 @@
   }
 }
 
+/* ── Generic project hero banner (any project with a `hero` image) ──────────── */
+
+.project-hero {
+  width: 100%;
+  margin-bottom: var(--sp-8);
+  overflow: hidden;
+}
+
+.project-hero img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.project-hero--graph {
+  height: 340px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+@media (max-width: 700px) {
+  .project-hero img,
+  .project-hero--graph {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-hero img,
+  .project-hero--graph {
+    height: 150px;
+  }
+}
+
+/* ── Generic project stats strip (any project with stats.highlights) ────────── */
+
+.project-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin: 0 0 var(--sp-8);
+}
+
+.project-stats__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1 1 140px;
+  padding: var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.project-stats__value {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.project-stats__label {
+  font-family: 'Syne', sans-serif;
+  font-size: var(--fs-12);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 480px) {
+  .project-stats__item {
+    flex: 1 1 45%;
+  }
+}
+
 /* ── LuniiSync hero banner ─────────────────────────────────────────────────── */
 
 .project-page--lunii {

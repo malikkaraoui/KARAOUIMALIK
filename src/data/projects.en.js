@@ -56,6 +56,15 @@ export const projectsEn = [
       kind: "store",
     },
   ],
+  hero: { src: "/okazcar/panel.jpg", alt: "The OKazCar panel injected into a Leboncoin listing" },
+  stats: {
+    highlights: [
+      { value: "178", label: "brands" },
+      { value: "3,200+", label: "models" },
+      { value: "546,000", label: "cataloged versions" },
+      { value: "12", label: "countries" },
+    ],
+  },
   content: {
     problem: "Buying a used car is an obstacle course: dozens of listings across multiple platforms, prices that can double from one seller to the next, opaque histories. Most buyers end up deciding on gut feeling rather than data.",
     solution: "OKazCar injects a full analysis panel directly into listing pages: a reliability score across 12 criteria, real-time price positioning against the market, anomaly alerts, manufacturer recalls with official links, and a personalized AI-generated email to contact the seller.",
@@ -281,6 +290,14 @@ export const projectsEn = [
   links: [
     { label: "Code", href: "https://github.com/malikkaraoui/LOCAL.IA.GENERATED_COMPTE_RENDU", kind: "code" },
   ],
+  stats: {
+    highlights: [
+      { value: "43+", label: "notes" },
+      { value: "563", label: "connections" },
+      { value: "< 10 ms", label: "QMD latency" },
+      { value: "0", label: "bytes uploaded" },
+    ],
+  },
   content: {
     problem: "Our thoughts live in ten places at once: orphaned Markdown notes, YouTube links never watched again, photos of sketches buried in the Camera Roll, important emails lost in the pile, forgotten voice memos, text threads that hold crucial decisions. We spend hours hunting for thoughts we've already had. And when we talk to an LLM, it starts from zero: it knows nothing about us.",
     solution: "The Obsidian vault is a digital safe: a local, encrypted folder that centralizes everything that makes up your thinking. Structured Markdown notes, annotated links, images, PDFs, audio transcripts, text message exports. A hybrid search engine (BM25 plus vector embeddings via Ollama) indexes the entire vault locally. Your LLM of choice (Mistral, Ollama, Claude via API) queries this vault like a long-term memory. It knows what you've read, thought, decided. Without a single piece of data ever leaving your machine.",
@@ -320,6 +337,14 @@ export const projectsEn = [
     { label: "Code", href: "https://github.com/malikkaraoui/ToM-protocol", kind: "code" },
     { label: "Medium", href: "https://medium.com/@karaoui.malik", kind: "article" },
   ],
+  stats: {
+    highlights: [
+      { value: "765", label: "commits" },
+      { value: "117", label: "builds" },
+      { value: "1,809", label: "messages delivered" },
+      { value: "< 1 s", label: "reconnect" },
+    ],
+  },
   content: {
     problem: "Every message we send passes through servers we don't control. An operator can cut off a conversation, read the metadata, or simply go down. The network's resilience depends on the goodwill of a handful of centralized players.",
     solution: "ToM Protocol is a P2P transport layer where devices connect directly over QUIC with automatic NAT traversal. Identity is cryptographic (Ed25519), messages are encrypted and signed (XChaCha20-Poly1305), with no central PKI. Every node is both a client and a potential relay.",
@@ -390,6 +415,7 @@ export const projectsEn = [
     { label: "Code", href: "https://github.com/malikkaraoui/PLANIZZA-", kind: "code" },
     { label: "Live", href: "https://pizzaella.fr", kind: "live" },
   ],
+  hero: { src: "/pizzaella/hero.jpg", alt: "Pizzaella home screen: find the nearest pizza food trucks" },
   content: {
     problem: "Independent pizzerias and food trucks juggle several disconnected tools: a register for in-person sales, a third-party tool for click-and-collect, nothing for deliveries. Complexity eats the margin.",
     solution: "A unified SaaS platform: an online ordering interface, a real-time management dashboard, Stripe integration for payments, delivery zone management. One tool for everything.",
@@ -417,6 +443,7 @@ export const projectsEn = [
     { label: "Website", href: "https://marepublique-2027.web.app", kind: "live" },
     { label: "Code", href: "https://github.com/malikkaraoui/MaRepublic", kind: "code" },
   ],
+  hero: { src: "/marepublic/programme.jpg", alt: "MaRepublic's five policy areas, presented as cards" },
   content: {
     problem: "Political platforms remain static showcases: you discover them, you don't get to debate them, and once voted in they don't move again until the next election.",
     solution: "MaRepublic builds a platform like open-source software: every measure is a versioned draft that citizens and their AI agents alike can vote on and comment on, with a public vote counter aggregated continuously. No measure is ever final: everything stays open to discussion.",

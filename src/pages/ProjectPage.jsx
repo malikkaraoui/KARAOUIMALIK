@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { getProjectBySlugForLocale } from '../data/locale'
 import { useLocale, useStrings, useLocalizedPath } from '../i18n/LocaleContext'
 import { renderLinkIcon } from '../components/Projects'
+import ObsidianGraph from '../components/ObsidianGraph'
 import './ProjectPage.css'
 
 const ease = [0.16, 1, 0.3, 1]
@@ -97,6 +98,7 @@ export default function ProjectPage() {
   const { title, eyebrow, description, tags, links, content, mediumUrl } = project
   const isLunii = slug === 'luniisync'
   const isBoites = slug === 'boites-a-livres'
+  const isSecondCerveau = slug === 'second-cerveau'
   const hasRichSections = content.sections.some(s => s.table || s.image)
 
   const stripeLinks = links.filter(l => l.kind === 'stripe')
@@ -122,6 +124,26 @@ export default function ProjectPage() {
           transition={{ duration: 0.7, ease }}
         >
           <img src="/boites-a-livres/hero.png" alt={p.boitesHeroAlt} />
+        </motion.div>
+      )}
+      {!isLunii && !isBoites && project.hero && (
+        <motion.div
+          className="project-hero"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease }}
+        >
+          <img src={project.hero.src} alt={project.hero.alt} />
+        </motion.div>
+      )}
+      {isSecondCerveau && (
+        <motion.div
+          className="project-hero project-hero--graph"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease }}
+        >
+          <ObsidianGraph />
         </motion.div>
       )}
 
@@ -232,16 +254,19 @@ export default function ProjectPage() {
           </motion.div>
         )}
 
+        {project.stats?.highlights && (
+          <motion.div className="project-stats" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
+            {project.stats.highlights.map(h => (
+              <div key={h.label} className="project-stats__item">
+                <span className="project-stats__value">{h.value}</span>
+                <span className="project-stats__label">{h.label}</span>
+              </div>
+            ))}
+          </motion.div>
+        )}
+
         {isBoites && project.stats && (
-          <motion.div className="boites-stats" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
-            <div className="boites-stats__highlights">
-              {project.stats.highlights.map(h => (
-                <div key={h.label} className="boites-stats__highlight">
-                  <span className="boites-stats__value">{h.value}</span>
-                  <span className="boites-stats__label">{h.label}</span>
-                </div>
-              ))}
-            </div>
+          <motion.div className="boites-stats" variants={fadeUp} initial="hidden" animate="visible" custom={5.5}>
             <div className="boites-stats__tables">
               <div className="boites-stats__table">
                 <h3 className="boites-stats__table-title">{t.projectPage.byZone}</h3>

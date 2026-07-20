@@ -56,6 +56,15 @@ export const projects = [
         kind: "store",
       },
     ],
+    hero: { src: "/okazcar/panel.jpg", alt: "Le panneau OKazCar injecté dans une annonce Leboncoin" },
+    stats: {
+      highlights: [
+        { value: "178", label: "marques" },
+        { value: "3 200+", label: "modèles" },
+        { value: "546 000", label: "versions cataloguées" },
+        { value: "12", label: "pays" },
+      ],
+    },
     content: {
       problem: "Acheter une voiture d'occasion est un parcours du combattant : des dizaines d'annonces sur plusieurs plateformes, des prix qui varient du simple au double, des historiques opaques. La majorité des acheteurs prennent leur décision sur des intuitions plutôt que des données.",
       solution: "OKazCar injecte directement dans les pages d'annonces un panneau d'analyse complet : score de fiabilité sur 12 critères, position du prix par rapport au marché en temps réel, alertes anomalies, rappels constructeur avec liens officiels, et un email personnalisé généré par IA pour contacter le vendeur.",
@@ -281,6 +290,14 @@ export const projects = [
     links: [
       { label: "Code", href: "https://github.com/malikkaraoui/LOCAL.IA.GENERATED_COMPTE_RENDU", kind: "code" },
     ],
+    stats: {
+      highlights: [
+        { value: "43+", label: "notes" },
+        { value: "563", label: "connexions" },
+        { value: "< 10 ms", label: "latence QMD" },
+        { value: "0", label: "bytes uploadés" },
+      ],
+    },
     content: {
       problem: "Nos pensées vivent dans dix endroits à la fois : des notes Markdown orphelines, des liens YouTube jamais relus, des photos de croquis dans Camera Roll, des mails importants enfouis, des vocaux oubliés, des conversations SMS qui contiennent des décisions cruciales. On passe des heures à chercher ce qu'on a déjà pensé. Et quand on parle à un LLM, il repart de zéro : il ne sait rien de nous.",
       solution: "Le vault Obsidian est un coffre-fort numérique : un dossier local chiffré qui centralise tout ce qui constitue votre pensée. Notes Markdown structurées, liens annotés, images, PDFs, transcriptions audio, exports SMS. Un moteur de recherche hybride (BM25 + embeddings vectoriels via Ollama) indexe l'intégralité du vault en local. Votre LLM favori (Mistral, Ollama, Claude via API) interroge ce coffre comme une mémoire longue terme. Il sait ce que vous avez lu, pensé, décidé. Sans jamais sortir une seule donnée de votre machine.",
@@ -320,6 +337,14 @@ export const projects = [
       { label: "Code", href: "https://github.com/malikkaraoui/ToM-protocol", kind: "code" },
       { label: "Medium", href: "https://medium.com/@karaoui.malik", kind: "article" },
     ],
+    stats: {
+      highlights: [
+        { value: "765", label: "commits" },
+        { value: "117", label: "builds" },
+        { value: "1 809", label: "messages livrés" },
+        { value: "< 1 s", label: "reconnexion" },
+      ],
+    },
     content: {
       problem: "Chaque message qu'on envoie passe par des serveurs que l'on ne contrôle pas. Un opérateur peut couper une conversation, lire les métadonnées, tomber en panne. La résilience du réseau dépend de la bonne volonté de quelques acteurs centralisés.",
       solution: "ToM Protocol est une couche de transport P2P où les appareils se connectent directement via QUIC avec traversée NAT automatique. L'identité est cryptographique (Ed25519), les messages sont chiffrés et signés (XChaCha20-Poly1305), sans PKI centrale. Chaque nœud est à la fois client et relais potentiel.",
@@ -390,6 +415,7 @@ export const projects = [
       { label: "Code", href: "https://github.com/malikkaraoui/PLANIZZA-", kind: "code" },
       { label: "Live", href: "https://pizzaella.fr", kind: "live" },
     ],
+    hero: { src: "/pizzaella/hero.jpg", alt: "Écran d'accueil Pizzaella : trouver les food-trucks à pizza les plus proches" },
     content: {
       problem: "Les pizzaïolos indépendants et les food-trucks jonglent entre plusieurs outils sans intégration : une caisse pour le physique, un outil tiers pour le click & collect, rien pour les livraisons. La complexité tue la marge.",
       solution: "Une plateforme SaaS unifiée : interface de prise de commande en ligne, dashboard de gestion en temps réel, intégration Stripe pour les paiements, gestion des zones de livraison. Un seul outil pour tout.",
@@ -417,6 +443,7 @@ export const projects = [
       { label: "Site", href: "https://marepublique-2027.web.app", kind: "live" },
       { label: "Code", href: "https://github.com/malikkaraoui/MaRepublic", kind: "code" },
     ],
+    hero: { src: "/marepublic/programme.jpg", alt: "Les cinq axes du programme MaRepublic, présentés en fiches" },
     content: {
       problem: "Les programmes politiques restent des vitrines figées : on les découvre, on ne les discute pas, et une fois votés ils ne bougent plus jusqu'à la prochaine élection.",
       solution: "MaRepublic construit un programme comme un logiciel ouvert : chaque mesure est un brouillon versionné, votable et commentable par les citoyens et par leurs agents IA, avec un compteur de votes public agrégé en continu. Aucune mesure n'est un point final : tout reste discutable.",
