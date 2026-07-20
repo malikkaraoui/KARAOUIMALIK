@@ -399,6 +399,7 @@
   border-radius: 38px;
   overflow: hidden;
   background: #000;
+  aspect-ratio: 1170 / 2532;
 }
 
 .yzp-iphone--main .yzp-iphone__screen {
@@ -406,9 +407,37 @@
 }
 
 .yzp-iphone__screen img {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Mur de photos qui tuile à l'infini (iPhone central), piloté au scroll */
+.yzp-grid {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: center 0;
+  will-change: background-position;
+}
+
+/* Léger assombrissement haut/bas pour masquer la couture de la boucle */
+.yzp-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0) 14%,
+    rgba(0, 0, 0, 0) 86%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
 }
 
 .yzp-iphone__island {

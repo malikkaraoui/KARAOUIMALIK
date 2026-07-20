@@ -25,7 +25,7 @@ const T = {
     iconAlt: "Icône de l'app YZPhotos : une faille sépare deux photos, croix rouge à gauche, coche verte à droite",
     screens: [
       { src: '/yzphotos/screens/trier.jpg', alt: "Écran Trier de YZPhotos : analyse en cours, 2 000 fichiers découverts sur le disque" },
-      { src: '/yzphotos/screens/photos.jpg', alt: "Écran Photos de YZPhotos : grille de photos de montagne chargée en streaming depuis le disque externe" },
+      { src: '/yzphotos/screens/photos-grid.jpg', grid: true, alt: "Bibliothèque photo de YZPhotos qui défile : des dizaines de paysages de montagne chargés en streaming depuis le disque externe" },
       { src: '/yzphotos/screens/stats.jpg', alt: "Écran Statistiques de YZPhotos : 73 097 fichiers et 552 Go indexés, 64 789 photos, 8 308 vidéos" },
     ],
     eyebrow: 'iOS · iPhone · Application photo',
@@ -48,7 +48,7 @@ const T = {
     iconAlt: 'YZPhotos app icon: a crack splits two photos, red cross on the left, green check on the right',
     screens: [
       { src: '/yzphotos/screens/trier.jpg', alt: 'YZPhotos Sort screen: analysis in progress, 2,000 files discovered on the drive' },
-      { src: '/yzphotos/screens/photos.jpg', alt: 'YZPhotos Photos screen: a grid of mountain photos streamed from the external drive' },
+      { src: '/yzphotos/screens/photos-grid.jpg', grid: true, alt: 'YZPhotos photo library scrolling: dozens of mountain landscapes streamed from the external drive' },
       { src: '/yzphotos/screens/stats.jpg', alt: 'YZPhotos Statistics screen: 73,097 files and 552 GB indexed, 64,789 photos, 8,308 videos' },
     ],
     eyebrow: 'iOS · iPhone · Photo app',
@@ -141,11 +141,20 @@ export default function YZPhotosPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease }}
         >
-          {t.screens.map((screen, i) => (
-            <div key={screen.src} className={`yzp-iphone${i === 1 ? ' yzp-iphone--main' : ''}`}>
+          {t.screens.map((screen) => (
+            <div key={screen.src} className={`yzp-iphone${screen.grid ? ' yzp-iphone--main' : ''}`}>
               <div className="yzp-iphone__buttons" aria-hidden="true" />
               <div className="yzp-iphone__screen">
-                <img src={screen.src} alt={screen.alt} loading="lazy" />
+                {screen.grid ? (
+                  <div
+                    className="yzp-grid"
+                    role="img"
+                    aria-label={screen.alt}
+                    style={{ backgroundImage: `url(${screen.src})` }}
+                  />
+                ) : (
+                  <img src={screen.src} alt={screen.alt} loading="lazy" />
+                )}
                 <div className="yzp-iphone__island" aria-hidden="true" />
               </div>
             </div>

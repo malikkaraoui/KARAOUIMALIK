@@ -171,6 +171,28 @@ export default function useScrollEffects() {
         )
       })
 
+      // ── YZPhotos : le mur de photos de l'iPhone central défile à l'infini au scroll
+      const grid = document.querySelector('.yzp-grid')
+      if (grid) {
+        const showcase = grid.closest('.yzp-showcase')
+        // ratio de la tuile = hauteur/ largeur de l'image (600 × 867)
+        const RATIO = 867 / 600
+        let tileH = grid.clientWidth * RATIO
+        let wrapY = gsap.utils.wrap(-tileH, 0)
+        ScrollTrigger.create({
+          trigger: showcase,
+          start: 'top bottom',
+          end: 'bottom top',
+          onRefresh: () => {
+            tileH = grid.clientWidth * RATIO
+            wrapY = gsap.utils.wrap(-tileH, 0)
+          },
+          onUpdate: (self) => {
+            grid.style.backgroundPosition = 'center ' + wrapY(-self.scroll() * 0.28) + 'px'
+          },
+        })
+      }
+
       // ── Figures d'articles et de pages projet : reveal net au scroll
       gsap.utils.toArray('.project-page__figure img, .blogpost__figure img').forEach((img) => {
         gsap.fromTo(img,
