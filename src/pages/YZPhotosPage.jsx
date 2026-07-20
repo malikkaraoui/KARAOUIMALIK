@@ -23,9 +23,11 @@ const T = {
   fr: {
     home: 'Accueil',
     iconAlt: "Icône de l'app YZPhotos : une faille sépare deux photos, croix rouge à gauche, coche verte à droite",
-    showcaseAria: "Maquette de l'interface YZPhotos : une photo en cours de tri, boutons jeter et garder, compteur 12 431 sur 93 006",
-    deckMeta: 'IMG_4127 · 4,2 Mo',
-    deckCount: '12 431 / 93 006',
+    screens: [
+      { src: '/yzphotos/screens/trier.jpg', alt: "Écran Trier de YZPhotos : analyse en cours, 2 000 fichiers découverts sur le disque" },
+      { src: '/yzphotos/screens/photos.jpg', alt: "Écran Photos de YZPhotos : grille de photos de montagne chargée en streaming depuis le disque externe" },
+      { src: '/yzphotos/screens/stats.jpg', alt: "Écran Statistiques de YZPhotos : 73 097 fichiers et 552 Go indexés, 64 789 photos, 8 308 vidéos" },
+    ],
     eyebrow: 'iOS · iPhone · Application photo',
     desc: "YZPhotos est une application photo pour iPhone pensée autour d'un principe non négociable : vos images ne quittent jamais votre appareil. Pas de compte, pas de cloud, pas de traqueurs : juste vos photos, chez vous.",
     tags: ['iOS', 'iPhone', 'Photo', '100 % hors-ligne', 'Sans compte'],
@@ -44,9 +46,11 @@ const T = {
   en: {
     home: 'Home',
     iconAlt: 'YZPhotos app icon: a crack splits two photos, red cross on the left, green check on the right',
-    showcaseAria: 'YZPhotos interface mockup: a photo being sorted, trash and keep buttons, counter 12,431 of 93,006',
-    deckMeta: 'IMG_4127 · 4.2 MB',
-    deckCount: '12,431 / 93,006',
+    screens: [
+      { src: '/yzphotos/screens/trier.jpg', alt: 'YZPhotos Sort screen: analysis in progress, 2,000 files discovered on the drive' },
+      { src: '/yzphotos/screens/photos.jpg', alt: 'YZPhotos Photos screen: a grid of mountain photos streamed from the external drive' },
+      { src: '/yzphotos/screens/stats.jpg', alt: 'YZPhotos Statistics screen: 73,097 files and 552 GB indexed, 64,789 photos, 8,308 videos' },
+    ],
     eyebrow: 'iOS · iPhone · Photo app',
     desc: "YZPhotos is an iPhone photo app built around one non-negotiable principle: your images never leave your device. No account, no cloud, no trackers: just your photos, at home.",
     tags: ['iOS', 'iPhone', 'Photo', '100% offline', 'No account'],
@@ -133,27 +137,19 @@ export default function YZPhotosPage() {
 
         <motion.div
           className="yzp-showcase"
-          role="img"
-          aria-label={t.showcaseAria}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease }}
         >
-          <div className="yzp-phone">
-            <div className="yzp-phone__notch" aria-hidden="true" />
-            <div className="yzp-deck" aria-hidden="true">
-              <div className="yzp-card yzp-card--back2" />
-              <div className="yzp-card yzp-card--back1" />
-              <div className="yzp-card yzp-card--top">
-                <span className="yzp-card__meta">{t.deckMeta}</span>
+          {t.screens.map((screen, i) => (
+            <div key={screen.src} className={`yzp-iphone${i === 1 ? ' yzp-iphone--main' : ''}`}>
+              <div className="yzp-iphone__buttons" aria-hidden="true" />
+              <div className="yzp-iphone__screen">
+                <img src={screen.src} alt={screen.alt} loading="lazy" />
+                <div className="yzp-iphone__island" aria-hidden="true" />
               </div>
             </div>
-            <div className="yzp-actions" aria-hidden="true">
-              <span className="yzp-btn yzp-btn--trash">✕</span>
-              <span className="yzp-chip">{t.deckCount}</span>
-              <span className="yzp-btn yzp-btn--keep">✓</span>
-            </div>
-          </div>
+          ))}
         </motion.div>
 
         <div className="project-page__body">
