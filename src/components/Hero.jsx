@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useStrings } from '../i18n/LocaleContext'
+import BlurText from './reactbits/BlurText'
 import './Hero.css'
 
 const ease = [0.16, 1, 0.3, 1]
@@ -70,15 +71,18 @@ export default function Hero() {
           <span className="hero__cursor" aria-hidden="true" />
         </h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.52, ease }}
-        >
-          <p className="hero__lead">
-            {t.hero.lead}
-          </p>
-        </motion.div>
+        <BlurText
+          text={t.hero.lead}
+          className="hero__lead"
+          delay={26}
+          stepDuration={0.28}
+          animationFrom={{ filter: 'blur(8px)', opacity: 0, y: -12 }}
+          animationTo={[
+            { filter: 'blur(4px)', opacity: 0.6, y: 4 },
+            { filter: 'blur(0px)', opacity: 1, y: 0 },
+          ]}
+          easing={(x) => 1 - Math.pow(1 - x, 3)}
+        />
 
         <motion.div
           className="hero__actions"

@@ -19,14 +19,15 @@ export default function useLenis() {
     lenisInstance = lenis
 
     // Connect Lenis → GSAP ScrollTrigger
+    const onTick = (time) => lenis.raf(time * 1000)
     lenis.on('scroll', ScrollTrigger.update)
-    gsap.ticker.add((time) => lenis.raf(time * 1000))
+    gsap.ticker.add(onTick)
     gsap.ticker.lagSmoothing(0)
 
     return () => {
+      gsap.ticker.remove(onTick)
       lenis.destroy()
       lenisInstance = null
-      gsap.ticker.remove((time) => lenis.raf(time * 1000))
     }
   }, [])
 }
