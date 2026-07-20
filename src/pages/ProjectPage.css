@@ -350,6 +350,132 @@
   }
 }
 
+/* ── YZPhotos dedicated page visuals (palette from the app's design tokens) ── */
+
+.yzp-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 18px;
+  display: block;
+  margin-bottom: var(--sp-3);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+}
+
+.yzp-showcase {
+  max-width: 68rem;
+  margin: var(--sp-2) 0 var(--sp-8);
+  border-radius: 16px;
+  background: linear-gradient(160deg, #3a5c6e 0%, #244252 46%, #10242e 100%);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--sp-7) var(--sp-4) 0;
+}
+
+.yzp-phone {
+  width: 290px;
+  border-radius: 42px 42px 0 0;
+  background: rgba(16, 36, 46, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: none;
+  -webkit-backdrop-filter: blur(24px) saturate(1.65);
+  backdrop-filter: blur(24px) saturate(1.65);
+  box-shadow: 0 14px 40px rgba(8, 28, 38, 0.4);
+  padding: 14px 14px 0;
+}
+
+.yzp-phone__notch {
+  width: 86px;
+  height: 22px;
+  margin: 4px auto 14px;
+  border-radius: 12px;
+  background: rgba(8, 20, 26, 0.9);
+}
+
+.yzp-deck {
+  position: relative;
+  height: 320px;
+}
+
+.yzp-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 0.5px solid rgba(255, 255, 255, 0.35);
+}
+
+.yzp-card--back2 {
+  background: linear-gradient(135deg, #d2a53f, #e87b3e);
+  transform: rotate(5deg) scale(0.93) translateY(12px);
+  opacity: 0.55;
+}
+
+.yzp-card--back1 {
+  background: linear-gradient(135deg, #b23a5d, #e88aa0);
+  transform: rotate(-4deg) scale(0.965) translateY(6px);
+  opacity: 0.75;
+}
+
+.yzp-card--top {
+  background:
+    radial-gradient(120% 80% at 80% 8%, rgba(210, 165, 63, 0.85), transparent 60%),
+    radial-gradient(90% 60% at 15% 95%, rgba(195, 210, 74, 0.5), transparent 55%),
+    linear-gradient(160deg, #3d5a6c, #244252);
+}
+
+.yzp-card__meta {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(8, 20, 26, 0.45);
+  padding: 4px 8px;
+  border-radius: 6px;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.yzp-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 6px 26px;
+}
+
+.yzp-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.14);
+  border: 0.5px solid rgba(255, 255, 255, 0.45);
+  -webkit-backdrop-filter: blur(24px) saturate(1.65);
+  backdrop-filter: blur(24px) saturate(1.65);
+}
+
+.yzp-btn--keep { color: #b6d84b; }
+.yzp-btn--trash { color: #f06a8c; }
+
+.yzp-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 480px) {
+  .yzp-showcase { padding-top: var(--sp-5); }
+  .yzp-phone { width: 240px; }
+  .yzp-deck { height: 260px; }
+}
+
 /* ── Generic project hero banner (any project with a `hero` image) ──────────── */
 
 .project-hero {

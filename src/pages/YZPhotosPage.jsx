@@ -22,6 +22,10 @@ const fadeUp = {
 const T = {
   fr: {
     home: 'Accueil',
+    iconAlt: "Icône de l'app YZPhotos : une faille sépare deux photos, croix rouge à gauche, coche verte à droite",
+    showcaseAria: "Maquette de l'interface YZPhotos : une photo en cours de tri, boutons jeter et garder, compteur 12 431 sur 93 006",
+    deckMeta: 'IMG_4127 · 4,2 Mo',
+    deckCount: '12 431 / 93 006',
     eyebrow: 'iOS · iPhone · Application photo',
     desc: "YZPhotos est une application photo pour iPhone pensée autour d'un principe non négociable : vos images ne quittent jamais votre appareil. Pas de compte, pas de cloud, pas de traqueurs : juste vos photos, chez vous.",
     tags: ['iOS', 'iPhone', 'Photo', '100 % hors-ligne', 'Sans compte'],
@@ -39,6 +43,10 @@ const T = {
   },
   en: {
     home: 'Home',
+    iconAlt: 'YZPhotos app icon: a crack splits two photos, red cross on the left, green check on the right',
+    showcaseAria: 'YZPhotos interface mockup: a photo being sorted, trash and keep buttons, counter 12,431 of 93,006',
+    deckMeta: 'IMG_4127 · 4.2 MB',
+    deckCount: '12,431 / 93,006',
     eyebrow: 'iOS · iPhone · Photo app',
     desc: "YZPhotos is an iPhone photo app built around one non-negotiable principle: your images never leave your device. No account, no cloud, no trackers: just your photos, at home.",
     tags: ['iOS', 'iPhone', 'Photo', '100% offline', 'No account'],
@@ -79,6 +87,12 @@ export default function YZPhotosPage() {
         </motion.div>
 
         <div className="project-page__header">
+          <motion.img
+            src="/yzphotos/icon.png"
+            alt={t.iconAlt}
+            className="yzp-icon"
+            variants={fadeUp} initial="hidden" animate="visible" custom={0}
+          />
           <motion.p className="project-page__eyebrow" variants={fadeUp} initial="hidden" animate="visible" custom={0}>
             {t.eyebrow}
           </motion.p>
@@ -116,6 +130,31 @@ export default function YZPhotosPage() {
             </Link>
           </motion.div>
         </div>
+
+        <motion.div
+          className="yzp-showcase"
+          role="img"
+          aria-label={t.showcaseAria}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4, ease }}
+        >
+          <div className="yzp-phone">
+            <div className="yzp-phone__notch" aria-hidden="true" />
+            <div className="yzp-deck" aria-hidden="true">
+              <div className="yzp-card yzp-card--back2" />
+              <div className="yzp-card yzp-card--back1" />
+              <div className="yzp-card yzp-card--top">
+                <span className="yzp-card__meta">{t.deckMeta}</span>
+              </div>
+            </div>
+            <div className="yzp-actions" aria-hidden="true">
+              <span className="yzp-btn yzp-btn--trash">✕</span>
+              <span className="yzp-chip">{t.deckCount}</span>
+              <span className="yzp-btn yzp-btn--keep">✓</span>
+            </div>
+          </div>
+        </motion.div>
 
         <div className="project-page__body">
           {t.sections.map((s, i) => (
