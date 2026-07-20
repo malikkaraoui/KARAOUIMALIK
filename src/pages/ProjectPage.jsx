@@ -99,7 +99,6 @@ export default function ProjectPage() {
   const isLunii = slug === 'luniisync'
   const isBoites = slug === 'boites-a-livres'
   const isSecondCerveau = slug === 'second-cerveau'
-  const hasRichSections = content.sections.some(s => s.table || s.image)
 
   const stripeLinks = links.filter(l => l.kind === 'stripe')
   const otherLinks = links.filter(l => l.kind !== 'stripe')
@@ -300,8 +299,8 @@ export default function ProjectPage() {
           </motion.div>
         )}
 
-        <div className={`project-page__body${hasRichSections ? ' project-page__body--single' : ''}`}>
-          {isLunii ? (
+        {isLunii ? (
+        <div className="project-page__body">
             <>
               <motion.div className="project-page__section lunii-section--illus" variants={fadeUp} initial="hidden" animate="visible" custom={5}>
                 <div className="lunii-section__text">
@@ -366,55 +365,61 @@ export default function ProjectPage() {
                 </div>
               )}
             </>
-          ) : (
-            <>
-              <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={6}>
-                <h2 className="project-page__section-title">{t.projectPage.problem}</h2>
-                <p className="project-page__section-body">{content.problem}</p>
-              </motion.div>
-
-              <motion.div className="project-page__section" variants={fadeUp} initial="hidden" animate="visible" custom={7}>
-                <h2 className="project-page__section-title">{t.projectPage.solution}</h2>
-                <p className="project-page__section-body">{content.solution}</p>
-              </motion.div>
-
-              {content.sections.map((s, i) => (
-                <motion.div
-                  key={s.title}
-                  className="project-page__section"
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate="visible"
-                  custom={7 + i}
-                >
-                  <h2 className="project-page__section-title">{s.title}</h2>
-                  {s.body && s.body.split('\n\n').map((para, pi) => (
-                    <p key={pi} className="project-page__section-body">{para}</p>
-                  ))}
-                  {s.table && (
-                    <table className="project-page__table">
-                      <tbody>
-                        {s.table.rows.map((cols, ri) => (
-                          <tr key={ri}>
-                            {cols.map((col, ci) => (
-                              <td key={ci} className={ci === 0 ? 'project-page__table-key' : 'project-page__table-val'}>{col}</td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  )}
-                  {s.image && (
-                    <figure className="project-page__figure">
-                      <img src={s.image.src} alt={s.image.alt} loading="lazy" />
-                      {s.image.caption && <figcaption>{s.image.caption}</figcaption>}
-                    </figure>
-                  )}
-                </motion.div>
-              ))}
-            </>
-          )}
         </div>
+        ) : (
+        <div className="case">
+          {[
+            { title: t.projectPage.problem, body: content.problem },
+            { title: t.projectPage.solution, body: content.solution },
+            ...content.sections,
+          ].map((s, i) => (
+            <motion.section
+              key={s.title}
+              className="case__row"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6, ease }}
+            >
+              <div className="case__label">
+                <span className="case__num">{String(i + 1).padStart(2, '0')}</span>
+                <h2 className="case__heading">{s.title}</h2>
+              </div>
+              <div className="case__content">
+                {s.callout && <p className="case__callout">{s.callout}</p>}
+                {s.body && s.body.split('\n\n').map((para, pi) => (
+                  <p key={pi} className="case__para">{para}</p>
+                ))}
+                {s.terminal && (
+                  <div className="case__terminal">
+                    <div className="case__terminal-bar" aria-hidden="true"><span /><span /><span /></div>
+                    <pre aria-label={s.terminalAria}>{s.terminal.join('\n')}</pre>
+                  </div>
+                )}
+                {s.table && (
+                  <table className="project-page__table">
+                    <tbody>
+                      {s.table.rows.map((cols, ri) => (
+                        <tr key={ri}>
+                          {cols.map((col, ci) => (
+                            <td key={ci} className={ci === 0 ? 'project-page__table-key' : 'project-page__table-val'}>{col}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+                {s.image && (
+                  <figure className="project-page__figure">
+                    <img src={s.image.src} alt={s.image.alt} loading="lazy" />
+                    {s.image.caption && <figcaption>{s.image.caption}</figcaption>}
+                  </figure>
+                )}
+              </div>
+            </motion.section>
+          ))}
+        </div>
+        )}
       </div>
     </div>
   )

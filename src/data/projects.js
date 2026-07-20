@@ -149,6 +149,7 @@ export const projects = [
         },
         {
           title: "Pourquoi bénévol",
+          callout: "Ma contribution à quelque chose de plus grand que le code.",
           body: "Ce projet ne génère pas de revenus et n'en générera jamais. Il existe parce que le partage du livre mérite un outil propre. C'est ma contribution à quelque chose de plus grand que le code.",
         },
       ],
@@ -215,6 +216,7 @@ export const projects = [
       },
       {
         title: "Ce que la trajectoire raconte",
+        callout: "Sur un vrai tas dense, le rappel est passé de 18 % à 51 %.",
         body: "Trajectoire globale : 0,679 à 0,826 de mAP en 4 jours, chaque gain rattaché à sa cause exacte. Une supervision propre (un bugfix) rapporte plus que n'importe quel réglage fin, et le vrai piège a été méthodologique : le premier jeu de test ne représentait pas le cas produit réel (un tas dense de 50 pièces qui se chevauchent). Une fois le bon juge construit, le vrai progrès est apparu : passer de 18 % à 51 % de rappel sur un tas dense.\n\nClassification (1 000 références) : 82,5 % top-1 / 98,1 % top-5 sur test synthétique, 89,2 % top-1 sur photos réelles. Les confusions résiduelles sont presque toutes des variantes de moules de la même pièce, pas des erreurs de vision mais des ambiguïtés du catalogue lui-même.",
         image: {
           src: "/brickoff/verif-annotations.jpg",
@@ -262,10 +264,21 @@ export const projects = [
       sections: [
         {
           title: "Ce que le harnais fait concrètement",
+          terminal: [
+            "$ claude",
+            "SessionStart · sonnet-5 détecté · fenêtre de contexte 12 %",
+            "vault sync ✓ · pouls.md armé",
+            "> /ship",
+            "gate pré-push : secrets ✓ · lint ✓ · tests ✓ · manifest ✓",
+            "handoff.json généré · PR ouverte · review Copilot lancée",
+            "fixes intégrés · merge automatique ✓ · session archivée",
+          ],
+          terminalAria: "Exemple de session MasterClaude : gate pré-push, handoff et merge automatique",
           body: "À chaque session : horodatage automatique, modèle actif détecté, fenêtre de contexte monitorée (alerte à 50%). À chaque push : gate pré-push en 6 étapes (secrets, lint, tests, drift manifest). À chaque feature : handoff JSON généré automatiquement, PR créée, Copilot review lancée, fixes intégrés, merge final sans intervention.",
         },
         {
           title: "Routing Ollama · LLM local",
+          callout: "Environ 60 % de tokens économisés sur les sessions longues.",
           body: "Un proxy Go intercepte les requêtes Claude et les redirige vers Ollama pour les tâches légères (exploration, lint). Sonnet prend les features, Opus les décisions architecturales. Résultat : ~60% de tokens économisés sur les sessions longues.",
         },
         {
@@ -316,6 +329,7 @@ export const projects = [
         },
         {
           title: "Interface LLM · votre mémoire devient son contexte",
+          callout: "Votre mémoire devient son contexte.",
           body: "À chaque session, le LLM reçoit les chunks les plus pertinents du vault directement dans son contexte. Il peut ainsi citer vos propres notes, prolonger une réflexion commencée il y a six mois, ou croiser deux idées que vous n'aviez jamais connectées. Le résultat : un interlocuteur qui vous connaît vraiment : sans abonnement, sans profil cloud, sans cession de données.",
         },
         {
@@ -359,6 +373,7 @@ export const projects = [
         },
         {
           title: "Le jalon P2P direct entre deux personnes",
+          callout: "Deux personnes, deux téléphones, zéro serveur entre elles.",
           body: "Le 17 juillet 2026, deux personnes ont échangé des messages chiffrés en pair-à-pair direct : d'abord via relais sur réseau cellulaire, puis en connexion IPv6 directe, sans aucun serveur intermédiaire. Un jalon symbolique pour un protocole pensé comme souverain dès l'origine.",
         },
         {
@@ -398,6 +413,7 @@ export const projects = [
       sections: [
         {
           title: "Format",
+          callout: "Je parle de ce que j'expérimente, pas de ce que je lis.",
           body: "Solo ou en dialogue. Pas de script figé : une idée, un fil, une conclusion. Disponible sur Spotify et Apple Podcasts.",
         },
       ],
@@ -450,6 +466,7 @@ export const projects = [
       sections: [
         {
           title: "Comment une mesure est écrite",
+          callout: "Aucune mesure n'est un point final : tout reste discutable.",
           body: "Chaque proposition est documentée avec sa source : un pays où elle est déjà appliquée, avec ses résultats. Plusieurs centaines de fiches réparties sur près de 90 thématiques, alimentées en continu.",
         },
         {

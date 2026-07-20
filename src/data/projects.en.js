@@ -149,6 +149,7 @@ export const projectsEn = [
       },
       {
         title: "Why volunteer-run",
+        callout: "My contribution to something bigger than code.",
         body: "This project generates no revenue and never will. It exists because sharing books deserves a proper tool. It's my contribution to something bigger than code.",
       },
     ],
@@ -215,6 +216,7 @@ export const projectsEn = [
     },
     {
       title: "What the trajectory tells us",
+      callout: "On a real dense pile, recall went from 18% to 51%.",
       body: "Overall trajectory: 0.679 to 0.826 mAP over 4 days, every gain traced back to its exact cause. Clean supervision (a bugfix) pays off more than any fine-tuning, and the real trap was methodological: the first test set didn't represent the real product case (a dense pile of 50 overlapping pieces). Once the right judge was built, real progress showed up: recall on a dense pile going from 18% to 51%.\n\nClassification (1,000 part numbers): 82.5% top-1 / 98.1% top-5 on the synthetic test set, 89.2% top-1 on real photos. The remaining confusions are almost all mold variants of the same piece, not vision errors but ambiguities in the catalog itself.",
       image: {
         src: "/brickoff/verif-annotations.jpg",
@@ -262,10 +264,21 @@ export const projectsEn = [
     sections: [
       {
         title: "What the harness actually does",
+        terminal: [
+          "$ claude",
+          "SessionStart · sonnet-5 detected · context window 12%",
+          "vault sync ✓ · pouls.md armed",
+          "> /ship",
+          "pre-push gate: secrets ✓ · lint ✓ · tests ✓ · manifest ✓",
+          "handoff.json generated · PR opened · Copilot review started",
+          "fixes merged · automatic merge ✓ · session archived",
+        ],
+        terminalAria: "Example MasterClaude session: pre-push gate, handoff, automatic merge",
         body: "On every session: automatic timestamping, active model detection, context window monitoring (alert at 50%). On every push: a 6-step pre-push gate (secrets, lint, tests, manifest drift). On every feature: a JSON handoff generated automatically, a PR created, Copilot review triggered, fixes applied, final merge with no manual intervention.",
       },
       {
         title: "Ollama routing, local LLM",
+        callout: "About 60% of tokens saved on long sessions.",
         body: "A Go proxy intercepts Claude requests and redirects lightweight tasks (exploration, lint) to Ollama. Sonnet handles features, Opus handles architectural decisions. Result: roughly 60% of tokens saved on long sessions.",
       },
       {
@@ -316,6 +329,7 @@ export const projectsEn = [
       },
       {
         title: "LLM interface: your memory becomes its context",
+        callout: "Your memory becomes its context.",
         body: "In every session, the LLM receives the most relevant chunks from the vault directly in its context. It can quote your own notes, pick up a train of thought started six months ago, or connect two ideas you'd never linked together. The result: a conversational partner that actually knows you, with no subscription, no cloud profile, no data handed over.",
       },
       {
@@ -359,6 +373,7 @@ export const projectsEn = [
       },
       {
         title: "The direct P2P milestone between two people",
+        callout: "Two people, two phones, zero servers in between.",
         body: "On July 17, 2026, two people exchanged encrypted messages in direct peer-to-peer mode: first through a relay over the cellular network, then over a direct IPv6 connection, with no intermediary server at all. A symbolic milestone for a protocol designed to be sovereign from day one.",
       },
       {
@@ -398,6 +413,7 @@ export const projectsEn = [
     sections: [
       {
         title: "Format",
+        callout: "I talk about what I experiment with, not what I read.",
         body: "Solo or as a conversation. No fixed script: one idea, one thread, one takeaway. Available on Spotify and Apple Podcasts.",
       },
     ],
@@ -450,6 +466,7 @@ export const projectsEn = [
     sections: [
       {
         title: "How a measure gets written",
+        callout: "No measure is ever final: everything stays open to debate.",
         body: "Every proposal is documented with its source: a country where it's already been applied, along with its results. Several hundred cards spread across nearly 90 topics, continuously updated.",
       },
       {
