@@ -146,12 +146,15 @@ export default function YZPhotosPage() {
               <div className="yzp-iphone__buttons" aria-hidden="true" />
               <div className="yzp-iphone__screen">
                 {screen.grid ? (
-                  <div
-                    className="yzp-grid"
-                    role="img"
-                    aria-label={screen.alt}
-                    style={{ backgroundImage: `url(${screen.src})` }}
-                  />
+                  <>
+                    <div
+                      className="yzp-grid"
+                      role="img"
+                      aria-label={screen.alt}
+                      style={{ backgroundImage: `url(${screen.src})` }}
+                    />
+                    <img className="yzp-tabbar" src="/yzphotos/screens/photos-tabbar.jpg" alt="" aria-hidden="true" loading="lazy" />
+                  </>
                 ) : (
                   <img src={screen.src} alt={screen.alt} loading="lazy" />
                 )}
